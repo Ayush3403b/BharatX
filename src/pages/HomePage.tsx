@@ -1,5 +1,5 @@
 import { lazy, Suspense, useRef } from "react";
-import { motion, useReducedMotion, useScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CinematicSection } from "../components/scroll/CinematicSection";
 import { Button } from "../components/common/Button";
@@ -51,15 +51,15 @@ export default function HomePage() {
           {/* Copy */}
           <div>
             <Reveal>
-              <div className="mb-7 flex flex-wrap items-center gap-2.5 sm:gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gold-400">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10 shrink-0">
+              <div className="mb-7 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10">
                   <Icon name="orbit" width={13} height={13} strokeWidth={1.6} />
                 </span>
-                <span>The BharatX Group Ecosystem</span>
-                <span aria-hidden className="hidden sm:inline-block h-px w-12 bg-gold-400/50" />
+                The BharatX Group Ecosystem
+                <span aria-hidden className="h-px w-12 bg-gold-400/50" />
               </div>
             </Reveal>
-            <h1 className="font-display font-semibold leading-[1.03] tracking-tight text-ink-50 text-[2.2rem] xs:text-[2.6rem] sm:text-6xl lg:text-[4.2rem]">
+            <h1 className="font-display font-semibold leading-[1.03] tracking-tight text-ink-50 text-[2.6rem] sm:text-6xl lg:text-[4.2rem]">
               <MaskReveal delay={0.05}>Building the</MaskReveal>
               <MaskReveal delay={0.14}>businesses,</MaskReveal>
               <MaskReveal delay={0.23}>systems and</MaskReveal>
@@ -80,14 +80,14 @@ export default function HomePage() {
               </p>
             </Reveal>
             <Reveal delay={0.68}>
-              <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <Link to="/ecosystem" aria-label="Explore BharatX Ecosystem" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" withArrow className="w-full sm:w-auto">
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link to="/ecosystem" aria-label="Explore BharatX Ecosystem">
+                  <Button variant="primary" size="lg" withArrow>
                     Explore BharatX Ecosystem
                   </Button>
                 </Link>
-                <Link to="/about" aria-label="Discover BharatX Group" className="w-full sm:w-auto">
-                  <Button variant="ghost" size="lg" className="w-full sm:w-auto">
+                <Link to="/about" aria-label="Discover BharatX Group">
+                  <Button variant="ghost" size="lg">
                     Discover BharatX Group
                   </Button>
                 </Link>
@@ -114,7 +114,7 @@ export default function HomePage() {
           </div>
 
           {/* 3D ecosystem scene */}
-          <div className="relative mx-auto h-[340px] xs:h-[400px] w-full max-w-[520px] sm:h-[480px] lg:h-[600px]">
+          <div className="relative mx-auto h-[400px] w-full max-w-[520px] sm:h-[480px] lg:h-[600px]">
             <Suspense
               fallback={
                 <div className="flex h-full w-full items-center justify-center">
@@ -510,6 +510,9 @@ export default function HomePage() {
 }
 
 /* Floating company chip over the 3D hero */
+import { motion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
+
 function MotionChip({
   to,
   name,

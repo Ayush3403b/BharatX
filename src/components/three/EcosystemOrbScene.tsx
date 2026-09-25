@@ -188,7 +188,7 @@ function Scene({
 
 /* ── Static fallback (no WebGL / reduced motion / low power) ── */
 
-function OrbFallback({ onHover }: { onHover: (slug: string | null) => void }) {
+function OrbFallback() {
   return (
     <svg
       viewBox="0 0 520 520"
@@ -209,14 +209,7 @@ function OrbFallback({ onHover }: { onHover: (slug: string | null) => void }) {
         const px = 260 + (x / RING_RADIUS) * 190;
         const py = 260 + (z / RING_RADIUS) * 190;
         return (
-          <g
-            key={c.id}
-            onClick={() => onHover(c.slug)}
-            className="cursor-pointer transition-opacity hover:opacity-80"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && onHover(c.slug)}
-          >
+          <g key={c.id}>
             <line x1="260" y1="260" x2={px} y2={py} stroke={`${c.accentColor}55`} strokeWidth="1" />
             <circle cx={px} cy={py} r="15" fill={`${c.accentColor}22`} stroke={c.accentColor} strokeWidth="1.4" />
             <text
@@ -279,7 +272,7 @@ export default function EcosystemOrbScene({
           <LazyOrb scrollProgress={scrollProgress} hovered={hovered} onHover={onHover} />
         </Suspense>
       ) : (
-        <OrbFallback onHover={onHover} />
+        <OrbFallback />
       )}
 
       {/* Company summary overlay on node hover/tap (Section 12) */}
@@ -315,26 +308,16 @@ export default function EcosystemOrbScene({
                   {hoverCompany.name}
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span
-                  className="flex h-9 w-9 items-center justify-center rounded-lg font-mono text-[11px] font-semibold"
-                  style={{
-                    color: hoverCompany.accentColor,
-                    background: `${hoverCompany.accentColor}14`,
-                    border: `1px solid ${hoverCompany.accentColor}44`,
-                  }}
-                >
-                  {hoverCompany.monogram}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onHover(null)}
-                  aria-label="Dismiss company preview"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-ink-400 hover:text-ink-100 md:hidden"
-                >
-                  <Icon name="x" width={14} height={14} />
-                </button>
-              </div>
+              <span
+                className="flex h-9 w-9 items-center justify-center rounded-lg font-mono text-[11px] font-semibold"
+                style={{
+                  color: hoverCompany.accentColor,
+                  background: `${hoverCompany.accentColor}14`,
+                  border: `1px solid ${hoverCompany.accentColor}44`,
+                }}
+              >
+                {hoverCompany.monogram}
+              </span>
             </div>
             <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-400">
               {hoverCompany.description}
@@ -377,7 +360,6 @@ function LazyOrb({
       camera={{ position: [0, 1.5, 8.4], fov: 42 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={() => markHeroSceneReady()}
-      onPointerMissed={() => onHover(null)}
       aria-hidden
     >
       <ambientLight intensity={0.35} />
