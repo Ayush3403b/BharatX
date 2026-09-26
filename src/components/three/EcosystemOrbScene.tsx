@@ -149,9 +149,9 @@ function Scene({
       const s = 1 - p * 0.25;
       group.current.scale.setScalar(s);
     }
-    // Subtle mouse parallax on the camera
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.55, 0.045);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, 1.5 + pointer.y * -0.35, 0.045);
+    // Subtle mouse parallax on the camera without pushing orbit out of bounds
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.35, 0.045);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, 1.4 + pointer.y * -0.25, 0.045);
     camera.lookAt(0, 0, 0);
   });
 
@@ -357,7 +357,7 @@ function LazyOrb({
   return (
     <Canvas
       dpr={[1, 1.5]}
-      camera={{ position: [0, 1.5, 8.4], fov: 42 }}
+      camera={{ position: [0, 1.4, 9.6], fov: 44 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={() => markHeroSceneReady()}
       aria-hidden

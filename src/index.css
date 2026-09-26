@@ -192,6 +192,70 @@ a, button, [role="button"], input, select, textarea {
     radial-gradient(60rem 40rem at 50% 118%, rgba(26, 35, 48, 0.9), transparent 70%);
 }
 
+/* ── Static Global Hero Background (Fixed across entire site) ── */
+.global-static-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--color-night-950);
+}
+
+.global-static-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/backgrounds/hero-field.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.22;
+}
+
+.global-static-bg-aurora {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55rem 35rem at 15% -5%, rgba(34, 213, 179, 0.16), transparent 65%),
+    radial-gradient(48rem 30rem at 85% 5%, rgba(245, 184, 77, 0.12), transparent 65%),
+    radial-gradient(65rem 45rem at 50% 115%, rgba(26, 35, 48, 0.95), transparent 75%);
+}
+
+.global-static-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
+  opacity: 0.35;
+}
+
+.global-static-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    transparent 0%,
+    rgba(7, 10, 15, 0.3) 60%,
+    rgba(7, 10, 15, 0.8) 100%
+  );
+}
+
+.global-static-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 10, 15, 0.35) 0%,
+    transparent 35%,
+    rgba(7, 10, 15, 0.5) 75%,
+    rgba(7, 10, 15, 0.85) 100%
+  );
+}
+
 .gold-glow {
   background: radial-gradient(
     40rem 22rem at 50% 0%,

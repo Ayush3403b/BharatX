@@ -184,7 +184,7 @@ function MegaPanel({ kind, className }: { kind: Exclude<MegaKey, null>; classNam
 function CompaniesMega() {
   const [preview, setPreview] = useState(0);
   return (
-    <div className="container-x grid grid-cols-[1fr_300px] gap-10 py-8" onMouseLeave={() => {}}>
+    <div className="container-x grid grid-cols-[1fr_300px] gap-10 py-8" onMouseLeave={() => { }}>
       <div className="grid grid-cols-2 gap-1.5">
         {companies.map((c, i) => (
           <Link

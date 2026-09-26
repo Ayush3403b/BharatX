@@ -28,18 +28,13 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "aurora relative overflow-hidden border-b border-white/5 pb-16 pt-36 md:pb-24 md:pt-44",
+        "relative overflow-hidden border-b border-white/5 pb-16 pt-36 md:pb-24 md:pt-44",
         className,
       )}
     >
-      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-70" />
-      <div
-        aria-hidden
-        className="absolute -top-32 left-1/2 h-72 w-[52rem] -translate-x-1/2 rounded-full bg-pulse-500/[0.07] blur-3xl"
-      />
       <div className="container-x relative">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} className="mb-8" />}
-        <Reveal>
+        <Reveal immediate>
           <div className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
             <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10">
               <Icon name={icon} width={13} height={13} strokeWidth={1.6} />
@@ -50,13 +45,13 @@ export function PageHero({
         </Reveal>
         <h1 className="max-w-4xl font-display text-3xl sm:text-5xl font-semibold leading-[1.02] tracking-tight text-ink-50 md:text-6xl lg:text-7xl">
           {lines.map((line, i) => (
-            <MaskReveal key={i} delay={0.05 * i}>
+            <MaskReveal immediate key={i} delay={0.05 * i}>
               {line}
             </MaskReveal>
           ))}
         </h1>
         {lede && (
-          <Reveal delay={0.2}>
+          <Reveal immediate delay={0.2}>
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink-400 md:text-lg">
               {lede}
             </p>

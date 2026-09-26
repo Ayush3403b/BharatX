@@ -66,8 +66,8 @@ export function FooterCTA() {
 
 export function Footer() {
   return (
-    <footer className="noise relative overflow-hidden border-t border-white/5 bg-night-950">
-      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-30" />
+    <footer className="relative overflow-hidden border-t border-white/5 bg-night-950/40">
+      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-20" />
       <div className="container-x relative z-10 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-16 md:pt-20">
         <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Brand */}

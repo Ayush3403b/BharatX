@@ -36,17 +36,8 @@ export default function HomePage() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="aurora noise relative flex min-h-screen lg:min-h-0 lg:h-screen lg:max-h-screen items-center overflow-hidden pt-24 md:pt-28 lg:pt-20 lg:pb-6"
+        className="relative flex min-h-screen lg:min-h-0 lg:h-screen lg:max-h-screen items-center overflow-hidden pt-24 md:pt-28 lg:pt-20 lg:pb-6"
       >
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[url(/assets/backgrounds/hero-field.jpg)] bg-cover bg-center opacity-[0.16]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-night-900/40 via-transparent to-night-900"
-        />
-
         <div className="container-x relative z-10 grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 xl:gap-12 w-full">
           {/* Copy */}
           <div>
@@ -71,14 +62,14 @@ export default function HomePage() {
                 <span className="text-pulse-400">forward.</span>
               </MaskReveal>
             </h1>
-            <Reveal immediate delay={0.45}>
+            {/*<Reveal immediate delay={0.45}>
               <p className="mt-4 lg:mt-5 max-w-xl text-base leading-relaxed text-ink-400 lg:text-[15px] xl:text-lg">
                 BharatX Group is six independent businesses — venture building,
                 AI, infrastructure, precision manufacturing, agri science and
                 global agri-trade — operating as one connected ecosystem with a
                 single shared direction.
               </p>
-            </Reveal>
+            </Reveal>*/}
             <Reveal immediate delay={0.55}>
               <div className="mt-6 lg:mt-7 flex flex-wrap items-center gap-3.5">
                 <Link to="/ecosystem" aria-label="Explore BharatX Ecosystem">
@@ -114,7 +105,7 @@ export default function HomePage() {
           </div>
 
           {/* 3D ecosystem scene */}
-          <div className="relative mx-auto h-[360px] w-full max-w-[480px] sm:h-[420px] lg:h-[450px] xl:h-[520px] 2xl:h-[580px]">
+          <div className="relative mx-auto h-[360px] w-full max-w-[560px] sm:h-[420px] lg:h-[460px] xl:h-[540px] 2xl:h-[600px] xl:max-w-[640px]">
             <Suspense
               fallback={
                 <div className="flex h-full w-full items-center justify-center">
@@ -210,7 +201,7 @@ export default function HomePage() {
       </section>
 
       {/* ── COMPANIES SHOWCASE ───────────────────────────────── */}
-      <section className="relative border-t border-white/5 bg-night-850/50 py-24 md:py-32">
+      <section className="relative border-t border-white/5 bg-night-950/20 py-24 md:py-32">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeader
