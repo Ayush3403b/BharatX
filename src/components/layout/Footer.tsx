@@ -20,11 +20,11 @@ const socialIcons: Record<string, string> = {
 
 export function FooterCTA() {
   return (
-    <section className="gold-glow relative overflow-hidden border-t border-white/5 py-12 sm:py-16 md:py-20">
+    <section className="gold-glow relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 py-12 sm:py-16 md:py-20">
       <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-60" />
       <div className="container-x relative flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <div className="mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
+          <div className="mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-500 dark:text-gold-400">
             <Icon name="sparkles" width={13} height={13} />
             <span>Start a conversation</span>
           </div>
@@ -41,7 +41,7 @@ export function FooterCTA() {
         <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full md:w-auto">
           <Link
             to="/contact"
-            className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-gold-400 px-8 py-4 text-[15px] font-semibold text-night-950 transition-all duration-300 hover:bg-gold-300 hover:shadow-[0_10px_44px_-10px_rgba(245,184,77,0.55)]"
+            className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-gold-500 px-8 py-4 text-[15px] font-semibold text-white shadow-md shadow-gold-500/25 transition-all duration-300 hover:bg-gold-600 hover:shadow-[0_10px_35px_-8px_rgba(217,119,6,0.45)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_10px_44px_-10px_rgba(245,184,77,0.55)]"
           >
             Talk to BharatX
             <Icon
@@ -53,7 +53,7 @@ export function FooterCTA() {
           </Link>
           <Link
             to="/ecosystem"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-white/15 px-8 py-4 text-[15px] font-semibold text-ink-100 transition-colors hover:border-white/35 hover:bg-white/5"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-slate-300/80 bg-white/70 px-8 py-4 text-[15px] font-semibold text-ink-100 shadow-sm transition-all duration-300 hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-transparent dark:hover:border-white/35 dark:hover:bg-white/5 dark:shadow-none"
           >
             Explore the ecosystem
           </Link>
@@ -65,8 +65,8 @@ export function FooterCTA() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-night-950/40">
-      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-20" />
+    <footer className="relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 bg-night-950/60">
+      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-30" />
       <div className="container-x relative z-10 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-8 md:pt-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-16">
           {/* Brand */}
@@ -88,7 +88,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink-400 transition-all duration-300 hover:border-pulse-400/50 hover:text-pulse-300"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/90 text-slate-500 bg-white/60 transition-all duration-300 hover:border-gold-400 hover:text-gold-600 hover:bg-white shadow-sm dark:border-white/10 dark:text-ink-400 dark:bg-transparent dark:hover:border-white/30 dark:hover:text-ink-100 dark:shadow-none"
                 >
                   <Icon name={socialIcons[s.label] ?? "arrow-up-right"} width={14} height={14} />
                 </a>
@@ -138,18 +138,18 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Ghost wordmark */}
+        {/* Signature watermark */}
         <div
           aria-hidden
           className="pointer-events-none mt-12 select-none overflow-hidden"
         >
-          <div className="whitespace-nowrap text-center font-display text-[15vw] font-bold leading-[0.85] tracking-tight text-white/[0.028] lg:text-[10.5rem]">
+          <div className="whitespace-nowrap text-center font-display text-[15vw] font-extrabold leading-[0.85] tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-slate-900/15 via-slate-900/6 to-transparent dark:from-white/25 dark:via-pulse-300/15 dark:to-transparent lg:text-[10.5rem] transition-all duration-300">
             BHARATX GROUP
           </div>
         </div>
 
-        <div className="mt-4 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 md:flex-row">
-          <p className="text-center sm:text-left font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-600">
+        <div className="mt-4 flex flex-col items-center justify-between gap-4 border-t border-slate-200/80 dark:border-white/5 pt-6 md:flex-row">
+          <p className="text-center sm:text-left font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-500 dark:text-ink-400">
             © {new Date().getFullYear()} BharatX Group. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
@@ -159,7 +159,7 @@ export function Footer() {
             <Link to="/terms" className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-500 transition-colors hover:text-ink-200">
               Terms
             </Link>
-            <span className="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-600">
+            <span className="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-500 dark:text-ink-400">
               <span className="h-1.5 w-1.5 rounded-full bg-pulse-400/70" />
               Made in India
             </span>

@@ -136,17 +136,17 @@ export function Preloader() {
           <div className="relative z-10 flex flex-col items-center px-6">
             {/* Mark: two crossing strokes draw in */}
             <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
-              <rect x="1" y="1" width="46" height="46" rx="11" stroke="rgba(255,255,255,0.14)" />
+              <rect x="1" y="1" width="46" height="46" rx="11" stroke="rgba(15,23,42,0.12)" fill="rgba(255,255,255,0.85)" />
               <path
                 d="M14 14 L34 34"
-                stroke="#f5b84d"
+                stroke="#d97706"
                 strokeWidth="3.4"
                 strokeLinecap="round"
                 className="preloader-stroke"
               />
               <path
                 d="M34 14 L14 34"
-                stroke="#43e6c5"
+                stroke="#0891b2"
                 strokeWidth="3.4"
                 strokeLinecap="round"
                 className="preloader-stroke delay"
@@ -172,7 +172,7 @@ export function Preloader() {
 
             {/* Progress */}
             <div className="mt-10 w-56">
-              <div className="h-px w-full overflow-hidden bg-white/10">
+              <div className="h-px w-full overflow-hidden bg-slate-200/80">
                 <div
                   className="h-full bg-gradient-to-r from-pulse-400 to-gold-400"
                   style={{ width: `${progress}%` }}

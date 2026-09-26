@@ -530,7 +530,7 @@ function MotionChip({
     >
       <Link
         to={to}
-        className="glass flex items-center gap-2 rounded-full border border-white/10 py-1.5 pl-2 pr-3.5 shadow-[0_16px_44px_-16px_rgba(0,0,0,0.8)] transition-all hover:border-white/25 hover:scale-105"
+        className="glass flex items-center gap-2 rounded-full border border-slate-200/90 py-1.5 pl-2 pr-3.5 shadow-[0_10px_25px_-8px_rgba(15,23,42,0.12)] transition-all hover:border-gold-400 hover:scale-105"
         style={reduced ? undefined : { animation: `float-y ${5 + delay}s ease-in-out ${delay * 0.4}s infinite` }}
       >
         {logo ? (

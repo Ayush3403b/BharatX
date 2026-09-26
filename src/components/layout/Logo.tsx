@@ -26,7 +26,14 @@ export function LogoMark({
       aria-hidden
       className={cn("shrink-0", className)}
     >
-      <rect x="1" y="1" width="46" height="46" rx="11" stroke="rgba(255,255,255,0.14)" />
+      <rect
+        x="1"
+        y="1"
+        width="46"
+        height="46"
+        rx="11"
+        className="stroke-slate-900/10 fill-white/85 dark:stroke-white/12 dark:fill-white/[0.03]"
+      />
       <path
         d="M14 14 L34 34"
         stroke={stroke1}
@@ -62,16 +69,14 @@ export function Logo({
         <span className="flex flex-col leading-none">
           <span
             className={cn(
-              "font-display text-[15px] font-semibold tracking-[0.18em]",
-              tone === "light" ? "text-ink-50" : "text-night-900",
+              "font-display text-[15px] font-semibold tracking-[0.18em] text-ink-50",
             )}
           >
             BHARATX
           </span>
           <span
             className={cn(
-              "mt-1 font-mono text-[8.5px] uppercase tracking-[0.52em]",
-              tone === "light" ? "text-ink-500" : "text-ink-600",
+              "mt-1 font-mono text-[8.5px] uppercase tracking-[0.52em] text-ink-400",
             )}
           >
             Group

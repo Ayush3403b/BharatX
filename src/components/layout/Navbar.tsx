@@ -16,6 +16,7 @@ import { ecosystemSites } from "../../data/ecosystem";
 import { contactRoute, navigation } from "../../data/navigation";
 import { MagneticButton } from "../common/MagneticButton";
 import { Button } from "../common/Button";
+import { ThemeToggle } from "../common/ThemeToggle";
 
 type MegaKey = "companies" | "ecosystem" | null;
 
@@ -51,9 +52,10 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-all duration-500",
           scrolled || mega
-            ? "glass border-b border-white/8 shadow-[0_18px_50px_-24px_rgba(0,0,0,0.7)]"
-            : "border-b border-transparent bg-gradient-to-b from-night-950/70 to-transparent",
+            ? "glass-nav"
+            : "bg-gradient-to-b from-night-950/85 to-transparent",
         )}
+        style={{ border: "none", borderBottom: "none" }}
         onMouseLeave={() => setMega(null)}
       >
         <div className="container-x flex h-[72px] items-center justify-between gap-6">
@@ -81,10 +83,12 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <ThemeToggle />
+
             <MagneticButton
               as="Link"
-              className="hidden sm:!inline-flex !flex-row flex-nowrap items-center justify-center whitespace-nowrap gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-5 py-2.5 text-[13px] font-semibold text-gold-300 transition-all hover:border-gold-400/70 hover:bg-gold-400/20 shrink-0"
+              className="hidden sm:!inline-flex !flex-row flex-nowrap items-center justify-center whitespace-nowrap gap-2 rounded-full border border-gold-500/40 bg-gold-400/15 px-5 py-2.5 text-[13px] font-semibold text-gold-600 transition-all hover:border-gold-500/70 hover:bg-gold-400/25 dark:border-gold-400/30 dark:bg-gold-400/10 dark:text-gold-300 dark:hover:border-gold-400/60 dark:hover:bg-gold-400/20 shrink-0"
               buttonProps={{
                 to: contactRoute.to,
               }}
@@ -95,7 +99,7 @@ export function Navbar() {
 
             <button
               type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-ink-100 transition-colors hover:border-white/30 xl:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/80 text-ink-100 shadow-xs transition-colors hover:border-slate-300 dark:border-white/12 dark:bg-white/[0.04] dark:text-ink-100 dark:hover:border-white/30 xl:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
@@ -114,13 +118,13 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-x-0 top-full hidden border-b border-white/8 bg-night-950/95 backdrop-blur-2xl xl:block"
+              className="absolute inset-x-0 top-full hidden border-b border-slate-200/80 bg-white/95 backdrop-blur-2xl shadow-xl xl:block dark:border-white/8 dark:bg-night-950/95"
             >
               <MegaPanel kind={mega} />
             </motion.div>
           )}
         </AnimatePresence>
-        {mega && reduced && <MegaPanel kind={mega} className="absolute inset-x-0 top-full hidden border-b border-white/8 bg-night-950/95 xl:block" />}
+        {mega && reduced && <MegaPanel kind={mega} className="absolute inset-x-0 top-full hidden border-b border-slate-200/80 bg-white/95 xl:block shadow-xl dark:border-white/8 dark:bg-night-950/95" />}
       </header>
 
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
@@ -190,7 +194,7 @@ function CompaniesMega() {
             to={`/companies/${c.slug}`}
             onMouseEnter={() => setPreview(i)}
             onFocus={() => setPreview(i)}
-            className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03]"
+            className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200 hover:bg-slate-100/70"
           >
             {c.logo ? (
               <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
@@ -228,12 +232,12 @@ function CompaniesMega() {
               name="arrow-up-right"
               width={15}
               height={15}
-              className="mt-1 shrink-0 text-ink-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold-400"
+              className="mt-1 shrink-0 text-ink-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold-500"
             />
           </Link>
         ))}
       </div>
-      <div className="relative hidden h-[290px] overflow-hidden rounded-xl border border-white/10 lg:block">
+      <div className="relative hidden h-[290px] overflow-hidden rounded-xl border border-slate-200/90 shadow-sm lg:block">
         {companies.map((c, i) => (
           <img
             key={c.id}
@@ -247,8 +251,8 @@ function CompaniesMega() {
             )}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-night-950/80 via-transparent to-transparent" />
-        <div className="absolute bottom-3 left-4 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+        <div className="absolute bottom-3 left-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
           {companies[preview].domain}
         </div>
       </div>
@@ -270,7 +274,7 @@ function EcosystemMega() {
             <Link
               key={s.id}
               to={`/ecosystem?company=${s.id}`}
-              className="group flex items-center gap-3 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03]"
+              className="group flex items-center gap-3 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200 hover:bg-slate-100/70"
             >
               {c?.logo ? (
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
@@ -298,20 +302,20 @@ function EcosystemMega() {
                 name="orbit"
                 width={14}
                 height={14}
-                className="ml-auto shrink-0 text-ink-600 transition-colors group-hover:text-pulse-300"
+                className="ml-auto shrink-0 text-ink-600 transition-colors group-hover:text-pulse-400"
               />
             </Link>
           );
         })}
         <Link
           to="/ecosystem"
-          className="group flex items-center gap-3 rounded-xl border border-gold-400/25 bg-gold-400/[0.06] p-3.5 transition-all duration-300 hover:border-gold-400/50 hover:bg-gold-400/10"
+          className="group flex items-center gap-3 rounded-xl border border-gold-400/40 bg-gold-400/10 p-3.5 transition-all duration-300 hover:border-gold-400/70 hover:bg-gold-400/20"
         >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400/15 text-gold-300">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-500/20 text-gold-600">
             <Icon name="arrow-up-right" width={15} height={15} />
           </span>
           <span>
-            <span className="block text-[14px] font-semibold text-gold-200">Open the Ecosystem Hub</span>
+            <span className="block text-[14px] font-semibold text-gold-700">Open the Ecosystem Hub</span>
             <span className="block font-mono text-[10px] text-ink-500">All six websites, live</span>
           </span>
         </Link>

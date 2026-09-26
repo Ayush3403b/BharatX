@@ -75,7 +75,7 @@ export default function EcosystemPage() {
               href={active.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-5 py-2.5 text-[13px] font-semibold text-gold-300 transition-all hover:border-gold-400/70 hover:bg-gold-400/20"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-gold-500/40 bg-gold-400/15 px-5 py-2.5 text-[13px] font-semibold text-gold-600 transition-all hover:border-gold-500/70 hover:bg-gold-400/25 dark:border-gold-400/40 dark:bg-gold-400/10 dark:text-gold-300 dark:hover:border-gold-400/70 dark:hover:bg-gold-400/20"
             >
               Open Website
               <Icon name="external-link" width={14} height={14} />
@@ -98,7 +98,7 @@ export default function EcosystemPage() {
       </section>
 
       {/* ── WHAT IS THE ECOSYSTEM ────────────────────────────── */}
-      <section className="border-t border-white/5 bg-night-850/50 py-24 md:py-28">
+      <section className="border-t border-slate-200/80 bg-white/40 py-24 md:py-28 dark:border-white/5 dark:bg-night-850/50">
         <div className="container-x">
           <SectionHeader
             icon="network"
@@ -125,7 +125,7 @@ export default function EcosystemPage() {
               },
             ].map((c, i) => (
               <Reveal key={c.t} delay={i * 0.09}>
-                <div className="h-full rounded-2xl border border-white/8 bg-night-900/70 p-7">
+                <div className="h-full rounded-2xl border border-slate-200/90 bg-white/85 p-7 shadow-xs dark:border-white/8 dark:bg-night-900/70 dark:shadow-none">
                   <IconBadge icon={c.icon} />
                   <h3 className="mt-5 font-display text-lg font-semibold text-ink-50">{c.t}</h3>
                   <p className="mt-2.5 text-[14px] leading-relaxed text-ink-400">{c.d}</p>
@@ -148,7 +148,7 @@ export default function EcosystemPage() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {companies.map((c, i) => (
               <Reveal key={c.id} delay={(i % 3) * 0.07}>
-                <div className="group flex h-full items-center gap-4 rounded-xl border border-white/8 bg-night-850 p-5 transition-all duration-300 hover:border-white/18 hover:bg-night-800">
+                <div className="group flex h-full items-center gap-4 rounded-xl border border-slate-200/90 bg-white/85 p-5 shadow-2xs transition-all duration-300 hover:border-slate-300 hover:bg-white hover:shadow-md dark:border-white/8 dark:bg-night-850 dark:hover:border-white/18 dark:hover:bg-night-800 dark:shadow-none">
                   <Link to={`/companies/${c.slug}`} className="flex min-w-0 flex-1 items-center gap-4">
                     {c.logo ? (
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm transition-transform duration-300 group-hover:scale-105">
@@ -179,7 +179,7 @@ export default function EcosystemPage() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Open ${c.name} website`}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-ink-400 transition-colors hover:border-pulse-400/50 hover:text-pulse-300"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200/90 bg-white text-ink-400 shadow-2xs transition-colors hover:border-gold-400 hover:text-gold-600 dark:border-white/10 dark:bg-transparent dark:hover:border-pulse-400/50 dark:hover:text-pulse-300 dark:shadow-none"
                   >
                     <Icon name="external-link" width={14} height={14} />
                   </a>
@@ -191,7 +191,7 @@ export default function EcosystemPage() {
       </section>
 
       {/* ── STATEMENT ────────────────────────────────────────── */}
-      <section className="noise relative overflow-hidden border-t border-white/5 bg-night-950/60 py-24 md:py-28">
+      <section className="noise relative overflow-hidden border-t border-slate-200/80 bg-white/50 backdrop-blur-sm py-24 md:py-28 dark:border-white/5 dark:bg-night-950/60">
         <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-40" />
         <div className="container-x relative text-center">
           <h2 className="mx-auto max-w-3xl font-display text-3xl font-semibold leading-[1.15] tracking-tight text-ink-50 md:text-5xl">

@@ -9,7 +9,7 @@ export function CompanyMarquee() {
   return (
     <div
       aria-hidden
-      className="marquee relative overflow-hidden border-y border-white/5 bg-night-950/60 py-5"
+      className="marquee relative overflow-hidden border-y border-slate-200/80 bg-white/50 backdrop-blur-sm dark:border-white/5 dark:bg-night-950/60 py-5"
     >
       <div className="marquee-track items-center gap-10 pr-10">
         {items.map((c, i) => (

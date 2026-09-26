@@ -18,14 +18,14 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold-400 text-night-950 hover:bg-gold-300 hover:shadow-[0_8px_40px_-8px_rgba(245,184,77,0.5)]",
-  teal: "bg-pulse-500 text-night-950 hover:bg-pulse-400 hover:shadow-[0_8px_40px_-8px_rgba(34,213,179,0.45)]",
+    "bg-gold-500 text-white font-semibold shadow-md shadow-gold-500/20 hover:bg-gold-600 hover:shadow-[0_8px_30px_-4px_rgba(217,119,6,0.45)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_8px_40px_-8px_rgba(245,184,77,0.5)]",
+  teal: "bg-pulse-500 text-white font-semibold shadow-md shadow-pulse-500/20 hover:bg-pulse-600 hover:shadow-[0_8px_30px_-4px_rgba(8,145,178,0.45)] dark:bg-pulse-500 dark:text-night-950 dark:hover:bg-pulse-400 dark:hover:shadow-[0_8px_40px_-8px_rgba(34,213,179,0.45)]",
   ghost:
-    "border border-white/15 bg-white/[0.02] text-ink-100 hover:border-white/35 hover:bg-white/[0.06]",
+    "border border-slate-300/80 bg-white/75 text-ink-100 backdrop-blur-sm shadow-sm hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-white/[0.02] dark:hover:border-white/35 dark:hover:bg-white/[0.06] dark:shadow-none",
   ember:
-    "bg-ember-400 text-white hover:bg-ember-300 hover:shadow-[0_8px_40px_-8px_rgba(232,106,74,0.5)]",
+    "bg-ember-500 text-white font-semibold shadow-md shadow-ember-500/20 hover:bg-ember-600 hover:shadow-[0_8px_30px_-4px_rgba(124,58,237,0.45)] dark:bg-ember-400 dark:text-white dark:hover:bg-ember-300 dark:hover:shadow-[0_8px_40px_-8px_rgba(232,106,74,0.5)]",
   paper:
-    "bg-night-900 text-fog-100 hover:bg-night-700 hover:shadow-[0_8px_30px_-8px_rgba(11,15,21,0.5)]",
+    "bg-slate-900 text-white font-semibold shadow-md hover:bg-slate-800 hover:shadow-lg dark:bg-night-900 dark:text-fog-100 dark:hover:bg-night-700",
 };
 
 const sizes: Record<ButtonSize, string> = {

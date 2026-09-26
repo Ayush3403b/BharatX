@@ -3,8 +3,9 @@ import { cn } from "../../utils/cn";
 import { Icon } from "../../utils/icons";
 
 const baseField =
-  "w-full rounded-xl border bg-night-800/70 px-4 py-3 text-base md:text-[14.5px] text-ink-50 placeholder:text-ink-600 outline-none transition-all duration-300";
-const okBorder = "border-white/10 focus:border-pulse-400/60 focus:ring-2 focus:ring-pulse-400/15";
+  "w-full rounded-xl border bg-white/90 px-4 py-3 text-base md:text-[14.5px] text-ink-50 placeholder:text-slate-400 outline-none transition-all duration-300 shadow-2xs dark:bg-night-800/70 dark:placeholder:text-ink-600 dark:shadow-none";
+const okBorder =
+  "border-slate-300/90 focus:border-pulse-500 focus:ring-2 focus:ring-pulse-500/20 dark:border-white/10 dark:focus:border-pulse-400/60 dark:focus:ring-pulse-400/15";
 const errBorder = "border-ember-400/60 focus:border-ember-400 focus:ring-2 focus:ring-ember-400/15";
 
 export function FieldLabel({
@@ -155,7 +156,7 @@ export function Select({
             </option>
           )}
           {options.map((o) => (
-            <option key={o.value} value={o.value} className="bg-night-800 text-ink-100">
+            <option key={o.value} value={o.value} className="bg-white text-ink-100 dark:bg-night-800 dark:text-ink-100">
               {o.label}
             </option>
           ))}

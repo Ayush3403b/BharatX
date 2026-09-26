@@ -39,7 +39,7 @@ export function IconBadge({
   const inner = (
     <span
       className={cn(
-        "relative flex shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]",
+        "relative flex shrink-0 items-center justify-center rounded-full border border-slate-200/90 bg-white/90 shadow-xs dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none",
         sizes[size],
         className,
       )}

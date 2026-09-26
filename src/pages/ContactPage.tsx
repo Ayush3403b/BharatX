@@ -91,7 +91,7 @@ export default function ContactPage() {
                   <button
                     type="button"
                     onClick={() => pickRoute(r.company, r.type)}
-                    className="group flex h-full w-full cursor-pointer flex-col gap-3.5 rounded-xl border border-white/8 bg-night-850/70 p-5 text-left transition-all duration-300 hover:border-pulse-400/30 hover:bg-night-800"
+                    className="group flex h-full w-full cursor-pointer flex-col gap-3.5 rounded-xl border border-slate-200/90 bg-white/85 p-5 text-left shadow-2xs transition-all duration-300 hover:border-pulse-400/50 hover:bg-white hover:shadow-md dark:border-white/8 dark:bg-night-850/70 dark:shadow-none dark:hover:border-pulse-400/30 dark:hover:bg-night-800"
                   >
                     <IconBadge icon={r.icon} size="sm" />
                     <div>
@@ -114,7 +114,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── FORM ─────────────────────────────────────────────── */}
-      <section id="contact-form" className="scroll-mt-28 border-t border-white/5 bg-night-850/50 py-20 md:py-24">
+      <section id="contact-form" className="scroll-mt-28 border-t border-slate-200/80 bg-white/40 py-20 md:py-24 dark:border-white/5 dark:bg-night-850/50">
         <div className="container-x grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <SectionHeader
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 { icon: "shield-check", t: "Handled carefully", d: "Submissions are stored securely and used only to respond to your inquiry. No lists, no cold follow-ups." },
               ].map((c, i) => (
                 <Reveal key={c.t} delay={i * 0.07}>
-                  <div className="flex items-start gap-4 rounded-xl border border-white/8 bg-night-900/70 p-5">
+                  <div className="flex items-start gap-4 rounded-xl border border-slate-200/90 bg-white/85 p-5 shadow-2xs dark:border-white/8 dark:bg-night-900/70 dark:shadow-none">
                     <IconBadge icon={c.icon} size="sm" tone="gold" />
                     <div>
                       <h3 className="font-display text-[14.5px] font-semibold text-ink-50">{c.t}</h3>
@@ -162,7 +162,7 @@ export default function ContactPage() {
           <div className="grid gap-4 md:grid-cols-2">
             {faqs.map((f, i) => (
               <Reveal key={f.q} delay={(i % 2) * 0.07}>
-                <div className="h-full rounded-2xl border border-white/8 bg-night-850/70 p-7">
+                <div className="h-full rounded-2xl border border-slate-200/90 bg-white/85 p-7 shadow-xs dark:border-white/8 dark:bg-night-850/70 dark:shadow-none">
                   <div className="flex items-start gap-4">
                     <IconBadge icon="check" size="sm" tone="gold" withReveal={false} />
                     <div>

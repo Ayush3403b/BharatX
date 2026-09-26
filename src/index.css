@@ -1,7 +1,101 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* ── BharatX palette ─────────────────────────────────────── */
+  /* ── Dynamic Dual-Mode Palette ───────────────────────────── */
+  --color-night-950: var(--color-night-950);
+  --color-night-900: var(--color-night-900);
+  --color-night-850: var(--color-night-850);
+  --color-night-800: var(--color-night-800);
+  --color-night-700: var(--color-night-700);
+  --color-night-600: var(--color-night-600);
+
+  --color-pulse-200: var(--color-pulse-200);
+  --color-pulse-300: var(--color-pulse-300);
+  --color-pulse-400: var(--color-pulse-400);
+  --color-pulse-500: var(--color-pulse-500);
+  --color-pulse-600: var(--color-pulse-600);
+
+  --color-gold-200: var(--color-gold-200);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+
+  --color-ember-300: var(--color-ember-300);
+  --color-ember-400: var(--color-ember-400);
+  --color-ember-500: var(--color-ember-500);
+
+  --color-fog-100: var(--color-fog-100);
+  --color-fog-200: var(--color-fog-200);
+  --color-fog-300: var(--color-fog-300);
+
+  --color-ink-50: var(--color-ink-50);
+  --color-ink-100: var(--color-ink-100);
+  --color-ink-200: var(--color-ink-200);
+  --color-ink-300: var(--color-ink-300);
+  --color-ink-400: var(--color-ink-400);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-600: var(--color-ink-600);
+
+  /* ── Type ────────────────────────────────────────────────── */
+  --font-display: "Space Grotesk", "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* ── Motion ──────────────────────────────────────────────── */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Containers ──────────────────────────────────────────── */
+  --container-8xl: 90rem;
+}
+
+/* ── Light Mode Theme (Opalescent Ice & Cyber-Pastel) ─────── */
+:root {
+  --color-night-950: #eef2f8; /* Soft silver-lavender ice base */
+  --color-night-900: #f4f7fc; /* Luminous surface */
+  --color-night-850: #ffffff; /* Card/Elevated surface */
+  --color-night-800: #e5ebf5; /* Sub-surface */
+  --color-night-700: #d6e0ee; /* Subtle border/surface */
+  --color-night-600: #b8c8dd; /* Divider */
+
+  /* Cyber-Pastel Cyan & Pulse */
+  --color-pulse-200: #cffafe;
+  --color-pulse-300: #a5f3fc;
+  --color-pulse-400: #06b6d4;
+  --color-pulse-500: #0891b2;
+  --color-pulse-600: #0e7490;
+
+  /* Neon Amber & Golden Sunburst */
+  --color-gold-200: #fef3c7;
+  --color-gold-300: #fde68a;
+  --color-gold-400: #d97706;
+  --color-gold-500: #b45309;
+  --color-gold-600: #92400e;
+
+  /* Violet Aurora & Cyber-Lavender */
+  --color-ember-300: #c4b5fd;
+  --color-ember-400: #8b5cf6;
+  --color-ember-500: #7c3aed;
+
+  /* Frosted White & Ice Overlays */
+  --color-fog-100: #ffffff;
+  --color-fog-200: #f8fafc;
+  --color-fog-300: #e2e8f0;
+
+  /* Deep Royal Ink */
+  --color-ink-50: #090e17;
+  --color-ink-100: #0f172a;
+  --color-ink-200: #1e293b;
+  --color-ink-300: #334155;
+  --color-ink-400: #475569;
+  --color-ink-500: #64748b;
+  --color-ink-600: #94a3b8;
+}
+
+/* ── Dark Mode Theme (Deep Obsidian Void) ─────────────────── */
+html.dark {
   --color-night-950: #070a0f;
   --color-night-900: #0b0f15;
   --color-night-850: #0e141c;
@@ -36,17 +130,6 @@
   --color-ink-400: #93a1ad;
   --color-ink-500: #6c7a87;
   --color-ink-600: #4e5b67;
-
-  /* ── Type ────────────────────────────────────────────────── */
-  --font-display: "Space Grotesk", "Manrope", system-ui, sans-serif;
-  --font-body: "Manrope", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
-
-  /* ── Motion ──────────────────────────────────────────────── */
-  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* ── Containers ──────────────────────────────────────────── */
-  --container-8xl: 90rem;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
@@ -68,6 +151,7 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Touch targets and tap improvements for mobile */
@@ -76,6 +160,10 @@ a, button, [role="button"], input, select, textarea {
 }
 
 ::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: #090e17;
+}
+.dark ::selection {
   background: rgba(245, 184, 77, 0.85);
   color: #0b0f15;
 }
@@ -93,11 +181,11 @@ a, button, [role="button"], input, select, textarea {
   border: 2px solid var(--color-night-950);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #33455c;
+  background: #64748b;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(67, 230, 197, 0.7);
+  outline: 2px solid rgba(6, 182, 212, 0.7);
   outline-offset: 2px;
 }
 
@@ -136,33 +224,88 @@ a, button, [role="button"], input, select, textarea {
 
 /* ── Surfaces ────────────────────────────────────────────────── */
 .hairline {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+.dark .hairline {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+}
+.dark .glass {
   background: rgba(14, 20, 28, 0.72);
   backdrop-filter: blur(18px) saturate(1.2);
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.06);
+}
+.dark .glass-nav {
+  background: rgba(14, 20, 28, 0.72);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none;
 }
 
 .tint-panel {
   background: linear-gradient(
     135deg,
+    rgba(6, 182, 212, 0.08),
+    rgba(139, 92, 246, 0.06) 50%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+  border: 1px solid rgba(15, 23, 42, 0.07);
+}
+.dark .tint-panel {
+  background: linear-gradient(
+    135deg,
     rgba(34, 213, 179, 0.07),
     rgba(14, 20, 28, 0) 55%
   );
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .paper {
-  background: var(--color-fog-100);
-  color: #131a22;
+  background: #ffffff;
+  color: #0f172a;
 }
 .paper .text-ink-300,
 .paper .text-ink-400 {
+  color: #475569;
+}
+.dark .paper {
+  background: var(--color-fog-100);
+  color: #131a22;
+}
+.dark .paper .text-ink-300,
+.dark .paper .text-ink-400 {
   color: #4e5b67;
 }
 
-/* Film-grain overlay for dark sections */
+/* Card subtle depth */
+.rounded-2xl, .rounded-3xl, .rounded-xl {
+  box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+}
+.dark .rounded-2xl, .dark .rounded-3xl, .dark .rounded-xl {
+  box-shadow: none;
+}
+
+/* Film-grain overlay */
 .noise {
   position: relative;
 }
@@ -171,41 +314,56 @@ a, button, [role="button"], input, select, textarea {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 240px 240px;
   z-index: 1;
 }
+.dark .noise::after {
+  opacity: 0.05;
+}
 
 /* Fine engineering grid */
 .grid-bg {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
+}
+.dark .grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 .grid-bg-fade {
   -webkit-mask-image: radial-gradient(
     ellipse 90% 70% at 50% 0%,
-    black 25%,
-    transparent 78%
+    black 30%,
+    transparent 80%
   );
   mask-image: radial-gradient(
     ellipse 90% 70% at 50% 0%,
-    black 25%,
-    transparent 78%
+    black 30%,
+    transparent 80%
   );
 }
 
 /* Aurora mesh glow */
 .aurora {
   background:
+    radial-gradient(55rem 32rem at 12% -5%, rgba(6, 182, 212, 0.18), transparent 60%),
+    radial-gradient(48rem 28rem at 88% 6%, rgba(139, 92, 246, 0.16), transparent 62%),
+    radial-gradient(60rem 38rem at 50% 115%, rgba(245, 158, 11, 0.14), transparent 70%);
+}
+.dark .aurora {
+  background:
     radial-gradient(52rem 30rem at 12% -8%, rgba(34, 213, 179, 0.13), transparent 60%),
     radial-gradient(44rem 26rem at 88% 4%, rgba(245, 184, 77, 0.09), transparent 62%),
     radial-gradient(60rem 40rem at 50% 118%, rgba(26, 35, 48, 0.9), transparent 70%);
 }
 
-/* ── Static Global Hero Background (Fixed across entire site) ── */
+/* ── Static Global Background ────────────────────────────────── */
 .global-static-bg {
   position: fixed;
   inset: 0;
@@ -213,6 +371,7 @@ a, button, [role="button"], input, select, textarea {
   pointer-events: none;
   overflow: hidden;
   background-color: var(--color-night-950);
+  transition: background-color 0.3s ease;
 }
 
 .global-static-bg-image {
@@ -222,12 +381,26 @@ a, button, [role="button"], input, select, textarea {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+.dark .global-static-bg-image {
   opacity: 0.22;
+  mix-blend-mode: normal;
 }
 
 .global-static-bg-aurora {
   position: absolute;
   inset: 0;
+  background:
+    radial-gradient(60rem 38rem at 8% -5%, rgba(6, 182, 212, 0.22), transparent 65%),
+    radial-gradient(55rem 35rem at 92% 10%, rgba(139, 92, 246, 0.18), transparent 68%),
+    radial-gradient(50rem 30rem at 50% 45%, rgba(245, 158, 11, 0.12), transparent 65%),
+    radial-gradient(70rem 45rem at 50% 115%, rgba(6, 182, 212, 0.16), transparent 75%);
+  transition: background 0.3s ease;
+}
+.dark .global-static-bg-aurora {
   background:
     radial-gradient(55rem 35rem at 15% -5%, rgba(34, 213, 179, 0.16), transparent 65%),
     radial-gradient(48rem 30rem at 85% 5%, rgba(245, 184, 77, 0.12), transparent 65%),
@@ -238,9 +411,17 @@ a, button, [role="button"], input, select, textarea {
   position: absolute;
   inset: 0;
   background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 80%);
+  opacity: 0.6;
+}
+.dark .global-static-bg-grid {
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
   opacity: 0.35;
@@ -249,6 +430,14 @@ a, button, [role="button"], input, select, textarea {
 .global-static-bg-vignette {
   position: absolute;
   inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    transparent 0%,
+    rgba(226, 232, 240, 0.3) 60%,
+    rgba(226, 232, 240, 0.8) 100%
+  );
+}
+.dark .global-static-bg-vignette {
   background: radial-gradient(
     ellipse at 50% 40%,
     transparent 0%,
@@ -262,6 +451,15 @@ a, button, [role="button"], input, select, textarea {
   inset: 0;
   background: linear-gradient(
     to bottom,
+    rgba(238, 242, 248, 0.4) 0%,
+    transparent 35%,
+    rgba(238, 242, 248, 0.55) 75%,
+    rgba(238, 242, 248, 0.95) 100%
+  );
+}
+.dark .global-static-bg-gradient {
+  background: linear-gradient(
+    to bottom,
     rgba(7, 10, 15, 0.35) 0%,
     transparent 35%,
     rgba(7, 10, 15, 0.5) 75%,
@@ -270,6 +468,14 @@ a, button, [role="button"], input, select, textarea {
 }
 
 .gold-glow {
+  background: radial-gradient(
+    42rem 24rem at 50% 10%,
+    rgba(245, 158, 11, 0.16),
+    rgba(139, 92, 246, 0.12) 50%,
+    transparent 72%
+  );
+}
+.dark .gold-glow {
   background: radial-gradient(
     40rem 22rem at 50% 0%,
     rgba(245, 184, 77, 0.1),
@@ -280,6 +486,9 @@ a, button, [role="button"], input, select, textarea {
 /* Ghost outline display text */
 .text-ghost {
   color: transparent;
+  -webkit-text-stroke: 1px rgba(15, 23, 42, 0.12);
+}
+.dark .text-ghost {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
 }
 
