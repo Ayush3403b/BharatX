@@ -15,19 +15,24 @@ interface RevealProps {
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 24,
   className,
   once = true,
   immediate = false,
 }: RevealProps) {
   const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={cn(className)}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: reduced ? 0 : y }}
+      initial={{ opacity: 0, y }}
       animate={immediate ? { opacity: 1, y: 0 } : undefined}
       whileInView={immediate ? undefined : { opacity: 1, y: 0 }}
-      viewport={immediate ? undefined : { once, margin: "0px 0px -40px 0px" }}
+      viewport={immediate ? undefined : { once, margin: "0px 0px 50px 0px" }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -48,18 +53,29 @@ export function MaskReveal({
   immediate?: boolean;
 }) {
   const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <span className={cn("block", className)}>{children}</span>;
+  }
+
   return (
-    <span className={cn("block overflow-hidden", className)}>
+    <motion.span
+      className={cn("block overflow-hidden", className)}
+      initial="hidden"
+      animate={immediate ? "visible" : undefined}
+      whileInView={immediate ? undefined : "visible"}
+      viewport={{ once: true, margin: "0px 0px 50px 0px" }}
+    >
       <motion.span
         className="block will-change-transform"
-        initial={reduced ? undefined : { y: "112%" }}
-        animate={immediate ? { y: 0 } : undefined}
-        whileInView={immediate ? undefined : { y: 0 }}
-        viewport={immediate ? undefined : { once: true, margin: "0px 0px -40px 0px" }}
+        variants={{
+          hidden: { y: "112%" },
+          visible: { y: "0%" },
+        }}
         transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
       >
         {children}
       </motion.span>
-    </span>
+    </motion.span>
   );
 }

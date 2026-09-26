@@ -78,7 +78,7 @@ export function IconBadge({
     <motion.span
       initial={reduced ? undefined : { opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-8% 0px" }}
+      viewport={{ once: true, margin: "0px 0px 50px 0px" }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="inline-flex"
     >

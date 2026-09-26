@@ -30,7 +30,7 @@ export function Stats({
           key={item.label}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
+          viewport={{ once: true, margin: "0px 0px 50px 0px" }}
           transition={{
             duration: 0.65,
             delay: i * 0.08,
@@ -70,7 +70,7 @@ export function AnimatedNumber({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-8% 0px" });
+  const inView = useInView(ref, { once: true, margin: "0px 0px 50px 0px" });
   const reduced = useReducedMotion();
   const [display, setDisplay] = useState(0);
 
