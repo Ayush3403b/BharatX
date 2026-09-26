@@ -92,6 +92,19 @@ export function Preloader() {
     };
   }, [visible, reduced]);
 
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = "";
+      window.scrollTo(0, 0);
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [visible]);
+
   const letters = "BHARATX GROUP".split("");
 
   return (
@@ -99,20 +112,26 @@ export function Preloader() {
       {visible && (
         <motion.div
           key="preloader"
-          className="noise fixed inset-0 z-[100] flex flex-col items-center justify-center bg-night-950"
-          initial={false}
-          animate={
-            exiting && !reduced
-              ? { clipPath: "inset(0 0 100% 0)" }
-              : exiting
-                ? { opacity: 0 }
-                : { clipPath: "inset(0 0 0% 0)", opacity: 1 }
-          }
-          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-night-950"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: 9999,
+          }}
+          initial={{ opacity: 1 }}
+          animate={exiting ? { opacity: 0 } : { opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           aria-hidden={exiting}
         >
+          <div aria-hidden className="noise pointer-events-none absolute inset-0" />
           <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-50" />
-          <div aria-hidden className="absolute inset-0 aurora opacity-60" />
+          <div aria-hidden className="aurora absolute inset-0 opacity-60" />
 
           <div className="relative z-10 flex flex-col items-center px-6">
             {/* Mark: two crossing strokes draw in */}
