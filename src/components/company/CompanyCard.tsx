@@ -49,17 +49,21 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night-850 via-night-850/25 to-transparent" />
-        <span
-          className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl font-mono text-[12px] font-semibold shadow-lg"
-          style={{
-            color: company.accentColor,
-            background: "rgba(7,10,15,0.82)",
-            border: `1px solid ${company.accentColor}55`,
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          {company.monogram}
-        </span>
+        {company.logo ? (
+          <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white p-1.5 shadow-md">
+            <img
+              src={company.logo}
+              alt={company.name}
+              className="h-full w-full object-contain"
+            />
+          </div>
+        ) : (
+          <span
+            className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl font-mono text-[12px] font-semibold text-ink-200 shadow-lg bg-night-950/80 backdrop-blur-md"
+          >
+            {company.monogram}
+          </span>
+        )}
         <span
           aria-hidden
           className="absolute -bottom-3 right-3 font-display text-[64px] font-bold leading-none text-white/[0.05]"

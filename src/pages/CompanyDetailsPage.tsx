@@ -77,16 +77,26 @@ function CompanyProfile({ company }: { company: (typeof companies)[number] }) {
             <div className="max-w-2xl">
               <Reveal>
                 <div className="mb-6 flex items-center gap-4">
-                  <span
-                    className="flex h-14 w-14 items-center justify-center rounded-2xl font-mono text-[15px] font-semibold shadow-lg backdrop-blur"
-                    style={{
-                      color: company.accentColor,
-                      background: "rgba(7,10,15,0.75)",
-                      border: `1px solid ${company.accentColor}66`,
-                    }}
-                  >
-                    {company.monogram}
-                  </span>
+                  {company.logo ? (
+                    <div className="flex h-16 w-auto min-w-[70px] max-w-[180px] shrink-0 items-center justify-center rounded-2xl bg-white px-3.5 py-2 shadow-xl">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="h-full w-auto max-h-12 object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <span
+                      className="flex h-14 w-14 items-center justify-center rounded-2xl font-mono text-[15px] font-semibold shadow-lg backdrop-blur"
+                      style={{
+                        color: company.accentColor,
+                        background: "rgba(7,10,15,0.75)",
+                        border: `1px solid ${company.accentColor}66`,
+                      }}
+                    >
+                      {company.monogram}
+                    </span>
+                  )}
                   <span
                     className="flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.2em] backdrop-blur"
                     style={{

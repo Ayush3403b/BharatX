@@ -13,16 +13,21 @@ export function RelatedCompanies({ companies: list }: { companies: Company[] }) 
             to={`/companies/${c.slug}`}
             className="group flex items-center gap-4 rounded-xl border border-white/8 bg-night-850 p-4 transition-all duration-300 hover:border-white/18 hover:bg-night-800"
           >
-            <span
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg font-mono text-[12px] font-semibold transition-transform duration-300 group-hover:scale-105"
-              style={{
-                color: c.accentColor,
-                background: `${c.accentColor}14`,
-                border: `1px solid ${c.accentColor}3a`,
-              }}
-            >
-              {c.monogram}
-            </span>
+            {c.logo ? (
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+            ) : (
+              <span
+                className="flex h-11 w-11 shrink-0 items-center justify-center font-mono text-[12px] font-semibold text-ink-300"
+              >
+                {c.monogram}
+              </span>
+            )}
             <span className="min-w-0 flex-1">
               <span className="block truncate font-display text-[15px] font-semibold text-ink-50">
                 {c.name}

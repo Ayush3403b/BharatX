@@ -129,6 +129,7 @@ export default function HomePage() {
                   key={c.id}
                   to={`/companies/${c.slug}`}
                   name={c.shortName}
+                  logo={c.logo}
                   accent={c.accentColor}
                   className={pos}
                   delay={i * 1.6}
@@ -507,12 +508,14 @@ import { useReducedMotion } from "framer-motion";
 function MotionChip({
   to,
   name,
+  logo,
   accent,
   className,
   delay,
 }: {
   to: string;
   name: string;
+  logo?: string;
   accent: string;
   className: string;
   delay: number;
@@ -527,13 +530,19 @@ function MotionChip({
     >
       <Link
         to={to}
-        className="glass flex items-center gap-2.5 rounded-full border border-white/10 py-2 pl-2.5 pr-4 shadow-[0_16px_44px_-16px_rgba(0,0,0,0.8)] transition-colors hover:border-white/25"
+        className="glass flex items-center gap-2 rounded-full border border-white/10 py-1.5 pl-2 pr-3.5 shadow-[0_16px_44px_-16px_rgba(0,0,0,0.8)] transition-all hover:border-white/25 hover:scale-105"
         style={reduced ? undefined : { animation: `float-y ${5 + delay}s ease-in-out ${delay * 0.4}s infinite` }}
       >
-        <span
-          className="h-2 w-2 rounded-full"
-          style={{ background: accent, boxShadow: `0 0 10px ${accent}aa` }}
-        />
+        {logo ? (
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white p-0.5 shadow-sm">
+            <img src={logo} alt={name} className="h-full w-full object-contain" />
+          </span>
+        ) : (
+          <span
+            className="h-2 w-2 rounded-full"
+            style={{ background: accent, boxShadow: `0 0 10px ${accent}aa` }}
+          />
+        )}
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-200">{name}</span>
       </Link>
     </motion.div>

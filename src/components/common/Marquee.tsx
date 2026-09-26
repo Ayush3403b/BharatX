@@ -15,16 +15,22 @@ export function CompanyMarquee() {
         {items.map((c, i) => (
           <Fragment key={`${c.id}-${i}`}>
             <span className="flex items-center gap-3 whitespace-nowrap">
-              <span
-                className="flex h-8 w-8 items-center justify-center rounded-lg font-mono text-[11px] font-semibold"
-                style={{
-                  color: c.accentColor,
-                  background: `${c.accentColor}14`,
-                  border: `1px solid ${c.accentColor}33`,
-                }}
-              >
-                {c.monogram}
-              </span>
+              {c.logo ? (
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm">
+                  <img
+                    src={c.logo}
+                    alt={c.name}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </span>
+              ) : (
+                <span
+                  className="flex h-8 w-8 items-center justify-center font-mono text-[11px] font-semibold text-ink-300"
+                >
+                  {c.monogram}
+                </span>
+              )}
               <span className="font-display text-sm font-medium tracking-[0.14em] text-ink-300">
                 {c.name.toUpperCase()}
               </span>

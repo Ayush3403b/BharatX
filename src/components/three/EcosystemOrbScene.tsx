@@ -308,16 +308,21 @@ export default function EcosystemOrbScene({
                   {hoverCompany.name}
                 </div>
               </div>
-              <span
-                className="flex h-9 w-9 items-center justify-center rounded-lg font-mono text-[11px] font-semibold"
-                style={{
-                  color: hoverCompany.accentColor,
-                  background: `${hoverCompany.accentColor}14`,
-                  border: `1px solid ${hoverCompany.accentColor}44`,
-                }}
-              >
-                {hoverCompany.monogram}
-              </span>
+              {hoverCompany.logo ? (
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm">
+                  <img
+                    src={hoverCompany.logo}
+                    alt={hoverCompany.name}
+                    className="h-full w-full object-contain"
+                  />
+                </span>
+              ) : (
+                <span
+                  className="flex h-9 w-9 items-center justify-center font-mono text-[11px] font-semibold text-ink-300"
+                >
+                  {hoverCompany.monogram}
+                </span>
+              )}
             </div>
             <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-400">
               {hoverCompany.description}

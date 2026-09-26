@@ -94,16 +94,21 @@ export function IframeViewer({ site }: { site: EcosystemSite }) {
           }}
         />
         {company && (
-          <span
-            className="hidden h-7 w-7 shrink-0 items-center justify-center rounded-md font-mono text-[10px] font-semibold sm:flex"
-            style={{
-              color: accent,
-              background: `${accent}14`,
-              border: `1px solid ${accent}44`,
-            }}
-          >
-            {company.monogram}
-          </span>
+          company.logo ? (
+            <span className="hidden h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white p-0.5 shadow-sm sm:flex">
+              <img
+                src={company.logo}
+                alt={company.name}
+                className="h-full w-full object-contain"
+              />
+            </span>
+          ) : (
+            <span
+              className="hidden h-7 w-7 shrink-0 items-center justify-center font-mono text-[10px] font-semibold text-ink-300 sm:flex"
+            >
+              {company.monogram}
+            </span>
+          )
         )}
         <div className="min-w-0">
           <div className="truncate text-[13.5px] font-semibold text-ink-50">{site.name}</div>

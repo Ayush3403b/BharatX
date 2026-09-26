@@ -84,15 +84,13 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <MagneticButton
               as="Link"
-              className="hidden sm:block"
+              className="hidden sm:!inline-flex !flex-row flex-nowrap items-center justify-center whitespace-nowrap gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-5 py-2.5 text-[13px] font-semibold text-gold-300 transition-all hover:border-gold-400/70 hover:bg-gold-400/20 shrink-0"
               buttonProps={{
                 to: contactRoute.to,
-                className:
-                  "inline-flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-5 py-2.5 text-[13px] font-semibold text-gold-300 transition-all hover:border-gold-400/70 hover:bg-gold-400/20",
               }}
             >
-              <Icon name="mail" width={14} height={14} strokeWidth={1.8} />
-              Contact
+              <Icon name="mail" width={14} height={14} strokeWidth={1.8} className="shrink-0" />
+              <span className="whitespace-nowrap leading-none">Contact</span>
             </MagneticButton>
 
             <button
@@ -194,16 +192,22 @@ function CompaniesMega() {
             onFocus={() => setPreview(i)}
             className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03]"
           >
-            <span
-              className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg font-mono text-[12px] font-semibold transition-transform duration-300 group-hover:scale-105"
-              style={{
-                color: c.accentColor,
-                background: `${c.accentColor}14`,
-                border: `1px solid ${c.accentColor}3a`,
-              }}
-            >
-              {c.monogram}
-            </span>
+            {c.logo ? (
+              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+            ) : (
+              <span
+                className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center font-mono text-[12px] font-semibold"
+                style={{ color: c.accentColor }}
+              >
+                {c.monogram}
+              </span>
+            )}
             <span className="min-w-0 flex-1">
               <span className="flex items-center gap-2">
                 <span className="font-mono text-[9px] text-ink-600">
@@ -268,16 +272,22 @@ function EcosystemMega() {
               to={`/ecosystem?company=${s.id}`}
               className="group flex items-center gap-3 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.03]"
             >
-              <span
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-mono text-[11px] font-semibold"
-                style={{
-                  color: c?.accentColor ?? "#93a1ad",
-                  background: `${c?.accentColor ?? "#93a1ad"}14`,
-                  border: `1px solid ${c?.accentColor ?? "#93a1ad"}3a`,
-                }}
-              >
-                {c?.monogram ?? "•"}
-              </span>
+              {c?.logo ? (
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                  <img
+                    src={c.logo}
+                    alt={s.name}
+                    className="h-full w-full object-contain"
+                  />
+                </span>
+              ) : (
+                <span
+                  className="flex h-9 w-9 shrink-0 items-center justify-center font-mono text-[11px] font-semibold"
+                  style={{ color: c?.accentColor ?? "#93a1ad" }}
+                >
+                  {c?.monogram ?? "•"}
+                </span>
+              )}
               <span className="min-w-0">
                 <span className="block truncate text-[14px] font-semibold text-ink-100">
                   {s.name}

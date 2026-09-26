@@ -101,16 +101,17 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                     onClick={onClose}
                     className="flex items-center gap-2.5 rounded-lg border border-white/8 bg-white/[0.02] px-3 py-2.5"
                   >
-                    <span
-                      className="flex h-7 w-7 items-center justify-center rounded-md font-mono text-[10px] font-semibold"
-                      style={{
-                        color: c.accentColor,
-                        background: `${c.accentColor}14`,
-                        border: `1px solid ${c.accentColor}33`,
-                      }}
-                    >
-                      {c.monogram}
-                    </span>
+                    {c.logo ? (
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white p-0.5 shadow-sm">
+                        <img src={c.logo} alt={c.name} className="h-full w-full object-contain" />
+                      </span>
+                    ) : (
+                      <span
+                        className="flex h-7 w-7 items-center justify-center font-mono text-[10px] font-semibold text-ink-300"
+                      >
+                        {c.monogram}
+                      </span>
+                    )}
                     <span className="truncate text-[12.5px] font-medium text-ink-200">
                       {c.shortName}
                     </span>

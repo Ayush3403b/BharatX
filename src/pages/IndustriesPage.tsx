@@ -235,16 +235,21 @@ export default function IndustriesPage() {
                   to={`/companies/${c.slug}`}
                   className="group flex h-full flex-col items-center gap-3 rounded-xl border border-white/8 bg-night-900/70 p-5 text-center transition-all duration-300 hover:border-white/20"
                 >
-                  <span
-                    className="flex h-12 w-12 items-center justify-center rounded-xl font-mono text-[13px] font-semibold transition-transform duration-300 group-hover:scale-105"
-                    style={{
-                      color: c.accentColor,
-                      background: `${c.accentColor}14`,
-                      border: `1px solid ${c.accentColor}3a`,
-                    }}
-                  >
-                    {c.monogram}
-                  </span>
+                  {c.logo ? (
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <img
+                        src={c.logo}
+                        alt={c.name}
+                        className="h-full w-full object-contain"
+                      />
+                    </span>
+                  ) : (
+                    <span
+                      className="flex h-12 w-12 items-center justify-center font-mono text-[13px] font-semibold text-ink-300"
+                    >
+                      {c.monogram}
+                    </span>
+                  )}
                   <span className="text-[12.5px] font-semibold text-ink-200">{c.shortName}</span>
                 </Link>
               </Reveal>
