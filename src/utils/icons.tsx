@@ -1,4 +1,5 @@
 import {
+  Activity,
   ArrowRight,
   ArrowUpRight,
   Award,
@@ -28,6 +29,7 @@ import {
   Globe,
   Handshake,
   HardHat,
+  Headphones,
   Info,
   Eye,
   LayoutGrid,
@@ -77,6 +79,7 @@ import {
  * system used across the site (Section 40A).
  */
 export const iconMap: Record<string, LucideIcon> = {
+  activity: Activity,
   "arrow-right": ArrowRight,
   "arrow-up-right": ArrowUpRight,
   award: Award,
@@ -90,6 +93,7 @@ export const iconMap: Record<string, LucideIcon> = {
   check: Check,
   eye: Eye,
   "grid-3x3": LayoutGrid,
+  headphones: Headphones,
   "help-circle": CircleHelp,
   "plus-circle": PlusCircle,
   recycle: Recycle,

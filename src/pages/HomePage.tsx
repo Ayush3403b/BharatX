@@ -14,6 +14,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import { companies } from "../data/companies";
 import { industries } from "../data/industries";
 import { Icon } from "../utils/icons";
+// import { HeroBackgroundSlideshow } from "../components/home/HeroBackgroundSlideshow";
 
 const EcosystemOrbScene = lazy(() => import("../components/three/EcosystemOrbScene"));
 
@@ -38,6 +39,9 @@ export default function HomePage() {
         ref={heroRef}
         className="relative flex min-h-[90vh] lg:min-h-0 lg:h-screen lg:max-h-[920px] items-center overflow-hidden pt-20 md:pt-24 lg:pt-16 lg:pb-4"
       >
+        {/* Dynamic Background Slideshow (Home page only) */}
+        {/* <HeroBackgroundSlideshow /> */}
+
         <div className="container-x relative z-10 grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 xl:gap-12 w-full">
           {/* Copy */}
           <div>
