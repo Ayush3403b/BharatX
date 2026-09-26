@@ -36,7 +36,7 @@ export default function HomePage() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="aurora noise relative flex min-h-screen items-center overflow-hidden pt-28 md:pt-32"
+        className="aurora noise relative flex min-h-screen lg:min-h-0 lg:h-screen lg:max-h-screen items-center overflow-hidden pt-24 md:pt-28 lg:pt-20 lg:pb-6"
       >
         <div
           aria-hidden
@@ -47,11 +47,11 @@ export default function HomePage() {
           className="absolute inset-0 bg-gradient-to-b from-night-900/40 via-transparent to-night-900"
         />
 
-        <div className="container-x relative z-10 grid items-center gap-10 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-24">
+        <div className="container-x relative z-10 grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 xl:gap-12 w-full">
           {/* Copy */}
           <div>
-            <Reveal>
-              <div className="mb-7 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
+            <Reveal immediate>
+              <div className="mb-4 lg:mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
                 <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10">
                   <Icon name="orbit" width={13} height={13} strokeWidth={1.6} />
                 </span>
@@ -59,28 +59,28 @@ export default function HomePage() {
                 <span aria-hidden className="h-px w-12 bg-gold-400/50" />
               </div>
             </Reveal>
-            <h1 className="font-display font-semibold leading-[1.03] tracking-tight text-ink-50 text-[2.6rem] sm:text-6xl lg:text-[4.2rem]">
-              <MaskReveal delay={0.05}>Building the</MaskReveal>
-              <MaskReveal delay={0.14}>businesses,</MaskReveal>
-              <MaskReveal delay={0.23}>systems and</MaskReveal>
-              <MaskReveal delay={0.32}>
+            <h1 className="font-display font-semibold leading-[1.03] tracking-tight text-ink-50 text-[2.4rem] sm:text-5xl lg:text-[2.85rem] xl:text-[3.5rem] 2xl:text-[4rem]">
+              <MaskReveal immediate delay={0.05}>Building the</MaskReveal>
+              <MaskReveal immediate delay={0.12}>businesses,</MaskReveal>
+              <MaskReveal immediate delay={0.19}>systems and</MaskReveal>
+              <MaskReveal immediate delay={0.26}>
                 <span className="text-gold-400">technologies</span>
               </MaskReveal>
-              <MaskReveal delay={0.41}>that move India</MaskReveal>
-              <MaskReveal delay={0.5}>
+              <MaskReveal immediate delay={0.33}>that move India</MaskReveal>
+              <MaskReveal immediate delay={0.4}>
                 <span className="text-pulse-400">forward.</span>
               </MaskReveal>
             </h1>
-            <Reveal delay={0.55}>
-              <p className="mt-7 max-w-xl text-base leading-relaxed text-ink-400 md:text-lg">
+            <Reveal immediate delay={0.45}>
+              <p className="mt-4 lg:mt-5 max-w-xl text-base leading-relaxed text-ink-400 lg:text-[15px] xl:text-lg">
                 BharatX Group is six independent businesses — venture building,
                 AI, infrastructure, precision manufacturing, agri science and
                 global agri-trade — operating as one connected ecosystem with a
                 single shared direction.
               </p>
             </Reveal>
-            <Reveal delay={0.68}>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Reveal immediate delay={0.55}>
+              <div className="mt-6 lg:mt-7 flex flex-wrap items-center gap-3.5">
                 <Link to="/ecosystem" aria-label="Explore BharatX Ecosystem">
                   <Button variant="primary" size="lg" withArrow>
                     Explore BharatX Ecosystem
@@ -95,15 +95,15 @@ export default function HomePage() {
             </Reveal>
 
             {/* Mini facts row */}
-            <Reveal delay={0.8}>
-              <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
+            <Reveal immediate delay={0.65}>
+              <div className="mt-6 lg:mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 {[
                   { k: "06", l: "Businesses" },
                   { k: "05+", l: "Industry domains" },
                   { k: "01", l: "Connected ecosystem" },
                 ].map((f) => (
                   <div key={f.l} className="flex items-baseline gap-2.5">
-                    <span className="font-mono text-2xl font-medium text-ink-50">{f.k}</span>
+                    <span className="font-mono text-xl xl:text-2xl font-medium text-ink-50">{f.k}</span>
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">
                       {f.l}
                     </span>
@@ -114,7 +114,7 @@ export default function HomePage() {
           </div>
 
           {/* 3D ecosystem scene */}
-          <div className="relative mx-auto h-[400px] w-full max-w-[520px] sm:h-[480px] lg:h-[600px]">
+          <div className="relative mx-auto h-[360px] w-full max-w-[480px] sm:h-[420px] lg:h-[450px] xl:h-[520px] 2xl:h-[580px]">
             <Suspense
               fallback={
                 <div className="flex h-full w-full items-center justify-center">
@@ -148,11 +148,11 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
+        <div className="absolute bottom-3 lg:bottom-4 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
           <span className="font-mono text-[9.5px] uppercase tracking-[0.34em] text-ink-500">
             Scroll
           </span>
-          <span className="relative h-10 w-px overflow-hidden bg-white/10">
+          <span className="relative h-8 w-px overflow-hidden bg-white/10">
             <span className="animate-scroll-hint absolute inset-0 bg-gradient-to-b from-pulse-400 to-gold-400" />
           </span>
         </div>
