@@ -348,10 +348,10 @@ function CompaniesMega() {
             to={`/companies/${c.slug}`}
             onMouseEnter={() => setPreview(i)}
             onFocus={() => setPreview(i)}
-            className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200 hover:bg-slate-100/70"
+            className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200/90 hover:bg-slate-100/80 hover:shadow-sm dark:hover:border-white/15 dark:hover:bg-night-800/80 dark:hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.7),0_0_24px_-4px_rgba(0,240,255,0.14)]"
           >
             {c.logo ? (
-              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
+              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm border border-slate-100 dark:border-white/10 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src={c.logo}
                   alt={c.name}
@@ -360,7 +360,7 @@ function CompaniesMega() {
               </span>
             ) : (
               <span
-                className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center font-mono text-[12px] font-semibold"
+                className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center font-mono text-[12px] font-semibold rounded-lg bg-white dark:bg-night-900 border border-slate-100 dark:border-white/10"
                 style={{ color: c.accentColor }}
               >
                 {c.monogram}
@@ -371,14 +371,14 @@ function CompaniesMega() {
                 <span className="font-mono text-[9px] text-ink-600">
                   {String(c.order).padStart(2, "0")}
                 </span>
-                <span className="truncate font-display text-[15px] font-semibold text-ink-50">
+                <span className="truncate font-display text-[15px] font-semibold text-ink-50 transition-colors group-hover:text-ink-50 dark:group-hover:text-white">
                   {c.name}
                 </span>
               </span>
               <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: c.accentColor }}>
                 {c.category}
               </span>
-              <span className="mt-1.5 line-clamp-1 block text-[12.5px] text-ink-500">
+              <span className="mt-1.5 line-clamp-1 block text-[12.5px] text-ink-500 transition-colors group-hover:text-ink-400">
                 {c.description}
               </span>
             </span>
@@ -386,12 +386,12 @@ function CompaniesMega() {
               name="arrow-up-right"
               width={15}
               height={15}
-              className="mt-1 shrink-0 text-ink-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold-500"
+              className="mt-1 shrink-0 text-ink-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold-500 dark:group-hover:text-gold-400"
             />
           </Link>
         ))}
       </div>
-      <div className="relative hidden h-[290px] overflow-hidden rounded-xl border border-slate-200/90 shadow-sm lg:block">
+      <div className="relative hidden h-[290px] overflow-hidden rounded-xl border border-slate-200/90 shadow-sm lg:block dark:border-white/10">
         {companies.map((c, i) => (
           <img
             key={c.id}
@@ -405,7 +405,7 @@ function CompaniesMega() {
             )}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
         <div className="absolute bottom-3 left-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
           {companies[preview].domain}
         </div>
@@ -428,10 +428,10 @@ function EcosystemMega() {
             <Link
               key={s.id}
               to={`/ecosystem?company=${s.id}`}
-              className="group flex items-center gap-3 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200 hover:bg-slate-100/70"
+              className="group flex items-center gap-3 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200/90 hover:bg-slate-100/80 hover:shadow-sm dark:hover:border-white/15 dark:hover:bg-night-800/80 dark:hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.7),0_0_24px_-4px_rgba(0,240,255,0.14)]"
             >
               {c?.logo ? (
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm border border-slate-100 dark:border-white/10 transition-transform duration-300 group-hover:scale-105">
                   <img
                     src={c.logo}
                     alt={s.name}
@@ -440,14 +440,14 @@ function EcosystemMega() {
                 </span>
               ) : (
                 <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center font-mono text-[11px] font-semibold"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center font-mono text-[11px] font-semibold rounded-lg bg-white dark:bg-night-900 border border-slate-100 dark:border-white/10"
                   style={{ color: c?.accentColor ?? "#93a1ad" }}
                 >
                   {c?.monogram ?? "•"}
                 </span>
               )}
               <span className="min-w-0">
-                <span className="block truncate text-[14px] font-semibold text-ink-100">
+                <span className="block truncate text-[14px] font-semibold text-ink-100 transition-colors group-hover:text-ink-50 dark:group-hover:text-white">
                   {s.name}
                 </span>
                 <span className="block font-mono text-[10px] text-ink-500">{s.url.replace("https://", "")}</span>
@@ -465,11 +465,11 @@ function EcosystemMega() {
           to="/ecosystem"
           className="group flex items-center gap-3 rounded-xl border border-gold-400/40 bg-gold-400/10 p-3.5 transition-all duration-300 hover:border-gold-400/70 hover:bg-gold-400/20"
         >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-500/20 text-gold-600">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-500/20 text-gold-600 dark:text-gold-400">
             <Icon name="arrow-up-right" width={15} height={15} />
           </span>
           <span>
-            <span className="block text-[14px] font-semibold text-gold-700">Open the Ecosystem Hub</span>
+            <span className="block text-[14px] font-semibold text-gold-700 dark:text-gold-300">Open the Ecosystem Hub</span>
             <span className="block font-mono text-[10px] text-ink-500">All six websites, live</span>
           </span>
         </Link>

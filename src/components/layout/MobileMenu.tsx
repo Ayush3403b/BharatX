@@ -103,20 +103,21 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                     key={c.id}
                     to={`/companies/${c.slug}`}
                     onClick={onClose}
-                    className="flex items-center gap-2.5 rounded-lg border border-slate-200/90 bg-white/80 p-2.5 shadow-xs transition-colors hover:border-gold-300"
+                    className="flex items-center gap-2.5 rounded-lg border border-slate-200/90 bg-white/80 p-2.5 shadow-xs transition-all hover:border-gold-300 dark:border-white/10 dark:bg-night-850/80 dark:hover:border-white/20 dark:hover:bg-night-800"
                   >
                     {c.logo ? (
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white p-0.5 shadow-sm">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white p-0.5 shadow-sm border border-slate-100 dark:border-white/10">
                         <img src={c.logo} alt={c.name} className="h-full w-full object-contain" />
                       </span>
                     ) : (
                       <span
-                        className="flex h-7 w-7 items-center justify-center font-mono text-[10px] font-semibold text-ink-300"
+                        className="flex h-7 w-7 items-center justify-center font-mono text-[10px] font-semibold"
+                        style={{ color: c.accentColor }}
                       >
                         {c.monogram}
                       </span>
                     )}
-                    <span className="truncate text-[12.5px] font-medium text-ink-200">
+                    <span className="truncate text-[12.5px] font-medium text-ink-200 dark:text-ink-100">
                       {c.shortName}
                     </span>
                   </Link>
