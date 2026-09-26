@@ -29,7 +29,7 @@ export const footerColumns = {
   company: [
     { label: "Leadership", to: "/leadership" },
     { label: "Careers", to: "/careers" },
-    { label: "Contact", to: "/contact" },
+    { label: "Start an inquiry", to: "/contact" },
   ],
   legal: [
     { label: "Privacy Policy", to: "/privacy" },

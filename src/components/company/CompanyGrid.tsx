@@ -12,7 +12,7 @@ export function CompanyGrid() {
         <Reveal key={c.id} delay={(i % 3) * 0.08} className="h-full">
           <CompanyCard
             company={c}
-            layout={i % 2 === 1 ? "reversed" : "stacked"}
+            layout="stacked"
             className="h-full"
           />
         </Reveal>

@@ -5,11 +5,10 @@ import { footerColumns } from "../../data/navigation";
 import { Icon } from "../../utils/icons";
 import { Logo } from "./Logo";
 
-const columnMeta: { key: "explore" | "company" | "ecosystem" | "legal"; icon: string; title: string }[] = [
+const columnMeta: { key: "explore" | "company" | "ecosystem"; icon: string; title: string }[] = [
   { key: "explore", icon: "compass", title: "Explore" },
   { key: "company", icon: "users", title: "Company" },
   { key: "ecosystem", icon: "orbit", title: "Ecosystem" },
-  { key: "legal", icon: "scale", title: "Legal" },
 ];
 
 const socialIcons: Record<string, string> = {
@@ -21,11 +20,11 @@ const socialIcons: Record<string, string> = {
 
 export function FooterCTA() {
   return (
-    <section className="gold-glow relative overflow-hidden border-t border-white/5 py-16 sm:py-24 md:py-32">
+    <section className="gold-glow relative overflow-hidden border-t border-white/5 py-12 sm:py-16 md:py-20">
       <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-60" />
       <div className="container-x relative flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <div className="mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
+          <div className="mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-400">
             <Icon name="sparkles" width={13} height={13} />
             <span>Start a conversation</span>
           </div>
@@ -34,7 +33,7 @@ export function FooterCTA() {
             <br />
             worth building?
           </h2>
-          <p className="mt-5 max-w-md text-[15px] sm:text-base leading-relaxed text-ink-400">
+          <p className="mt-4 max-w-md text-[15px] sm:text-base leading-relaxed text-ink-400">
             Ventures, partnerships, suppliers, talent — the right conversation
             starts with one message to the group.
           </p>
@@ -68,20 +67,20 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-night-950/40">
       <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-20" />
-      <div className="container-x relative z-10 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-16 md:pt-20">
-        <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="container-x relative z-10 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-8 md:pt-10">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-16">
           {/* Brand */}
-          <div className="col-span-2 lg:col-span-4">
+          <div className="w-full max-w-sm lg:w-[280px] xl:w-[320px] shrink-0">
             <Link to="/" aria-label="BharatX Group home">
               <Logo />
             </Link>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-400">
+            <p className="mt-5 text-sm leading-relaxed text-ink-400">
               BharatX Group is a connected ecosystem of six businesses
               operating across technology, AI, infrastructure, manufacturing,
               agriculture, food systems and venture building — one group, one
               shared direction.
             </p>
-            <div className="mt-7 flex items-center gap-3">
+            <div className="mt-6 flex items-center gap-3">
               {brandConfig.social.map((s) => (
                 <a
                   key={s.label}
@@ -95,72 +94,61 @@ export function Footer() {
                 </a>
               ))}
             </div>
+
+            {/* Location */}
+            <div className="mt-5 flex items-center gap-2 font-mono text-[11.5px] uppercase tracking-[0.2em] text-ink-500">
+              <Icon name="map-pin" width={13} height={13} className="shrink-0 text-gold-400" />
+              <span>India</span>
+            </div>
           </div>
 
-          {/* Columns */}
-          {columnMeta.map((col) => {
-            const items =
-              col.key === "ecosystem"
-                ? companies.map((c) => ({ label: c.name, to: `/companies/${c.slug}` }))
-                : footerColumns[col.key];
-            return (
-              <nav key={col.key} aria-label={col.title} className="col-span-1 lg:col-span-2">
-                <div className="mb-5 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.26em] text-ink-500">
-                  <Icon name={col.icon} width={13} height={13} className="text-gold-400" />
-                  {col.title}
-                </div>
-                <ul className="flex flex-col gap-2.5">
-                  {items.map((item) => (
-                    <li key={item.to}>
-                      <Link
-                        to={item.to}
-                        className="group inline-flex items-center gap-2 text-[13.5px] text-ink-400 transition-colors hover:text-ink-50"
-                      >
-                        <span
-                          aria-hidden
-                          className="h-px w-0 bg-pulse-400 transition-all duration-300 group-hover:w-3"
-                        />
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            );
-          })}
-
-          {/* Contact mini */}
-          <div className="col-span-2 sm:col-span-1 lg:col-span-2">
-            <div className="mb-5 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.26em] text-ink-500">
-              <Icon name="mail" width={13} height={13} className="text-gold-400" />
-              Contact
-            </div>
-            <ul className="flex flex-col gap-2.5 text-[13.5px] text-ink-400">
-              <li className="flex items-center gap-2.5">
-                <Icon name="map-pin" width={13} height={13} className="shrink-0 text-ink-500" />
-                India
-              </li>
-              <li>
-                <Link to="/contact" className="flex items-center gap-2.5 transition-colors hover:text-ink-50">
-                  <Icon name="arrow-up-right" width={13} height={13} className="shrink-0 text-ink-500" />
-                  Start an inquiry
-                </Link>
-              </li>
-            </ul>
+          {/* Columns in the same row */}
+          <div className="grid flex-1 grid-cols-2 gap-6 sm:grid-cols-3 lg:gap-8 xl:gap-12">
+            {/* Nav Columns */}
+            {columnMeta.map((col) => {
+              const items =
+                col.key === "ecosystem"
+                  ? companies.map((c) => ({ label: c.name, to: `/companies/${c.slug}` }))
+                  : footerColumns[col.key];
+              return (
+                <nav key={col.key} aria-label={col.title}>
+                  <div className="mb-4 flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.26em] text-ink-500">
+                    <Icon name={col.icon} width={13} height={13} className="text-gold-400" />
+                    {col.title}
+                  </div>
+                  <ul className="flex flex-col gap-2.5">
+                    {items.map((item) => (
+                      <li key={item.to}>
+                        <Link
+                          to={item.to}
+                          className="group inline-flex items-center gap-2 text-[13.5px] text-ink-400 transition-colors hover:text-ink-50"
+                        >
+                          <span
+                            aria-hidden
+                            className="h-px w-0 bg-pulse-400 transition-all duration-300 group-hover:w-3"
+                          />
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              );
+            })}
           </div>
         </div>
 
         {/* Ghost wordmark */}
         <div
           aria-hidden
-          className="pointer-events-none mt-16 select-none overflow-hidden"
+          className="pointer-events-none mt-12 select-none overflow-hidden"
         >
-          <div className="whitespace-nowrap text-center font-display text-[17vw] font-bold leading-[0.85] tracking-tight text-white/[0.028] lg:text-[11.5rem]">
+          <div className="whitespace-nowrap text-center font-display text-[15vw] font-bold leading-[0.85] tracking-tight text-white/[0.028] lg:text-[10.5rem]">
             BHARATX GROUP
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 md:flex-row">
+        <div className="mt-4 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 md:flex-row">
           <p className="text-center sm:text-left font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-600">
             © {new Date().getFullYear()} BharatX Group. All rights reserved.
           </p>

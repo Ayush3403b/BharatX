@@ -73,33 +73,35 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-6 md:p-7">
-        <div className="flex items-center gap-2.5">
-          <span
-            className="flex h-7 w-7 items-center justify-center rounded-full"
-            style={{ color: company.accentColor, background: `${company.accentColor}14` }}
-          >
-            <Icon name={company.icon} width={14} height={14} strokeWidth={1.7} />
-          </span>
-          <span
-            className="font-mono text-[10px] uppercase tracking-[0.2em]"
-            style={{ color: company.accentColor }}
-          >
-            {company.category}
-          </span>
+      <div className="flex flex-1 flex-col justify-between p-6 md:p-7 min-w-0">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              style={{ color: company.accentColor, background: `${company.accentColor}14` }}
+            >
+              <Icon name={company.icon} width={14} height={14} strokeWidth={1.7} />
+            </span>
+            <span
+              className="truncate font-mono text-[10px] uppercase tracking-[0.2em]"
+              style={{ color: company.accentColor }}
+            >
+              {company.category}
+            </span>
+          </div>
+
+          <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink-50 transition-colors group-hover:text-white break-words">
+            {company.name}
+          </h3>
+          <p className="mt-2.5 line-clamp-3 text-[14px] leading-relaxed text-ink-400">
+            {company.description}
+          </p>
         </div>
 
-        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-ink-50 transition-colors group-hover:text-white">
-          {company.name}
-        </h3>
-        <p className="mt-2.5 line-clamp-3 text-[14px] leading-relaxed text-ink-400">
-          {company.description}
-        </p>
-
-        <div className="mt-6 flex flex-1 items-end gap-5">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/5">
           <Link
             to={`/companies/${company.slug}`}
-            className="group/link inline-flex items-center gap-2 rounded-full border border-white/12 px-5 py-2.5 text-[13px] font-semibold text-ink-100 transition-all duration-300 hover:border-pulse-400/50 hover:text-pulse-300"
+            className="group/link inline-flex items-center gap-2 rounded-full border border-white/12 px-4 py-2 text-[13px] font-semibold text-ink-100 transition-all duration-300 hover:border-pulse-400/50 hover:text-pulse-300 shrink-0"
           >
             Explore
             <Icon
@@ -109,18 +111,20 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
               className="transition-transform duration-300 group-hover/link:translate-x-1"
             />
           </Link>
-          <a
-            href={company.website}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-ink-500 transition-colors hover:text-ink-100"
-          >
-            Website
-            <Icon name="external-link" width={12.5} height={12.5} />
-          </a>
-          <span className="ml-auto hidden font-mono text-[10px] uppercase tracking-[0.16em] text-ink-600 md:block">
-            {String(company.order).padStart(2, "0")}/06
-          </span>
+          <div className="flex items-center gap-3 shrink-0">
+            <a
+              href={company.website}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-ink-500 transition-colors hover:text-ink-100"
+            >
+              Website
+              <Icon name="external-link" width={12.5} height={12.5} />
+            </a>
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-600">
+              {String(company.order).padStart(2, "0")}/06
+            </span>
+          </div>
         </div>
       </div>
     </TiltCard>

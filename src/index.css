@@ -44,6 +44,9 @@
 
   /* ── Motion ──────────────────────────────────────────────── */
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Containers ──────────────────────────────────────────── */
+  --container-8xl: 90rem;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
@@ -102,7 +105,7 @@ a, button, [role="button"], input, select, textarea {
 .container-x {
   margin-inline: auto;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1440px; /* 8xl (90rem / 1440px) */
   padding-inline: 1.25rem;
 }
 @media (max-width: 380px) {
@@ -118,6 +121,16 @@ a, button, [role="button"], input, select, textarea {
 @media (min-width: 1024px) {
   .container-x {
     padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-inline: 3rem;
+  }
+}
+@media (min-width: 1440px) {
+  .container-x {
+    padding-inline: 3.5rem;
   }
 }
 
