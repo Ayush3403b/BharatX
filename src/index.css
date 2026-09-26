@@ -94,42 +94,48 @@
   --color-ink-600: #94a3b8;
 }
 
-/* ── Dark Mode Theme (Deep Obsidian Void) ─────────────────── */
+/* ── Dark Mode Theme (Deep Cyber-Luxe) ─────────────────────── */
 html.dark {
-  --color-night-950: #070a0f;
-  --color-night-900: #0b0f15;
-  --color-night-850: #0e141c;
-  --color-night-800: #121924;
-  --color-night-700: #1a2330;
-  --color-night-600: #243040;
+  /* Obsidian Sapphire Base */
+  --color-night-950: #050811;
+  --color-night-900: #090e18;
+  --color-night-850: #0e1524;
+  --color-night-800: #141e30;
+  --color-night-700: #1e2c44;
+  --color-night-600: #2b3d5c;
 
-  --color-pulse-200: #b8f6e9;
-  --color-pulse-300: #86f0d8;
-  --color-pulse-400: #43e6c5;
-  --color-pulse-500: #22d5b3;
-  --color-pulse-600: #12a98d;
+  /* Electric Cyan & Pulse Glow */
+  --color-pulse-200: #ccfbf1;
+  --color-pulse-300: #5eead4;
+  --color-pulse-400: #2dd4bf;
+  --color-pulse-500: #14b8a6;
+  --color-pulse-600: #0d9488;
 
-  --color-gold-200: #ffe7b3;
-  --color-gold-300: #ffd98a;
-  --color-gold-400: #f5b84d;
-  --color-gold-500: #e8a33d;
-  --color-gold-600: #c9842a;
+  /* Radiant Solar Gold & Amber */
+  --color-gold-200: #fef3c7;
+  --color-gold-300: #fde68a;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
 
-  --color-ember-300: #ff9a7d;
-  --color-ember-400: #e86a4a;
-  --color-ember-500: #d14e2e;
+  /* Cyber-Violet / Royal Purple */
+  --color-ember-300: #d8b4fe;
+  --color-ember-400: #a855f7;
+  --color-ember-500: #8b5cf6;
 
-  --color-fog-100: #f2f4f6;
-  --color-fog-200: #e2e7ec;
-  --color-fog-300: #cdd5dc;
+  /* Ice Glass Overlays */
+  --color-fog-100: #f8fafc;
+  --color-fog-200: #e2e8f0;
+  --color-fog-300: #cbd5e1;
 
-  --color-ink-50: #f4f7f9;
-  --color-ink-100: #eef2f5;
-  --color-ink-200: #d7dee4;
-  --color-ink-300: #b9c4cd;
-  --color-ink-400: #93a1ad;
-  --color-ink-500: #6c7a87;
-  --color-ink-600: #4e5b67;
+  /* Ultra-Crisp High Contrast Ink (Comfortable & Zero Eye Fatigue) */
+  --color-ink-50: #ffffff;
+  --color-ink-100: #f8fafc;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
@@ -227,7 +233,7 @@ a, button, [role="button"], input, select, textarea {
   border: 1px solid rgba(15, 23, 42, 0.08);
 }
 .dark .hairline {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .glass {
@@ -238,11 +244,13 @@ a, button, [role="button"], input, select, textarea {
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
 }
 .dark .glass {
-  background: rgba(14, 20, 28, 0.72);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: none;
+  background: rgba(14, 21, 36, 0.78);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-nav {
@@ -254,12 +262,12 @@ a, button, [role="button"], input, select, textarea {
   box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.06);
 }
 .dark .glass-nav {
-  background: rgba(14, 20, 28, 0.72);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  background: rgba(7, 11, 20, 0.85);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
   border: none !important;
   border-bottom: none !important;
-  box-shadow: none;
+  box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.8);
 }
 
 .tint-panel {
@@ -274,10 +282,14 @@ a, button, [role="button"], input, select, textarea {
 .dark .tint-panel {
   background: linear-gradient(
     135deg,
-    rgba(34, 213, 179, 0.07),
-    rgba(14, 20, 28, 0) 55%
+    rgba(45, 212, 191, 0.09),
+    rgba(168, 85, 247, 0.06) 45%,
+    rgba(14, 21, 36, 0.78) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 .paper {
@@ -302,7 +314,7 @@ a, button, [role="button"], input, select, textarea {
   box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
 }
 .dark .rounded-2xl, .dark .rounded-3xl, .dark .rounded-xl {
-  box-shadow: none;
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 /* Film-grain overlay */
@@ -358,9 +370,9 @@ a, button, [role="button"], input, select, textarea {
 }
 .dark .aurora {
   background:
-    radial-gradient(52rem 30rem at 12% -8%, rgba(34, 213, 179, 0.13), transparent 60%),
-    radial-gradient(44rem 26rem at 88% 4%, rgba(245, 184, 77, 0.09), transparent 62%),
-    radial-gradient(60rem 40rem at 50% 118%, rgba(26, 35, 48, 0.9), transparent 70%);
+    radial-gradient(55rem 32rem at 10% -6%, rgba(45, 212, 191, 0.22), transparent 65%),
+    radial-gradient(50rem 30rem at 90% 5%, rgba(251, 191, 36, 0.18), transparent 65%),
+    radial-gradient(60rem 38rem at 50% 115%, rgba(168, 85, 247, 0.16), transparent 72%);
 }
 
 /* ── Static Global Background ────────────────────────────────── */
@@ -386,8 +398,8 @@ a, button, [role="button"], input, select, textarea {
   transition: opacity 0.3s ease;
 }
 .dark .global-static-bg-image {
-  opacity: 0.22;
-  mix-blend-mode: normal;
+  opacity: 0.24;
+  mix-blend-mode: screen;
 }
 
 .global-static-bg-aurora {
@@ -402,9 +414,10 @@ a, button, [role="button"], input, select, textarea {
 }
 .dark .global-static-bg-aurora {
   background:
-    radial-gradient(55rem 35rem at 15% -5%, rgba(34, 213, 179, 0.16), transparent 65%),
-    radial-gradient(48rem 30rem at 85% 5%, rgba(245, 184, 77, 0.12), transparent 65%),
-    radial-gradient(65rem 45rem at 50% 115%, rgba(26, 35, 48, 0.95), transparent 75%);
+    radial-gradient(64rem 42rem at 10% -6%, rgba(45, 212, 191, 0.24), transparent 68%),
+    radial-gradient(56rem 38rem at 90% 6%, rgba(251, 191, 36, 0.18), transparent 68%),
+    radial-gradient(52rem 34rem at 50% 46%, rgba(168, 85, 247, 0.15), transparent 70%),
+    radial-gradient(72rem 50rem at 50% 115%, rgba(20, 184, 166, 0.2), transparent 78%);
 }
 
 .global-static-bg-grid {
@@ -420,11 +433,11 @@ a, button, [role="button"], input, select, textarea {
 }
 .dark .global-static-bg-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
-  opacity: 0.35;
+  opacity: 0.42;
 }
 
 .global-static-bg-vignette {
@@ -441,8 +454,8 @@ a, button, [role="button"], input, select, textarea {
   background: radial-gradient(
     ellipse at 50% 40%,
     transparent 0%,
-    rgba(7, 10, 15, 0.3) 60%,
-    rgba(7, 10, 15, 0.8) 100%
+    rgba(5, 8, 17, 0.3) 60%,
+    rgba(5, 8, 17, 0.85) 100%
   );
 }
 
@@ -460,10 +473,10 @@ a, button, [role="button"], input, select, textarea {
 .dark .global-static-bg-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(7, 10, 15, 0.35) 0%,
+    rgba(5, 8, 17, 0.35) 0%,
     transparent 35%,
-    rgba(7, 10, 15, 0.5) 75%,
-    rgba(7, 10, 15, 0.85) 100%
+    rgba(5, 8, 17, 0.55) 75%,
+    rgba(5, 8, 17, 0.9) 100%
   );
 }
 
@@ -477,9 +490,10 @@ a, button, [role="button"], input, select, textarea {
 }
 .dark .gold-glow {
   background: radial-gradient(
-    40rem 22rem at 50% 0%,
-    rgba(245, 184, 77, 0.1),
-    transparent 65%
+    48rem 28rem at 50% 0%,
+    rgba(251, 191, 36, 0.18),
+    rgba(168, 85, 247, 0.12) 48%,
+    transparent 68%
   );
 }
 

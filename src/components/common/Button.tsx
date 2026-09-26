@@ -21,7 +21,7 @@ const variants: Record<ButtonVariant, string> = {
     "bg-gold-500 text-white font-semibold shadow-md shadow-gold-500/20 hover:bg-gold-600 hover:shadow-[0_8px_30px_-4px_rgba(217,119,6,0.45)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_8px_40px_-8px_rgba(245,184,77,0.5)]",
   teal: "bg-pulse-500 text-white font-semibold shadow-md shadow-pulse-500/20 hover:bg-pulse-600 hover:shadow-[0_8px_30px_-4px_rgba(8,145,178,0.45)] dark:bg-pulse-500 dark:text-night-950 dark:hover:bg-pulse-400 dark:hover:shadow-[0_8px_40px_-8px_rgba(34,213,179,0.45)]",
   ghost:
-    "border border-slate-300/80 bg-white/75 text-ink-100 backdrop-blur-sm shadow-sm hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-white/[0.02] dark:hover:border-white/35 dark:hover:bg-white/[0.06] dark:shadow-none",
+    "border border-slate-300/80 bg-white/75 text-ink-100 backdrop-blur-sm shadow-sm hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-white/[0.04] dark:hover:border-white/40 dark:hover:bg-white/[0.08] dark:shadow-none",
   ember:
     "bg-ember-500 text-white font-semibold shadow-md shadow-ember-500/20 hover:bg-ember-600 hover:shadow-[0_8px_30px_-4px_rgba(124,58,237,0.45)] dark:bg-ember-400 dark:text-white dark:hover:bg-ember-300 dark:hover:shadow-[0_8px_40px_-8px_rgba(232,106,74,0.5)]",
   paper:

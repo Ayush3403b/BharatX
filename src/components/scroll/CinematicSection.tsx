@@ -53,7 +53,7 @@ export function CinematicSection({
       ref={ref}
       className={cn(
         "noise relative flex w-full items-center overflow-hidden",
-        height === "tall" ? "min-h-[85vh] py-28" : "min-h-[64vh] py-24",
+        height === "tall" ? "min-h-[50vh] py-14 md:py-20" : "min-h-[38vh] py-10 md:py-14",
         className,
       )}
       aria-label={alt}

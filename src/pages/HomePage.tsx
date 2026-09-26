@@ -36,7 +36,7 @@ export default function HomePage() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative flex min-h-screen lg:min-h-0 lg:h-screen lg:max-h-screen items-center overflow-hidden pt-24 md:pt-28 lg:pt-20 lg:pb-6"
+        className="relative flex min-h-[90vh] lg:min-h-0 lg:h-screen lg:max-h-[920px] items-center overflow-hidden pt-20 md:pt-24 lg:pt-16 lg:pb-4"
       >
         <div className="container-x relative z-10 grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 xl:gap-12 w-full">
           {/* Copy */}
@@ -154,7 +154,7 @@ export default function HomePage() {
       <CompanyMarquee />
 
       {/* ── GROUP INTRODUCTION ───────────────────────────────── */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-14 md:py-20">
         <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-50" />
         <div className="container-x relative">
           <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -190,7 +190,7 @@ export default function HomePage() {
           </div>
 
           <Stats
-            className="mt-20"
+            className="mt-12 md:mt-16"
             items={[
               { value: 6, label: "Companies", icon: "building-2" },
               { value: 6, suffix: "+", label: "Capability Areas", icon: "layers" },
@@ -202,7 +202,7 @@ export default function HomePage() {
       </section>
 
       {/* ── COMPANIES SHOWCASE ───────────────────────────────── */}
-      <section className="relative border-t border-white/5 bg-night-950/20 py-24 md:py-32">
+      <section className="relative border-t border-white/5 bg-night-950/20 py-14 md:py-20">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeader
@@ -228,14 +228,14 @@ export default function HomePage() {
               </Link>
             </Reveal>
           </div>
-          <div className="mt-14">
+          <div className="mt-10 md:mt-12">
             <CompanyGrid />
           </div>
         </div>
       </section>
 
       {/* ── HOW THE ECOSYSTEM WORKS ──────────────────────────── */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-14 md:py-20">
         <div className="container-x">
           <SectionHeader
             icon="orbit"
@@ -341,7 +341,7 @@ export default function HomePage() {
       </CinematicSection>
 
       {/* ── INDUSTRIES PREVIEW ───────────────────────────────── */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-14 md:py-20">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeader
@@ -361,7 +361,7 @@ export default function HomePage() {
               </Link>
             </Reveal>
           </div>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 md:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {industries.slice(0, 4).map((ind, i) => (
               <Reveal key={ind.slug} delay={i * 0.08}>
                 <Link
@@ -408,7 +408,7 @@ export default function HomePage() {
               to={p.to}
               className="group relative block overflow-hidden rounded-2xl border border-white/8"
             >
-              <div className="h-[340px] overflow-hidden md:h-[400px]">
+              <div className="h-[280px] overflow-hidden md:h-[340px]">
                 <img
                   src={p.img}
                   alt=""
@@ -435,7 +435,7 @@ export default function HomePage() {
       </section>
 
       {/* ── PRINCIPLES STATEMENT ─────────────────────────────── */}
-      <section className="noise relative overflow-hidden border-t border-white/5 bg-night-950/60 py-24 md:py-32">
+      <section className="noise relative overflow-hidden border-t border-white/5 bg-night-950/60 py-14 md:py-20">
         <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-40" />
         <div className="container-x relative">
           <Reveal>
@@ -445,7 +445,7 @@ export default function HomePage() {
               run like startups that respect their customers.”
             </p>
           </Reveal>
-          <div className="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-3">
+          <div className="mx-auto mt-10 md:mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
             {[
               { icon: "compass", t: "Long-term ownership", d: "Decisions are made for the decade, not the quarter." },
               { icon: "target", t: "Engineering rigor", d: "Every capability is specified, tested and documented." },
@@ -464,10 +464,10 @@ export default function HomePage() {
       </section>
 
       {/* ── CAREERS TEASER ───────────────────────────────────── */}
-      <section className="relative py-24 md:py-28">
+      <section className="relative py-12 md:py-16">
         <div className="container-x">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-ember-400/25 bg-gradient-to-br from-ember-400/[0.09] via-night-850 to-night-850 p-10 md:p-14">
+            <div className="relative overflow-hidden rounded-3xl border border-ember-400/25 bg-gradient-to-br from-ember-400/[0.09] via-night-850 to-night-850 p-8 md:p-11">
               <div
                 aria-hidden
                 className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-ember-400/10 blur-3xl"

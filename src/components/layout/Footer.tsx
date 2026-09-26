@@ -20,7 +20,7 @@ const socialIcons: Record<string, string> = {
 
 export function FooterCTA() {
   return (
-    <section className="gold-glow relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 py-12 sm:py-16 md:py-20">
+    <section className="gold-glow relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 py-10 sm:py-12 md:py-14">
       <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-60" />
       <div className="container-x relative flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
         <div>

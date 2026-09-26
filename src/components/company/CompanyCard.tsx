@@ -20,7 +20,7 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
   return (
     <TiltCard
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_8px_30px_-6px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:border-slate-300 hover:shadow-[0_20px_45px_-12px_rgba(15,23,42,0.12)] hover:-translate-y-1 min-w-0 dark:border-white/8 dark:bg-night-850/80 dark:shadow-none dark:hover:border-white/20 dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)]",
+        "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_8px_30px_-6px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:border-slate-300 hover:shadow-[0_20px_45px_-12px_rgba(15,23,42,0.12)] hover:-translate-y-1 min-w-0 dark:border-white/10 dark:bg-night-850/90 dark:shadow-[0_16px_40px_-15px_rgba(0,0,0,0.7)] dark:hover:border-white/30 dark:hover:shadow-[0_24px_50px_-15px_rgba(0,0,0,0.85),0_0_30px_-5px_rgba(45,212,191,0.15)]",
         reversed && "lg:flex-row-reverse",
         className,
       )}
