@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/common/Button";
 import { IconBadge } from "../components/common/IconBadge";
@@ -6,6 +7,8 @@ import { Reveal } from "../components/common/Reveal";
 import { SectionHeader } from "../components/common/SectionHeader";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { Icon } from "../utils/icons";
+
+const CareersPortal = lazy(() => import("../components/three/objects/CareersPortal"));
 
 const departments = [
   { icon: "compass", t: "Strategy" },
@@ -52,6 +55,8 @@ export default function CareersPage() {
         title={["One group.", "Ten kinds of work."]}
         lede="Strategy, operations, technology, AI, engineering, manufacturing, agriculture, sales, finance and marketing — across six businesses, under one standard. This is a place to build depth."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Careers" }]}
+        visual={<CareersPortal />}
+        visualPlacement="right"
       >
         <Link to="/contact?type=careers" className="w-full sm:w-auto">
           <Button variant="ember" size="lg" withArrow className="w-full sm:w-auto">

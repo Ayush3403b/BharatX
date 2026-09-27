@@ -329,7 +329,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-5 flex items-center justify-between rounded-lg border border-white/8 bg-night-900/90 px-4 py-3">
                     <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
-                      06 businesses · one viewer
+                      36 services · one viewer
                     </span>
                     <Link
                       to="/ecosystem"

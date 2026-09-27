@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/common/Button";
 import { IconBadge } from "../components/common/IconBadge";
@@ -8,6 +9,8 @@ import { Stats } from "../components/common/Stats";
 import { CompanyGrid } from "../components/company/CompanyGrid";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { Icon } from "../utils/icons";
+
+const CompaniesConstellation = lazy(() => import("../components/three/objects/CompaniesConstellation"));
 
 export default function CompaniesPage() {
   usePageMeta({
@@ -25,6 +28,8 @@ export default function CompaniesPage() {
         title={["Six companies.", "One direction."]}
         lede="Each company below is an independent business with its own website, teams and markets — and a member of a single connected ecosystem. Explore the profiles, or open every website live in the ecosystem viewer."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Companies" }]}
+        visual={<CompaniesConstellation />}
+        visualPlacement="right"
       >
         <Link to="/ecosystem">
           <Button variant="primary" size="lg" withArrow>

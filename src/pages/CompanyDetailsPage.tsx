@@ -16,7 +16,7 @@ import { companies, getCompany, relatedCompanies } from "../data/companies";
 import { getEcosystemSite } from "../data/ecosystem";
 import { Icon } from "../utils/icons";
 
-const ShowcaseObjectScene = lazy(() => import("../components/three/ShowcaseObjectScene"));
+const CompanySpecificObject = lazy(() => import("../components/three/objects/CompanySpecificObject"));
 
 export default function CompanyDetailsPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -74,8 +74,8 @@ function CompanyProfile({ company }: { company: (typeof companies)[number] }) {
             ]}
             className="mb-8"
           />
-          <div className="flex flex-wrap items-end justify-between gap-10">
-            <div className="max-w-2xl">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
               <Reveal>
                 <div className="mb-6 flex items-center gap-4">
                   {company.logo ? (
@@ -119,24 +119,42 @@ function CompanyProfile({ company }: { company: (typeof companies)[number] }) {
                   {company.description}
                 </p>
               </Reveal>
+              <Reveal delay={0.25} className="mt-8">
+                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                  <a href={company.website} target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+                    <Button variant="primary" size="lg" withArrow className="w-full sm:w-auto">
+                      Visit Website
+                    </Button>
+                  </a>
+                  <Link to={`/ecosystem?company=${company.id}`} className="w-full sm:w-auto">
+                    <Button variant="ghost" size="lg" className="w-full sm:w-auto">
+                      <span className="flex items-center gap-2.5">
+                        <Icon name="orbit" width={15} height={15} />
+                        Open Inside BharatX
+                      </span>
+                    </Button>
+                  </Link>
+                </div>
+              </Reveal>
             </div>
-            <Reveal delay={0.25} className="w-full lg:w-auto">
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                <a href={company.website} target="_blank" rel="noreferrer" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" withArrow className="w-full sm:w-auto">
-                    Visit Website
-                  </Button>
-                </a>
-                <Link to={`/ecosystem?company=${company.id}`} className="w-full sm:w-auto">
-                  <Button variant="ghost" size="lg" className="w-full sm:w-auto">
-                    <span className="flex items-center gap-2.5">
-                      <Icon name="orbit" width={15} height={15} />
-                      Open Inside BharatX
-                    </span>
-                  </Button>
-                </Link>
-              </div>
-            </Reveal>
+
+            {/* 3D Company Model in Hero */}
+            <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px]">
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-full blur-3xl opacity-30"
+                style={{ background: company.accentColor }}
+              />
+              <Suspense
+                fallback={
+                  <div className="flex h-full w-full items-center justify-center">
+                    <div className="h-16 w-16 animate-spin rounded-full border border-white/10 border-t-gold-400/70 [animation-duration:1.4s]" />
+                  </div>
+                }
+              >
+                <CompanySpecificObject slug={company.slug} />
+              </Suspense>
+            </div>
           </div>
         </div>
       </section>
@@ -275,21 +293,41 @@ function CompanyProfile({ company }: { company: (typeof companies)[number] }) {
               ))}
             </div>
           </div>
-          <div className="relative h-[380px] md:h-[460px]">
+          <div className="relative flex flex-col justify-center rounded-3xl border border-white/10 bg-night-850/80 p-8 md:p-10 backdrop-blur-xl shadow-2xl">
             <div
               aria-hidden
-              className="absolute inset-0 rounded-full blur-3xl"
-              style={{ background: `${company.accentColor}14` }}
+              className="absolute inset-0 rounded-3xl blur-2xl opacity-15"
+              style={{ background: company.accentColor }}
             />
-            <Suspense
-              fallback={
-                <div className="flex h-full w-full items-center justify-center">
-                  <div className="h-16 w-16 animate-spin rounded-full border border-white/10 border-t-gold-400/70 [animation-duration:1.4s]" />
-                </div>
-              }
-            >
-              <ShowcaseObjectScene scrollProgress={showcaseProgress} />
-            </Suspense>
+            <div className="relative z-10 space-y-6">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="font-mono text-xs uppercase tracking-widest text-gold-400">
+                  Technical Architecture & Specifications
+                </span>
+                <span
+                  className="rounded-full px-3 py-1 font-mono text-[10px] border"
+                  style={{
+                    color: company.accentColor,
+                    borderColor: `${company.accentColor}40`,
+                    background: `${company.accentColor}15`,
+                  }}
+                >
+                  Standard Verified
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed text-ink-300">
+                Each capability is delivered with full process traceability, institutional engineering rigor, and cross-group interoperability.
+              </p>
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                {company.capabilities.map((cap, idx) => (
+                  <div key={cap.title} className="rounded-xl border border-white/8 bg-night-900/60 p-4 transition-all hover:border-white/20">
+                    <span className="font-mono text-[10px] uppercase text-ink-500">Tier {idx + 1}</span>
+                    <div className="mt-1 font-display text-sm font-semibold text-white">{cap.title}</div>
+                    <div className="mt-1 text-[11px] text-ink-400 leading-normal line-clamp-2">{cap.description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

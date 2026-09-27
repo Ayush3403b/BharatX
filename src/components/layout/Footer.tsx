@@ -62,8 +62,8 @@ export function FooterCTA() {
         </div>
 
         {/* 3D Footer ecosystem scene (Section 33 & 34) */}
-        <div className="flex shrink-0 items-center justify-center">
-          <FooterOrbScene className="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64" />
+        <div className="relative flex w-full shrink-0 items-center justify-center lg:w-[480px] xl:w-[560px] 2xl:w-[620px]">
+          <FooterOrbScene className="h-[340px] w-full sm:h-[400px] md:h-[440px] lg:h-[480px]" />
         </div>
       </div>
     </section>

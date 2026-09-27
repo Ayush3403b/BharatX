@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 import { IconBadge } from "../components/common/IconBadge";
 import { Link } from "react-router-dom";
@@ -13,6 +13,8 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import { companies } from "../data/companies";
 import { ecosystemSites, getEcosystemSite } from "../data/ecosystem";
 import { Icon } from "../utils/icons";
+
+const EcosystemSpatialMap = lazy(() => import("../components/three/objects/EcosystemSpatialMap"));
 
 export default function EcosystemPage() {
   usePageMeta({
@@ -48,6 +50,8 @@ export default function EcosystemPage() {
         title={["Every business.", "One place."]}
         lede="The ecosystem viewer loads each company's real website inside BharatX Group. Switch between the six, go fullscreen, or jump straight to any official site — without losing your place in the group."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Ecosystem" }]}
+        visual={<EcosystemSpatialMap onSelectCompany={(slug) => select(slug)} />}
+        visualPlacement="right"
       />
 
       {/* ── SWITCHER + VIEWER ────────────────────────────────── */}

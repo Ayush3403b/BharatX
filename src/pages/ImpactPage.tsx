@@ -1,9 +1,12 @@
+import { lazy } from "react";
 import { IconBadge } from "../components/common/IconBadge";
 import { PageHero } from "../components/common/PageHero";
 import { MaskReveal, Reveal } from "../components/common/Reveal";
 import { SectionHeader } from "../components/common/SectionHeader";
 import { CinematicSection } from "../components/scroll/CinematicSection";
 import { usePageMeta } from "../hooks/usePageMeta";
+
+const ImpactNetwork = lazy(() => import("../components/three/objects/ImpactNetwork"));
 
 const pillars = [
   { icon: "users", t: "Employment", d: "Skilled and semi-skilled roles across six businesses — from civil sites and production floors to engineering teams and agri operations." },
@@ -31,6 +34,8 @@ export default function ImpactPage() {
         title={["Growth you can stand on."]}
         lede="The group reports impact the way it builds infrastructure: what is real, is stated; what is not yet measurable, is named honestly. This page is that standard in practice."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Impact" }]}
+        visual={<ImpactNetwork />}
+        visualPlacement="right"
       />
 
       {/* ── PILLARS ──────────────────────────────────────────── */}

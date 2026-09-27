@@ -35,10 +35,10 @@ function FooterScene() {
 
   const nodeConfigs: NodeData[] = useMemo(() => {
     return companies.slice(0, 6).map((c, i) => {
-      const radius = 2.4 + (i % 2) * 0.45;
-      const speed = 0.28 + (i % 3) * 0.08;
+      const radius = 2.2 + (i % 2) * 0.35;
+      const speed = 0.24 + (i % 3) * 0.06;
       const offset = (i / 6) * Math.PI * 2;
-      const inclination = ((i % 3) - 1) * 0.24;
+      const inclination = ((i % 3) - 1) * 0.22;
       return {
         slug: c.slug,
         name: c.name,
@@ -52,7 +52,7 @@ function FooterScene() {
   }, []);
 
   // Meshes for the 6 nodes
-  const nodeMeshes = useRef<(THREE.Mesh | null)[]>([]);
+  const nodeMeshes = useRef<(THREE.Group | THREE.Mesh | null)[]>([]);
 
   // Line segments geometry
   const linePositions = useMemo(() => new Float32Array(6 * 2 * 3), []);
@@ -133,51 +133,70 @@ function FooterScene() {
     <group ref={groupRef}>
       {/* Central glowing core representing BharatX */}
       <mesh ref={coreRef}>
-        <icosahedronGeometry args={[0.7, 1]} />
+        <icosahedronGeometry args={[0.75, 1]} />
         <meshStandardMaterial
           color="#f5b84d"
           emissive="#f5b84d"
-          emissiveIntensity={0.65}
-          roughness={0.2}
-          metalness={0.8}
+          emissiveIntensity={0.85}
+          roughness={0.15}
+          metalness={0.9}
           wireframe={false}
         />
       </mesh>
 
-      {/* Wireframe halo around core */}
+      {/* Wireframe outer halo around core */}
       <mesh>
-        <icosahedronGeometry args={[0.9, 1]} />
-        <meshBasicMaterial color="#f5b84d" wireframe transparent opacity={0.3} />
+        <icosahedronGeometry args={[0.98, 1]} />
+        <meshBasicMaterial color="#f5b84d" wireframe transparent opacity={0.4} />
       </mesh>
 
-      {/* Equatorial subtle orbital ring */}
+      {/* Inner crystal octahedron */}
+      <mesh rotation={[Math.PI / 4, 0, Math.PI / 4]}>
+        <octahedronGeometry args={[1.15, 0]} />
+        <meshStandardMaterial color="#0284c7" wireframe transparent opacity={0.3} />
+      </mesh>
+
+      {/* Primary Equatorial subtle orbital ring */}
       <mesh ref={ringRef} rotation={[Math.PI / 2.3, 0, 0]}>
-        <torusGeometry args={[2.5, 0.012, 12, 64]} />
-        <meshBasicMaterial color="#43e6c5" transparent opacity={0.25} />
+        <torusGeometry args={[2.3, 0.016, 16, 80]} />
+        <meshStandardMaterial color="#0284c7" metalness={0.8} roughness={0.2} transparent opacity={0.65} />
+      </mesh>
+
+      {/* Secondary tilted golden orbital ring */}
+      <mesh rotation={[Math.PI / 2.8, 0.25, 0]}>
+        <torusGeometry args={[2.55, 0.014, 16, 80]} />
+        <meshBasicMaterial color="#f5b84d" transparent opacity={0.4} />
       </mesh>
 
       {/* Connecting laser lines */}
       <lineSegments ref={linesRef} geometry={lineGeo}>
-        <lineBasicMaterial vertexColors transparent opacity={0.45} blending={THREE.AdditiveBlending} />
+        <lineBasicMaterial vertexColors transparent opacity={0.55} blending={THREE.AdditiveBlending} />
       </lineSegments>
 
       {/* Six Orbiting Company Nodes */}
       {nodeConfigs.map((node, i) => (
-        <mesh
+        <group
           key={node.slug}
           ref={(el) => {
             nodeMeshes.current[i] = el;
           }}
         >
-          <sphereGeometry args={[0.16, 16, 16]} />
-          <meshStandardMaterial
-            color={node.color}
-            emissive={node.color}
-            emissiveIntensity={0.8}
-            roughness={0.2}
-            metalness={0.6}
-          />
-        </mesh>
+          <mesh>
+            <sphereGeometry args={[0.22, 24, 24]} />
+            <meshStandardMaterial
+              color={node.color}
+              emissive={node.color}
+              emissiveIntensity={1.2}
+              roughness={0.15}
+              metalness={0.7}
+            />
+          </mesh>
+          {/* Subtle node energy halo */}
+          <mesh>
+            <torusGeometry args={[0.34, 0.014, 8, 32]} />
+            <meshBasicMaterial color={node.color} transparent opacity={0.65} />
+          </mesh>
+        </group>
       ))}
     </group>
   );
@@ -223,17 +242,28 @@ export default function FooterOrbScene({ className }: { className?: string }) {
   }, []);
 
   return (
-    <div ref={containerRef} className={className ?? "relative h-44 w-44 md:h-56 md:w-56"}>
+    <div ref={containerRef} className={className ?? "relative h-[340px] w-full md:h-[440px]"}>
+      {/* High-contrast ambient glow pedestal */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full blur-3xl opacity-75 dark:opacity-30 transition-opacity"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(224,242,254,0.55) 45%, rgba(245,184,77,0.18) 70%, transparent 85%)",
+        }}
+      />
+
       {supported && inView ? (
         <Suspense fallback={<FallbackFooterOrb />}>
           <Canvas
-            dpr={[1, 1.25]}
-            camera={{ position: [0, 1.5, 6.5], fov: 42 }}
-            gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
+            dpr={[1, 1.5]}
+            camera={{ position: [0, 1.2, 8.8], fov: 42 }}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           >
-            <ambientLight intensity={0.4} />
-            <pointLight position={[3, 4, 4]} intensity={4} color="#f5b84d" />
-            <pointLight position={[-3, -3, -3]} intensity={3} color="#43e6c5" />
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[6, 9, 6]} intensity={1.8} color="#ffffff" />
+            <pointLight position={[4, 5, 4]} intensity={16} color="#f5b84d" distance={18} decay={2} />
+            <pointLight position={[-4, -4, -4]} intensity={14} color="#00f0ff" distance={18} decay={2} />
             <FooterScene />
           </Canvas>
         </Suspense>

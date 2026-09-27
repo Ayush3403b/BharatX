@@ -50,10 +50,10 @@ export function ConglomerateManifesto() {
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-6">
           {[
             {
-              badge: "06 COMPANIES",
-              title: "Autonomous Operating Units",
-              desc: "Independently steered, interconnected through a unified standard.",
-              icon: "building-2",
+              badge: "36 SERVICES",
+              title: "Specialised Capabilities",
+              desc: "36 core services spanning deeptech, civil infrastructure, robotics, and global trade.",
+              icon: "layers",
               accent: "#f5b84d",
             },
             {

@@ -1,6 +1,9 @@
+import { lazy } from "react";
 import { PageHero } from "../components/common/PageHero";
 import { Reveal } from "../components/common/Reveal";
 import { usePageMeta } from "../hooks/usePageMeta";
+
+const SecurityShield = lazy(() => import("../components/three/objects/SecurityShield"));
 
 const sections = [
   {
@@ -56,6 +59,8 @@ export default function PrivacyPage() {
         title="Privacy Policy"
         lede="What we collect, why we collect it, and how we keep it. In plain language."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Privacy Policy" }]}
+        visual={<SecurityShield />}
+        visualPlacement="right"
       />
       <section className="py-20 md:py-24">
         <div className="container-x max-w-3xl">

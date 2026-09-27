@@ -1,6 +1,9 @@
+import { lazy } from "react";
 import { PageHero } from "../components/common/PageHero";
 import { Reveal } from "../components/common/Reveal";
 import { usePageMeta } from "../hooks/usePageMeta";
+
+const SecurityShield = lazy(() => import("../components/three/objects/SecurityShield"));
 
 const sections = [
   {
@@ -56,6 +59,8 @@ export default function TermsPage() {
         title="Terms & Conditions"
         lede="The ground rules for using this site and its ecosystem viewer. Short, readable, and without surprises."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Terms & Conditions" }]}
+        visual={<SecurityShield />}
+        visualPlacement="right"
       />
       <section className="py-20 md:py-24">
         <div className="container-x max-w-3xl">

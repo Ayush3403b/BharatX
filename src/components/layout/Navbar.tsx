@@ -21,7 +21,7 @@ import { SearchModal } from "../common/SearchModal";
 type MegaKey = "companies" | "ecosystem" | null;
 
 const liveMetrics = [
-  "06 ENTERPRISES ACTIVE • 1 CONNECTED ECOSYSTEM",
+  "36+ ACTIVE SERVICES • 1 CONNECTED ECOSYSTEM",
   "SECTORS: AI • INFRASTRUCTURE • AGRI-TECH • VENTURES • MOBILITY",
   "99.98% UNIFIED NETWORK UPTIME",
   "GLOBAL VALUE CHAINS & INDUSTRIAL EXCELLENCE",

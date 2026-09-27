@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, lazy } from "react";
 import {
   motion,
   useScroll,
@@ -62,6 +62,8 @@ const principles = [
   { n: "04", t: "Boring is a feature", d: "The most valuable innovation is the one no one notices — the process that simply works, every time, without a hero involved." },
 ];
 
+const InnovationCore = lazy(() => import("../components/three/objects/InnovationCore"));
+
 export default function InnovationPage() {
   usePageMeta({
     title: "Innovation",
@@ -79,6 +81,8 @@ export default function InnovationPage() {
         title={["Technology that works", "in the real world."]}
         lede="Innovation at BharatX is not a lab. It is production systems, industrial processes and agricultural technology — built to the same standard: specified, tested, documented, owned."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Innovation" }]}
+        visual={<InnovationCore />}
+        visualPlacement="right"
       />
 
       {/* ── PILLARS ──────────────────────────────────────────── */}
@@ -155,19 +159,72 @@ export default function InnovationPage() {
 
       {/* ── PRINCIPLES ───────────────────────────────────────── */}
       <section className="border-t border-white/5 bg-night-850/50 py-24 md:py-28">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionHeader
-            icon="scale"
-            eyebrow="Innovation principles"
-            title="The rules we innovate by."
-            lede="Four rules keep innovation honest inside the group. They are as much about what we refuse to do as what we build."
-            className="mb-0 lg:mb-10"
-          />
-          <div className="flex flex-col divide-y divide-white/8">
+        <div className="container-x grid items-stretch gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          {/* Left Column: Header + Governance Mandate Card */}
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <SectionHeader
+                icon="scale"
+                eyebrow="Innovation principles"
+                title="The rules we innovate by."
+                lede="Four rules keep innovation honest inside the group. They are as much about what we refuse to do as what we build."
+                className="mb-6 lg:mb-8"
+              />
+            </div>
+
+            <Reveal delay={0.2}>
+              <div className="rounded-2xl border border-white/10 bg-night-900/80 p-6 md:p-7 backdrop-blur-xl shadow-xl">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3.5">
+                  <span className="font-mono text-xs uppercase tracking-widest text-gold-400">
+                    Governance &amp; Integrity Standard
+                  </span>
+                  <span className="rounded-full bg-pulse-500/10 px-2.5 py-0.5 font-mono text-[10px] text-pulse-300 border border-pulse-500/20">
+                    Enforced Group-Wide
+                  </span>
+                </div>
+
+                <div className="mt-5 space-y-4">
+                  <div className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold-400/10 text-gold-400">
+                      <Icon name="shield-check" width={15} height={15} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-white">Zero Shelfware Guarantee</div>
+                      <p className="mt-1 text-xs text-ink-400 leading-relaxed">
+                        Every deployed technical capability must have active P&amp;L accountability and proven business adoption within 90 days.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-pulse-400/10 text-pulse-400">
+                      <Icon name="cpu" width={15} height={15} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-white">Full IP Sovereignty</div>
+                      <p className="mt-1 text-xs text-ink-400 leading-relaxed">
+                        Indigenous core architectures engineered natively across the group, eliminating dependency on foreign proprietary lock-in.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[11px] text-ink-400">
+                  <span>Architecture Audits</span>
+                  <span className="text-gold-400">100% Group Verified</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right Column: 4 Principle Cards */}
+          <div className="flex flex-col justify-between divide-y divide-white/8 rounded-2xl border border-white/8 bg-night-900/60 p-6 md:p-8 backdrop-blur-xl shadow-xl">
             {principles.map((p, i) => (
               <Reveal key={p.n} delay={i * 0.07}>
-                <div className="group flex gap-6 py-6">
-                  <span className="font-mono text-sm text-gold-400">{p.n}</span>
+                <div className="group flex gap-5 py-5 first:pt-0 last:pb-0">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gold-400/30 bg-gold-400/10 font-mono text-xs font-semibold text-gold-400">
+                    {p.n}
+                  </span>
                   <div>
                     <h3 className="font-display text-lg font-semibold text-ink-50 transition-colors group-hover:text-pulse-300">
                       {p.t}

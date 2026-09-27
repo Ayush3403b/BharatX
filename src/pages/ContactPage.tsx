@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 import { IconBadge } from "../components/common/IconBadge";
 import { PageHero } from "../components/common/PageHero";
@@ -8,6 +8,8 @@ import { ContactForm, inquiryTypes } from "../components/forms/ContactForm";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { companies } from "../data/companies";
 import { Icon } from "../utils/icons";
+
+const ContactBridge = lazy(() => import("../components/three/objects/ContactBridge"));
 
 const routes = [
   { icon: "rocket", t: "Venture building", d: "New businesses, strategy and scale-up", company: "bharatx-ventures", type: "venture-building" },
@@ -72,6 +74,8 @@ export default function ContactPage() {
         title="Start the right conversation."
         lede="One form, eight routes, six businesses. Tell us what you're trying to do — we'll route it to the people who actually own the answer."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]}
+        visual={<ContactBridge />}
+        visualPlacement="right"
       />
 
       {/* ── CONTACT ROUTES ───────────────────────────────────── */}

@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Button } from "../components/common/Button";
 import { IconBadge } from "../components/common/IconBadge";
 import { PageHero } from "../components/common/PageHero";
@@ -6,6 +7,8 @@ import { MaskReveal, Reveal } from "../components/common/Reveal";
 import { SectionHeader } from "../components/common/SectionHeader";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { Icon } from "../utils/icons";
+
+const LeadershipObject = lazy(() => import("../components/three/objects/LeadershipObject"));
 
 const governance = [
   { icon: "scale", t: "Clear decision rights", d: "Group-level decisions cover standards, capital and cross-business connections. Everything else belongs to the company — and the boundary is documented, not assumed." },
@@ -37,6 +40,8 @@ export default function LeadershipPage() {
         title={["Led like an institution.", "Run like a builder."]}
         lede="The leadership of BharatX Group is organised around one question: what decisions must stay together to make the ecosystem work — and what decisions belong to each business, full stop?"
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Leadership" }]}
+        visual={<LeadershipObject />}
+        visualPlacement="right"
       />
 
       {/* ── PROFILE ─────────────────────────────────────────── */}
@@ -44,48 +49,112 @@ export default function LeadershipPage() {
         <div className="container-x">
           <SectionHeader
             icon="user-round"
-            eyebrow="Group leadership"
-            title="The people behind the standard."
-            lede="BharatX Group is founded and led by a team of operators, engineers and technologists. Detailed leadership profiles are published here with each leader's consent."
+            eyebrow="Group Leadership"
+            title="The visionary behind the standard."
+            lede="BharatX Group is founded on institutional rigor, sovereign engineering, and long-term national economic leadership."
           />
           <Reveal>
-            <div className="grid gap-6 overflow-hidden rounded-3xl border border-white/8 bg-night-850/70 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden bg-night-950 p-10">
-                <div aria-hidden className="grid-bg absolute inset-0 opacity-50" />
-                <div aria-hidden className="absolute inset-0 aurora" />
-                <div className="relative flex flex-col items-center gap-5 text-center">
-                  <span className="flex h-24 w-24 items-center justify-center rounded-3xl border border-gold-400/40 bg-night-950/80 font-display text-3xl font-bold text-gold-400 shadow-[0_0_60px_-12px_rgba(245,184,77,0.4)]">
-                    BX
-                  </span>
-                  <div>
-                    <div className="font-display text-lg font-semibold text-ink-50">
-                      Founder & Group Chief Executive
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-night-850/80 backdrop-blur-2xl shadow-2xl">
+              {/* Ambient atmospheric lighting */}
+              <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-gold-400/[0.08] blur-3xl" />
+              <div aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-pulse-500/[0.06] blur-3xl" />
+
+              <div className="grid items-stretch gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+                {/* Portrait Column */}
+                <div className="relative flex flex-col justify-end overflow-hidden min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] rounded-2xl m-3 sm:m-4 border border-white/10 bg-night-950">
+                  <img
+                    src="/leadership/pradeep-kumar.png"
+                    alt="Pradeep Kumar — Founder & Leader, BharatX Group"
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/20 to-transparent opacity-90" />
+                  
+                  {/* Floating Identity Card on Image */}
+                  <div className="relative z-10 p-6 sm:p-8 backdrop-blur-md bg-night-950/70 border-t border-white/10 rounded-b-2xl">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.25em] text-gold-400">
+                        Founder &amp; Visionary
+                      </span>
                     </div>
-                    <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-500">
-                      BharatX Group
+                    <div className="mt-1 font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                      Pradeep Kumar
+                    </div>
+                    <div className="mt-1 text-xs font-mono uppercase tracking-wider text-ink-300">
+                      BharatX Group · Institutional Founder
                     </div>
                   </div>
-                  <p className="max-w-xs text-[12.5px] leading-relaxed text-ink-500">
-                    Profile to be published. We share leadership bios with the
-                    consent of each leader — this space is reserved, not
-                    decorative.
-                  </p>
                 </div>
-              </div>
-              <div className="flex flex-col justify-center gap-6 p-8 md:p-12">
-                {[
-                  { icon: "compass", t: "A founder's question", d: "“What would this business look like in ten years — and is today's decision still correct on that timeline?” That question is the group's default mode." },
-                  { icon: "cog", t: "An engineer's habit", d: "The founding team thinks in systems: what is the specification, what is the test, who operates it, and what happens when it fails?" },
-                  { icon: "handshake", t: "A builder's respect", d: "Every business in the group is led by its own people. The group's role is to remove friction and set the standard — never to stand between a company and its customers." },
-                ].map((b, i) => (
-                  <div key={b.t} className="flex gap-5">
-                    <IconBadge icon={b.icon} size="sm" tone={i === 0 ? "gold" : "teal"} withReveal={false} />
-                    <div>
-                      <h3 className="font-display text-[15px] font-semibold text-ink-50">{b.t}</h3>
-                      <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-400">{b.d}</p>
+
+                {/* Narrative & Quote Column */}
+                <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10 lg:pl-4">
+                  <div>
+                    {/* Vision Badge */}
+                    <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-gold-400 mb-6">
+                      <Icon name="sparkles" width={13} height={13} />
+                      <span>National Economic Vision</span>
+                    </div>
+
+                    <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+                      Architecting India’s Next Economic Decade.
+                    </h3>
+
+                    {/* Featured Decorated Quote Block */}
+                    <div className="relative mt-6 rounded-2xl border-l-4 border-gold-400 bg-white/[0.03] p-6 sm:p-7 backdrop-blur-md">
+                      <div aria-hidden className="absolute -top-3 right-6 font-serif text-7xl font-bold text-gold-400/20 select-none">
+                        “
+                      </div>
+                      <blockquote className="relative z-10 text-[15.5px] sm:text-[17px] font-medium leading-relaxed text-ink-100 italic">
+                        “Aligned with the national vision of <strong className="text-gold-400 not-italic font-semibold">Viksit Bharat 2047</strong>, he is committed to building sustainable, technology-driven enterprises that strengthen India’s industrial ecosystem and contribute to the country’s long-term economic leadership.”
+                      </blockquote>
+                      <div className="mt-4 flex items-center justify-between pt-3 border-t border-white/8 text-xs font-mono text-ink-400">
+                        <span className="text-gold-400 font-semibold">— Pradeep Kumar</span>
+                        <span>BharatX Group</span>
+                      </div>
+                    </div>
+
+                    {/* Three Core Leadership Mandates */}
+                    <div className="mt-8 space-y-4">
+                      {[
+                        {
+                          icon: "compass",
+                          tone: "gold" as const,
+                          title: "Sovereign Industrial Capacity",
+                          desc: "Engineering domestic manufacturing, resilient infrastructure, and high-duty cycle systems designed for decades of compounding value.",
+                        },
+                        {
+                          icon: "cpu",
+                          tone: "teal" as const,
+                          title: "Indigenous Technology & Silicon",
+                          desc: "Fostering frontier AI foundational models, robotics, and deeptech skunkworks to eliminate reliance on foreign black-box dependencies.",
+                        },
+                        {
+                          icon: "orbit",
+                          tone: "gold" as const,
+                          title: "Interconnected Economic Engine",
+                          desc: "Unifying six cross-sector operating businesses under one institutional standard of quality, capital discipline, and governance.",
+                        },
+                      ].map((item) => (
+                        <div key={item.title} className="flex items-start gap-4 rounded-xl border border-white/6 bg-night-900/60 p-4 transition-all hover:border-gold-400/20">
+                          <IconBadge icon={item.icon} size="sm" tone={item.tone} withReveal={false} />
+                          <div>
+                            <div className="font-display text-sm font-semibold text-white">{item.title}</div>
+                            <p className="mt-1 text-xs text-ink-400 leading-relaxed">{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
+
+                  {/* Trust & Alignment Footer Bar */}
+                  <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-ink-400">
+                    <span className="flex items-center gap-2 text-ink-300">
+                      <Icon name="shield-check" width={14} height={14} className="text-emerald-400" />
+                      Constitutional Governance Standard
+                    </span>
+                    <span className="text-gold-400 font-semibold">Viksit Bharat 2047 Committed</span>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -208,19 +277,72 @@ export default function LeadershipPage() {
 
       {/* ── OPERATING PRINCIPLES ─────────────────────────────── */}
       <section className="py-24 md:py-28">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionHeader
-            icon="target"
-            eyebrow="Operating principles"
-            title="Four principles, applied every day."
-            lede="Printed on no wall. Enforced in every review."
-            className="mb-0 lg:mb-8"
-          />
-          <div className="flex flex-col divide-y divide-white/8">
+        <div className="container-x grid items-stretch gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          {/* Left Column: Header + Decision Architecture Card */}
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <SectionHeader
+                icon="target"
+                eyebrow="Operating principles"
+                title="Four principles, applied every day."
+                lede="Printed on no wall. Enforced in every review."
+                className="mb-6 lg:mb-8"
+              />
+            </div>
+
+            <Reveal delay={0.2}>
+              <div className="rounded-2xl border border-white/10 bg-night-900/80 p-6 md:p-7 backdrop-blur-xl shadow-xl">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3.5">
+                  <span className="font-mono text-xs uppercase tracking-widest text-gold-400">
+                    Decision Rights Framework
+                  </span>
+                  <span className="rounded-full bg-pulse-500/10 px-2.5 py-0.5 font-mono text-[10px] text-pulse-300 border border-pulse-500/20">
+                    Institutional Standard
+                  </span>
+                </div>
+
+                <div className="mt-5 space-y-4">
+                  <div className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold-400/10 text-gold-400">
+                      <Icon name="compass" width={15} height={15} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-white">Local Autonomy, Shared Discipline</div>
+                      <p className="mt-1 text-xs text-ink-400 leading-relaxed">
+                        Operating business CEOs hold full tactical execution rights; the group governs risk, balance-sheet allocation, and core quality standards.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-pulse-400/10 text-pulse-400">
+                      <Icon name="workflow" width={15} height={15} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-white">Documented Accountability</div>
+                      <p className="mt-1 text-xs text-ink-400 leading-relaxed">
+                        Every material decision is written with clear owners, assumptions, and measurable test criteria before resources are deployed.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[11px] text-ink-400">
+                  <span>Operating Protocol</span>
+                  <span className="text-gold-400">Group Constitution Certified</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right Column: 4 Principle Cards */}
+          <div className="flex flex-col justify-between divide-y divide-white/8 rounded-2xl border border-white/8 bg-night-900/60 p-6 md:p-8 backdrop-blur-xl shadow-xl">
             {operating.map((p, i) => (
               <Reveal key={p.n} delay={i * 0.07}>
-                <div className="group flex gap-6 py-6">
-                  <span className="font-mono text-sm text-gold-400">{p.n}</span>
+                <div className="group flex gap-5 py-5 first:pt-0 last:pb-0">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gold-400/30 bg-gold-400/10 font-mono text-xs font-semibold text-gold-400">
+                    {p.n}
+                  </span>
                   <div>
                     <h3 className="font-display text-lg font-semibold text-ink-50 transition-colors group-hover:text-pulse-300">
                       {p.t}

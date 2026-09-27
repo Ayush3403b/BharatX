@@ -12,7 +12,7 @@ import { companies } from "../data/companies";
 import { industries } from "../data/industries";
 import { Icon } from "../utils/icons";
 
-const ShowcaseObjectScene = lazy(() => import("../components/three/ShowcaseObjectScene"));
+const IndustryOrbit = lazy(() => import("../components/three/objects/IndustryOrbit"));
 
 export default function IndustriesPage() {
   usePageMeta({
@@ -37,6 +37,8 @@ export default function IndustriesPage() {
         title={["Seven industries.", "One standard."]}
         lede="BharatX Group does not spread thin. It works in a deliberately small set of industries where it can build real depth — and where Indian origin meets global demand."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Industries" }]}
+        visual={<IndustryOrbit />}
+        visualPlacement="right"
       />
 
       {/* ── INDUSTRY GRID ────────────────────────────────────── */}
@@ -139,20 +141,34 @@ export default function IndustriesPage() {
               ))}
             </div>
           </div>
-          <div className="relative h-[300px] xs:h-[360px] md:h-[520px]">
-            <div aria-hidden className="absolute inset-0 rounded-full bg-pulse-500/[0.05] blur-3xl" />
-            <div aria-hidden className="absolute -right-10 top-10 h-40 w-40 rounded-full bg-gold-400/[0.06] blur-3xl" />
-            <Suspense
-              fallback={
-                <div className="flex h-full w-full items-center justify-center">
-                  <div className="h-16 w-16 animate-spin rounded-full border border-white/10 border-t-gold-400/70 [animation-duration:1.4s]" />
-                </div>
-              }
-            >
-              <ShowcaseObjectScene scrollProgress={scrollYProgress} />
-            </Suspense>
-            <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 font-mono text-[9.5px] uppercase tracking-[0.3em] text-ink-600">
-              Scroll-linked · React Three Fiber
+          <div className="relative flex flex-col justify-center rounded-3xl border border-white/10 bg-night-850/80 p-8 md:p-10 backdrop-blur-xl shadow-2xl">
+            <div aria-hidden className="absolute inset-0 rounded-3xl bg-pulse-500/[0.04] blur-2xl" />
+            <div className="relative z-10 space-y-6">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="font-mono text-xs uppercase tracking-widest text-gold-400">
+                  Cross-Domain Synergy Architecture
+                </span>
+                <span className="rounded-full bg-pulse-500/15 px-3 py-1 font-mono text-[10px] text-pulse-300 border border-pulse-500/30">
+                  Active Ecosystem Flow
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed text-ink-300">
+                Operating across diverse industries creates mutual resilience. Each vertical feeds engineering advancements, capital discipline, and enterprise customer relationships into the next.
+              </p>
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                {[
+                  { label: "Deep Tech & Silicon", metric: "BharatX Labs", tag: "Skunkworks" },
+                  { label: "Enterprise AI & Data", metric: "AIxperts Labs", tag: "Deployed" },
+                  { label: "Precision Heavy Engineering", metric: "Casters Global", tag: "Global Tier-1" },
+                  { label: "Agri-Supply Infrastructure", metric: "BharatX Agro", tag: "Direct Source" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-xl border border-white/8 bg-night-900/60 p-4 transition-all hover:border-gold-400/30">
+                    <span className="font-mono text-[10px] uppercase text-ink-500">{item.tag}</span>
+                    <div className="mt-1 font-display text-sm font-semibold text-white">{item.metric}</div>
+                    <div className="text-[11px] text-ink-400">{item.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Breadcrumbs } from "../components/common/Breadcrumbs";
@@ -10,6 +10,8 @@ import { TiltCard } from "../components/three/TiltCard";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { Icon } from "../utils/icons";
 import { companies } from "../data/companies";
+
+const CompanySpecificObject = lazy(() => import("../components/three/objects/CompanySpecificObject"));
 
 interface ResearchPillar {
   number: string;
@@ -218,6 +220,13 @@ export default function BharatXLabsPage() {
                   Explore Research Roadmap
                 </Button>
               </a>
+            </div>
+          </Reveal>
+
+          {/* 3D DeepTech Quantum Lattice Showcase */}
+          <Reveal delay={0.5}>
+            <div className="relative mx-auto mt-8 h-[380px] sm:h-[460px] lg:h-[520px] w-full">
+              <CompanySpecificObject slug="bharatx-labs" />
             </div>
           </Reveal>
 

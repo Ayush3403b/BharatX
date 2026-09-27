@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/common/Button";
 import { IconBadge } from "../components/common/IconBadge";
@@ -9,6 +10,8 @@ import { CinematicSection } from "../components/scroll/CinematicSection";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { companies } from "../data/companies";
 import { Icon } from "../utils/icons";
+
+const AboutSphere = lazy(() => import("../components/three/objects/AboutSphere"));
 
 const principles = [
   { icon: "compass", t: "Thesis before tactics", d: "Every capability starts with a clear thesis about the market and the decade." },
@@ -43,18 +46,50 @@ export default function AboutPage() {
         title={["Built like infrastructure.", "Run like a startup."]}
         lede="BharatX Group is a connected ecosystem of six businesses. This page explains why the group exists, how it operates, and the standard it holds itself to."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "About" }]}
+        visual={<AboutSphere />}
+        visualPlacement="left"
       />
 
       {/* Who we are */}
       <section className="py-24 md:py-28">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionHeader
-            icon="building-2"
-            eyebrow="Who we are"
-            title="A group company with a venture's nerve."
-            className="mb-0 lg:mb-0"
-          />
-          <div className="flex flex-col gap-6 text-[15.5px] leading-relaxed text-ink-300">
+        <div className="container-x grid items-stretch gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <SectionHeader
+                icon="building-2"
+                eyebrow="Who we are"
+                title="A group company with a venture's nerve."
+                className="mb-6 lg:mb-8"
+              />
+            </div>
+
+            <Reveal delay={0.15}>
+              <div className="rounded-2xl border border-white/10 bg-night-900/80 p-6 backdrop-blur-xl shadow-xl">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="font-mono text-xs uppercase tracking-wider text-gold-400">Operating Thesis</span>
+                  <span className="rounded-full bg-pulse-500/10 px-2.5 py-0.5 font-mono text-[10px] text-pulse-300 border border-pulse-500/20">
+                    Institutional Standard
+                  </span>
+                </div>
+                <div className="mt-4 grid grid-cols-3 gap-3 text-center">
+                  <div className="rounded-xl border border-white/6 bg-white/[0.02] p-3">
+                    <div className="font-display text-xl font-bold text-pulse-400">6</div>
+                    <div className="mt-0.5 text-[11px] text-ink-400">Businesses</div>
+                  </div>
+                  <div className="rounded-xl border border-white/6 bg-white/[0.02] p-3">
+                    <div className="font-display text-xl font-bold text-gold-400">1</div>
+                    <div className="mt-0.5 text-[11px] text-ink-400">Standard</div>
+                  </div>
+                  <div className="rounded-xl border border-white/6 bg-white/[0.02] p-3">
+                    <div className="font-display text-xl font-bold text-emerald-400">100%</div>
+                    <div className="mt-0.5 text-[11px] text-ink-400">Sovereign</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="flex flex-col justify-between gap-6 text-[15.5px] leading-relaxed text-ink-300 rounded-2xl border border-white/8 bg-night-900/50 p-6 md:p-8 backdrop-blur-sm">
             <Reveal>
               <p>
                 BharatX Group brings together six businesses across technology,
