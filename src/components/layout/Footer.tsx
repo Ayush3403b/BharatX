@@ -95,10 +95,21 @@ export function Footer() {
               ))}
             </div>
 
-            {/* Location */}
-            <div className="mt-5 flex items-center gap-2 font-mono text-[11.5px] uppercase tracking-[0.2em] text-ink-500">
-              <Icon name="map-pin" width={13} height={13} className="shrink-0 text-gold-400" />
-              <span>India</span>
+            {/* Location & Contact */}
+            <div className="mt-5 space-y-2 border-t border-slate-200/70 dark:border-white/5 pt-4 font-mono text-[11px] text-ink-400">
+              <div className="flex items-start gap-2">
+                <Icon name="map-pin" width={13} height={13} className="shrink-0 mt-0.5 text-gold-400" />
+                <span className="leading-snug">{brandConfig.address.full}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="phone" width={13} height={13} className="shrink-0 text-gold-400" />
+                <a
+                  href={`tel:${brandConfig.contact.phoneTel}`}
+                  className="transition-colors hover:text-gold-400"
+                >
+                  {brandConfig.contact.phoneFormatted}
+                </a>
+              </div>
             </div>
           </div>
 

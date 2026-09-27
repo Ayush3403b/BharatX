@@ -126,9 +126,28 @@ export default function ContactPage() {
             />
             <div className="flex flex-col gap-4">
               {[
-                { icon: "map-pin", t: "Based in India", d: "BharatX Group and its businesses operate from India. Regional offices appear here as they are established." },
-                { icon: "clock", t: "How we respond", d: "Inquiries are reviewed by the relevant business, not a call centre. You'll hear back from a person who can actually answer." },
-                { icon: "shield-check", t: "Handled carefully", d: "Submissions are stored securely and used only to respond to your inquiry. No lists, no cold follow-ups." },
+                {
+                  icon: "map-pin",
+                  t: "Corporate Headquarters",
+                  d: "Building no. 511 First Floor, Motilal Nehru Complex, New Delhi 110017, India",
+                },
+                {
+                  icon: "phone",
+                  t: "Direct Telephone",
+                  d: "+91 98112 63046 (Mon – Sat, 9:00 AM – 6:30 PM IST)",
+                  link: "tel:+919811263046",
+                  linkText: "Call +91 98112 63046",
+                },
+                {
+                  icon: "clock",
+                  t: "Executive Routing",
+                  d: "Inquiries are routed directly to the leadership and technical leads of the designated operating business.",
+                },
+                {
+                  icon: "shield-check",
+                  t: "Secure Communication",
+                  d: "Submissions are encrypted and used solely for business correspondence with complete privacy integrity.",
+                },
               ].map((c, i) => (
                 <Reveal key={c.t} delay={i * 0.07}>
                   <div className="flex items-start gap-4 rounded-xl border border-slate-200/90 bg-white/85 p-5 shadow-2xs dark:border-white/8 dark:bg-night-900/70 dark:shadow-none">
@@ -136,6 +155,14 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-display text-[14.5px] font-semibold text-ink-50">{c.t}</h3>
                       <p className="mt-1 text-[13px] leading-relaxed text-ink-400">{c.d}</p>
+                      {c.link && (
+                        <a
+                          href={c.link}
+                          className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-gold-400 hover:text-gold-300"
+                        >
+                          {c.linkText} <Icon name="arrow-up-right" width={12} height={12} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </Reveal>

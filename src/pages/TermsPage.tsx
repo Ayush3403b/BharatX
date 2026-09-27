@@ -75,6 +75,16 @@ export default function TermsPage() {
                 </div>
               </Reveal>
             ))}
+
+            <Reveal delay={0.2}>
+              <div className="mt-8 rounded-xl border border-slate-200/80 dark:border-white/8 bg-slate-50/80 dark:bg-night-900/60 p-5 font-mono text-xs text-ink-400">
+                <span className="font-semibold text-ink-200 dark:text-ink-100 uppercase tracking-wider block mb-1">
+                  Registered Headquarters:
+                </span>
+                <p>BharatX Group · Building no. 511 First Floor, Motilal Nehru Complex, New Delhi 110017, India</p>
+                <p className="mt-1">Direct Line: +91 98112 63046 · contact@bharatxgroup.com</p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

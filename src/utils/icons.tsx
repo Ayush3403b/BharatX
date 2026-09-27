@@ -70,6 +70,12 @@ import {
   Workflow,
   Wrench,
   X,
+  Play,
+  FileText,
+  Share2,
+  Download,
+  Newspaper,
+  Volume2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -150,6 +156,12 @@ export const iconMap: Record<string, LucideIcon> = {
   workflow: Workflow,
   wrench: Wrench,
   x: X,
+  play: Play,
+  "file-text": FileText,
+  "share-2": Share2,
+  download: Download,
+  newspaper: Newspaper,
+  "volume-2": Volume2,
 };
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {

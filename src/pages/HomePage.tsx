@@ -14,6 +14,11 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import { companies } from "../data/companies";
 import { industries } from "../data/industries";
 import { Icon } from "../utils/icons";
+import { ConglomerateManifesto } from "../components/home/ConglomerateManifesto";
+import { BusinessVerticalTabs } from "../components/home/BusinessVerticalTabs";
+import { StrategicTriadTabs } from "../components/home/StrategicTriadTabs";
+import { LeadershipKeynote } from "../components/home/LeadershipKeynote";
+import { InstitutionalNewsroom } from "../components/home/InstitutionalNewsroom";
 // import { HeroBackgroundSlideshow } from "../components/home/HeroBackgroundSlideshow";
 
 const EcosystemOrbScene = lazy(() => import("../components/three/EcosystemOrbScene"));
@@ -157,6 +162,9 @@ export default function HomePage() {
       {/* ── MARQUEE ──────────────────────────────────────────── */}
       <CompanyMarquee />
 
+      {/* ── CONGLOMERATE SCALE MANIFESTO (RIL STYLE) ──────────── */}
+      <ConglomerateManifesto />
+
       {/* ── GROUP INTRODUCTION ───────────────────────────────── */}
       <section className="relative overflow-hidden py-14 md:py-20">
         <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-50" />
@@ -205,7 +213,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── COMPANIES SHOWCASE ───────────────────────────────── */}
+      {/* ── INTERACTIVE BUSINESS VERTICALS (RIL TABBED BLOCK) ─── */}
+      <BusinessVerticalTabs />
+
+      {/* ── COMPANIES DIRECTORY GRID ─────────────────────────── */}
       <section className="relative border-t border-white/5 bg-night-950/20 py-14 md:py-20">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -344,6 +355,9 @@ export default function HomePage() {
         </Link>
       </CinematicSection>
 
+      {/* ── STRATEGIC PILLARS TRIAD (RIL SUSTAINABILITY/INNOVATION/IMPACT) ── */}
+      <StrategicTriadTabs />
+
       {/* ── INDUSTRIES PREVIEW ───────────────────────────────── */}
       <section className="relative py-14 md:py-20">
         <div className="container-x">
@@ -389,54 +403,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INNOVATION / IMPACT STRIP ────────────────────────── */}
-      <section className="grid gap-5 lg:grid-cols-2">
-        {[
-          {
-            img: "/assets/backgrounds/ai-circuit.jpg",
-            kicker: "Innovation",
-            title: "Technology that works in the real world.",
-            to: "/innovation",
-            cta: "Explore innovation",
-          },
-          {
-            img: "/assets/backgrounds/agri-dusk.jpg",
-            kicker: "Impact",
-            title: "Growth measured in livelihoods, not just output.",
-            to: "/impact",
-            cta: "See our impact",
-          },
-        ].map((p, i) => (
-          <Reveal key={p.to} delay={i * 0.1}>
-            <Link
-              to={p.to}
-              className="group relative block overflow-hidden rounded-2xl border border-white/8"
-            >
-              <div className="h-[280px] overflow-hidden md:h-[340px]">
-                <img
-                  src={p.img}
-                  alt=""
-                  aria-hidden
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-night-950/95 via-night-950/40 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-8">
-                <div className="mb-3 font-mono text-[10.5px] uppercase tracking-[0.28em] text-gold-400">
-                  {p.kicker}
-                </div>
-                <h3 className="font-display text-2xl font-semibold leading-tight text-ink-50 md:text-3xl">
-                  {p.title}
-                </h3>
-                <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-pulse-300 transition-all duration-300 group-hover:gap-3">
-                  {p.cta} <Icon name="arrow-right" width={14} height={14} />
-                </span>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
-      </section>
+      {/* ── LEADERSHIP ANNUAL KEYNOTE & TRANSCRIPT (RIL AGM STYLE) ── */}
+      <LeadershipKeynote />
+
+      {/* ── INSTITUTIONAL NEWSROOM & ANNOUNCEMENTS (RIL STYLE) ── */}
+      <InstitutionalNewsroom />
 
       {/* ── PRINCIPLES STATEMENT ─────────────────────────────── */}
       <section className="noise relative overflow-hidden border-t border-white/5 bg-night-950/60 py-14 md:py-20">
