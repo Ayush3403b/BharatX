@@ -4,6 +4,7 @@ import { companies } from "../../data/companies";
 import { footerColumns } from "../../data/navigation";
 import { Icon } from "../../utils/icons";
 import { Logo } from "./Logo";
+import FooterOrbScene from "../three/FooterOrbScene";
 
 const columnMeta: { key: "explore" | "company" | "ecosystem"; icon: string; title: string }[] = [
   { key: "explore", icon: "compass", title: "Explore" },
@@ -20,43 +21,49 @@ const socialIcons: Record<string, string> = {
 
 export function FooterCTA() {
   return (
-    <section className="gold-glow relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 py-10 sm:py-12 md:py-14">
-      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-60" />
-      <div className="container-x relative flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <div className="mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-500 dark:text-gold-400">
-            <Icon name="sparkles" width={13} height={13} />
-            <span>Start a conversation</span>
+    <section className="gold-glow relative overflow-hidden border-t border-slate-200/80 dark:border-white/5 py-14 sm:py-16 md:py-20">
+      <div aria-hidden className="grid-bg grid-bg-fade absolute inset-0 opacity-40 dark:opacity-60" />
+      <div className="container-x relative flex flex-col items-center justify-between gap-10 lg:flex-row">
+        <div className="max-w-2xl text-center lg:text-left">
+          <div className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-gold-500/20 bg-gold-500/10 px-3.5 py-1 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-600 dark:text-gold-400">
+            <Icon name="sparkles" width={12} height={12} />
+            <span>Connect with the ecosystem</span>
           </div>
-          <h2 className="font-display text-3xl font-semibold leading-[1.05] tracking-tight text-ink-50 sm:text-4xl md:text-5xl lg:text-6xl">
-            Have an idea
+          <h2 className="font-display text-3xl font-bold uppercase leading-[1.05] tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl md:text-5xl lg:text-6xl">
+            READY TO BUILD
             <br />
-            worth building?
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-500 via-amber-400 to-pulse-400">
+              WHAT COMES NEXT?
+            </span>
           </h2>
-          <p className="mt-4 max-w-md text-[15px] sm:text-base leading-relaxed text-ink-400">
-            Ventures, partnerships, suppliers, talent — the right conversation
-            starts with one message to the group.
+          <p className="mt-5 text-[15px] sm:text-base leading-relaxed text-ink-600 dark:text-ink-400">
+            Ventures, technology systems, infrastructure, industrial mobility, advanced agro &amp; deeptech — start a conversation with the group.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
+            <Link
+              to="/contact"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-gold-500 px-8 py-4 text-[15px] font-semibold text-white shadow-md shadow-gold-500/25 transition-all duration-300 hover:bg-gold-600 hover:shadow-[0_10px_35px_-8px_rgba(217,119,6,0.45)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_10px_44px_-10px_rgba(245,184,77,0.55)]"
+            >
+              Talk to BharatX
+              <Icon
+                name="arrow-right"
+                width={16}
+                height={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+            <Link
+              to="/ecosystem"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-slate-300/80 bg-white/70 px-8 py-4 text-[15px] font-semibold text-ink-900 shadow-sm transition-all duration-300 hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-transparent dark:text-ink-100 dark:hover:border-white/35 dark:hover:bg-white/5 dark:shadow-none"
+            >
+              Explore Ecosystem
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full md:w-auto">
-          <Link
-            to="/contact"
-            className="group inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-gold-500 px-8 py-4 text-[15px] font-semibold text-white shadow-md shadow-gold-500/25 transition-all duration-300 hover:bg-gold-600 hover:shadow-[0_10px_35px_-8px_rgba(217,119,6,0.45)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_10px_44px_-10px_rgba(245,184,77,0.55)]"
-          >
-            Talk to BharatX
-            <Icon
-              name="arrow-right"
-              width={16}
-              height={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
-          <Link
-            to="/ecosystem"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-slate-300/80 bg-white/70 px-8 py-4 text-[15px] font-semibold text-ink-100 shadow-sm transition-all duration-300 hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-transparent dark:hover:border-white/35 dark:hover:bg-white/5 dark:shadow-none"
-          >
-            Explore the ecosystem
-          </Link>
+
+        {/* 3D Footer ecosystem scene (Section 33 & 34) */}
+        <div className="flex shrink-0 items-center justify-center">
+          <FooterOrbScene className="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64" />
         </div>
       </div>
     </section>

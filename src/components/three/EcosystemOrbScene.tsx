@@ -138,50 +138,79 @@ function Scene({
   scrollProgress: MotionValue<number>;
 }) {
   const group = useRef<THREE.Group>(null);
+  const ring1 = useRef<THREE.Mesh>(null);
+  const ring2 = useRef<THREE.Mesh>(null);
   const { camera, pointer } = useThree();
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     if (group.current) {
-      group.current.rotation.y = t * 0.05;
+      group.current.rotation.y = t * 0.045;
       const p = scrollProgress.get();
-      group.current.position.y = -p * 1.6;
-      const s = 1 - p * 0.25;
+      group.current.position.y = -p * 1.5;
+      const s = 1 - p * 0.22;
       group.current.scale.setScalar(s);
     }
-    // Subtle mouse parallax on the camera without pushing orbit out of bounds
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.35, 0.045);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, 1.4 + pointer.y * -0.25, 0.045);
+    if (ring1.current) ring1.current.rotation.z = t * 0.08;
+    if (ring2.current) ring2.current.rotation.z = -t * 0.06;
+
+    // Subtle mouse parallax on the camera
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.4, 0.045);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, 1.35 + pointer.y * -0.25, 0.045);
     camera.lookAt(0, 0, 0);
   });
-
-  const hoverIdx = hovered ? companies.findIndex((c) => c.slug === hovered) : -1;
-  const hoverCompany = hoverIdx >= 0 ? companies[hoverIdx] : null;
 
   return (
     <group ref={group} rotation={[-0.32, 0, 0]}>
       <Core />
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[RING_RADIUS, 0.011, 8, 140]} />
-        <meshBasicMaterial color="#93a1ad" transparent opacity={0.3} />
+
+      {/* Primary Equatorial Orbit Rings */}
+      <mesh ref={ring1} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[RING_RADIUS, 0.012, 8, 140]} />
+        <meshBasicMaterial color="#94a3b8" transparent opacity={0.25} />
       </mesh>
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[2.2, 0.006, 8, 110]} />
-        <meshBasicMaterial color="#43e6c5" transparent opacity={0.12} />
+      <mesh ref={ring2} rotation={[Math.PI / 2 + 0.1, 0, 0.15]}>
+        <torusGeometry args={[2.3, 0.007, 8, 110]} />
+        <meshBasicMaterial color="#00bcd4" transparent opacity={0.16} />
       </mesh>
+
+      {/* Inter-Node Geodesic Network Lines (Section 4 Signature Construction) */}
+      {companies.map((c, i) => {
+        const nextIdx = (i + 1) % companies.length;
+        return (
+          <Line
+            key={`network-${c.id}`}
+            points={[nodePos(i), nodePos(nextIdx)]}
+            color="#94a3b8"
+            lineWidth={0.8}
+            transparent
+            opacity={0.16}
+          />
+        );
+      })}
+
+      {/* Radial Hub Connectors (From Center Core to Each Node) */}
+      {companies.map((c, i) => {
+        const isHovered = hovered === c.slug;
+        return (
+          <Line
+            key={`radial-${c.id}`}
+            points={[[0, 0, 0], nodePos(i)]}
+            color={c.accentColor}
+            lineWidth={isHovered ? 2 : 1}
+            transparent
+            opacity={isHovered ? 0.95 : 0.22}
+          />
+        );
+      })}
+
+      {/* The 6 Orbiting Business Nodes */}
       {companies.map((c, i) => (
         <OrbitNode key={c.id} index={i} onHover={onHover} hovered={hovered} />
       ))}
-      {hoverCompany && (
-        <Line
-          points={[[0, 0, 0], nodePos(hoverIdx)]}
-          color={hoverCompany.accentColor}
-          lineWidth={1.4}
-          transparent
-          opacity={0.8}
-        />
-      )}
-      <Stars radius={42} depth={22} count={320} factor={2.1} saturation={0} fade speed={0.35} />
+
+      {/* Ambient Data Particles Cloud */}
+      <Stars radius={40} depth={20} count={260} factor={1.8} saturation={0} fade speed={0.3} />
     </group>
   );
 }
@@ -256,7 +285,9 @@ export default function EcosystemOrbScene({
   const reduced = useReducedMotion();
   const [hovered, setHovered] = useState<string | null>(null);
   const enabled = webglSupported() && !isLowPowerDevice() && !reduced;
-  const hoverCompany = hovered ? getCompaniesById(hovered) : null;
+  const hoverCompany = hovered
+    ? companies.find((c) => c.slug === hovered || c.id === hovered) ?? null
+    : null;
 
   const onHover = (slug: string | null) => {
     setHovered((prev) => {
@@ -264,6 +295,12 @@ export default function EcosystemOrbScene({
       return slug;
     });
   };
+
+  const exploreUrl = hoverCompany?.slug === "bharatx-labs"
+    ? "/bharatx-labs"
+    : hoverCompany
+      ? `/companies/${hoverCompany.slug}`
+      : "/companies";
 
   return (
     <div className={cn("relative h-full w-full", className)}>
@@ -275,11 +312,11 @@ export default function EcosystemOrbScene({
         <OrbFallback />
       )}
 
-      {/* Company summary overlay on node hover/tap (Section 12) */}
+      {/* Company summary overlay on node hover/tap (Section 12 & 13) */}
       <motion.div
         aria-hidden={!hoverCompany}
         className={cn(
-          "pointer-events-none absolute bottom-2 left-1/2 w-[min(92%,380px)] -translate-x-1/2 md:bottom-6",
+          "pointer-events-none absolute bottom-2 left-1/2 w-[min(94%,400px)] -translate-x-1/2 md:bottom-6",
         )}
         initial={false}
         animate={
@@ -289,7 +326,7 @@ export default function EcosystemOrbScene({
         }
       >
         {hoverCompany && (
-          <div className="glass pointer-events-auto rounded-xl border border-white/10 p-4 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)]">
+          <div className="glass pointer-events-auto rounded-xl border border-white/15 dark:border-white/10 p-4 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.4)] backdrop-blur-xl">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
@@ -304,12 +341,12 @@ export default function EcosystemOrbScene({
                     {hoverCompany.category}
                   </span>
                 </div>
-                <div className="mt-1.5 font-display text-lg font-semibold text-ink-50">
+                <div className="mt-1 font-display text-lg font-semibold text-ink-900 dark:text-ink-50">
                   {hoverCompany.name}
                 </div>
               </div>
               {hoverCompany.logo ? (
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-sm border border-black/5">
                   <img
                     src={hoverCompany.logo}
                     alt={hoverCompany.name}
@@ -318,30 +355,43 @@ export default function EcosystemOrbScene({
                 </span>
               ) : (
                 <span
-                  className="flex h-9 w-9 items-center justify-center font-mono text-[11px] font-semibold text-ink-300"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border font-mono text-[11px] font-semibold"
+                  style={{
+                    borderColor: `${hoverCompany.accentColor}44`,
+                    color: hoverCompany.accentColor,
+                    background: `${hoverCompany.accentColor}11`,
+                  }}
                 >
                   {hoverCompany.monogram}
                 </span>
               )}
             </div>
-            <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-400">
+            <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-700 dark:text-ink-400">
               {hoverCompany.description}
             </p>
-            <div className="mt-3 flex items-center gap-4">
+            <div className="mt-3.5 flex items-center justify-between gap-3 border-t border-black/5 dark:border-white/10 pt-3">
               <Link
-                to={`/companies/${hoverCompany.slug}`}
-                className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-gold-400 transition-colors hover:text-gold-300"
+                to={exploreUrl}
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] font-semibold text-gold-600 dark:text-gold-400 transition-colors hover:text-gold-500"
               >
                 Explore <Icon name="arrow-right" width={12} height={12} />
               </Link>
-              <a
-                href={hoverCompany.website}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400 transition-colors hover:text-ink-100"
+              <Link
+                to={`/ecosystem?company=${hoverCompany.slug}`}
+                className="inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500 hover:text-ink-900 dark:text-ink-400 dark:hover:text-ink-100 transition-colors"
               >
-                Website <Icon name="external-link" width={12} height={12} />
-              </a>
+                Ecosystem Viewer <Icon name="arrow-up-right" width={11} height={11} />
+              </Link>
+              {hoverCompany.website && (
+                <a
+                  href={hoverCompany.website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500 hover:text-ink-900 dark:text-ink-400 dark:hover:text-ink-100 transition-colors"
+                >
+                  Site <Icon name="external-link" width={11} height={11} />
+                </a>
+              )}
             </div>
           </div>
         )}

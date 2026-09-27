@@ -52,14 +52,14 @@
   --container-8xl: 90rem;
 }
 
-/* ── Light Mode Theme (Electric Cyber Neon - Luminous Edition) ─────── */
+/* ── Light Mode Theme (Option 1: Sovereign Conglomerate Horizon - Executive Titanium & Travertine) ─────── */
 :root {
-  --color-night-950: #f0f5ff; /* Luminous crystalline ice base */
-  --color-night-900: #f7faff; /* Radiant surface */
+  --color-night-950: #f8fafc; /* Executive titanium & travertine bone base */
+  --color-night-900: #f1f5f9; /* Grounded architectural surface */
   --color-night-850: #ffffff; /* Crisp elevated card surface */
-  --color-night-800: #e2edff; /* Luminous sub-surface */
-  --color-night-700: #cfe0fc; /* Subtle neon-lit border */
-  --color-night-600: #99beff; /* Crisp electric divider */
+  --color-night-800: #e2e8f0; /* Executive sub-surface */
+  --color-night-700: #cbd5e1; /* Subtle architectural border */
+  --color-night-600: #94a3b8; /* Crisp structural divider */
 
   /* High-Vibrancy Electric Cyan & Laser Glow */
   --color-pulse-200: #cffafe;
@@ -340,14 +340,14 @@ a, button, [role="button"], input, select, textarea {
 /* Fine engineering grid */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(rgba(15, 23, 42, 0.085) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.085) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 .dark .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 .grid-bg-fade {
@@ -391,16 +391,21 @@ a, button, [role="button"], input, select, textarea {
 .global-static-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url("/assets/backgrounds/hero-field.jpg");
+  background-image:
+    radial-gradient(ellipse 90% 70% at 50% 25%, transparent 20%, var(--color-night-950) 85%),
+    url("/assets/backgrounds/industrial.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
-  opacity: 0.12;
+  opacity: 0.18;
   mix-blend-mode: multiply;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 .dark .global-static-bg-image {
-  opacity: 0.24;
+  background-image:
+    radial-gradient(ellipse 90% 70% at 50% 30%, transparent 15%, var(--color-night-950) 85%),
+    url("/assets/backgrounds/ai-circuit.jpg");
+  opacity: 0.16;
   mix-blend-mode: screen;
 }
 
@@ -408,38 +413,18 @@ a, button, [role="button"], input, select, textarea {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60rem 38rem at 8% -5%, rgba(0, 188, 212, 0.25), transparent 65%),
-    radial-gradient(55rem 35rem at 92% 10%, rgba(139, 92, 246, 0.2), transparent 68%),
-    radial-gradient(50rem 30rem at 50% 45%, rgba(234, 179, 8, 0.15), transparent 65%),
-    radial-gradient(70rem 45rem at 50% 115%, rgba(0, 188, 212, 0.2), transparent 75%);
-  transition: background 0.3s ease;
+    radial-gradient(75rem 48rem at 50% -5%, rgba(217, 119, 6, 0.22), transparent 70%),
+    radial-gradient(60rem 40rem at 88% 22%, rgba(2, 132, 199, 0.18), transparent 65%),
+    radial-gradient(65rem 45rem at 12% 40%, rgba(124, 58, 237, 0.14), transparent 70%),
+    radial-gradient(85rem 55rem at 50% 105%, rgba(5, 150, 105, 0.14), transparent 75%);
+  transition: background 0.4s ease;
 }
 .dark .global-static-bg-aurora {
   background:
-    radial-gradient(64rem 42rem at 10% -6%, rgba(0, 240, 255, 0.28), transparent 68%),
-    radial-gradient(56rem 38rem at 90% 6%, rgba(255, 184, 0, 0.2), transparent 68%),
-    radial-gradient(52rem 34rem at 50% 46%, rgba(192, 132, 252, 0.18), transparent 70%),
-    radial-gradient(72rem 50rem at 50% 115%, rgba(0, 200, 230, 0.22), transparent 78%);
-}
-
-.global-static-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 80%);
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 80%);
-  opacity: 0.6;
-}
-.dark .global-static-bg-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 78%);
-  opacity: 0.42;
+    radial-gradient(70rem 45rem at 15% -5%, rgba(0, 240, 255, 0.22), transparent 68%),
+    radial-gradient(60rem 40rem at 85% 10%, rgba(255, 184, 0, 0.14), transparent 68%),
+    radial-gradient(65rem 45rem at 50% 50%, rgba(139, 92, 246, 0.12), transparent 70%),
+    radial-gradient(80rem 55rem at 50% 115%, rgba(0, 200, 230, 0.16), transparent 78%);
 }
 
 .global-static-bg-vignette {
@@ -447,17 +432,17 @@ a, button, [role="button"], input, select, textarea {
   inset: 0;
   background: radial-gradient(
     ellipse at 50% 40%,
-    transparent 0%,
-    rgba(226, 232, 240, 0.3) 60%,
-    rgba(226, 232, 240, 0.8) 100%
+    transparent 20%,
+    rgba(226, 232, 240, 0.15) 60%,
+    rgba(203, 213, 225, 0.35) 100%
   );
 }
 .dark .global-static-bg-vignette {
   background: radial-gradient(
-    ellipse at 50% 40%,
+    ellipse at 50% 45%,
     transparent 0%,
-    rgba(3, 7, 18, 0.3) 60%,
-    rgba(3, 7, 18, 0.88) 100%
+    rgba(3, 7, 18, 0.4) 50%,
+    rgba(3, 7, 18, 0.94) 100%
   );
 }
 
@@ -466,19 +451,19 @@ a, button, [role="button"], input, select, textarea {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(240, 245, 255, 0.4) 0%,
-    transparent 35%,
-    rgba(240, 245, 255, 0.55) 75%,
-    rgba(240, 245, 255, 0.95) 100%
+    transparent 0%,
+    transparent 50%,
+    rgba(248, 250, 252, 0.25) 80%,
+    rgba(248, 250, 252, 0.5) 100%
   );
 }
 .dark .global-static-bg-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(3, 7, 18, 0.35) 0%,
+    rgba(3, 7, 18, 0.3) 0%,
     transparent 35%,
-    rgba(3, 7, 18, 0.55) 75%,
-    rgba(3, 7, 18, 0.92) 100%
+    rgba(3, 7, 18, 0.6) 75%,
+    rgba(3, 7, 18, 0.95) 100%
   );
 }
 
