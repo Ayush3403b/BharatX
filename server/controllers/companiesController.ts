@@ -12,8 +12,8 @@ const seedCompanies = [
   { id: "aixperts", slug: "aixperts-labs", name: "AIxperts Labs", website: "https://aixpertslabs.com/" },
   { id: "infratech", slug: "bharatx-infratech", name: "BharatX Infratech", website: "https://bharatxinfratech.com/" },
   { id: "casters", slug: "casters-global", name: "Casters Global", website: "https://castersglobal.com/" },
-  { id: "sumedha", slug: "sumedha-agro", name: "Sumedha Agro", website: "https://sumedhaagro.com/" },
   { id: "bharatx-agro", slug: "bharatx-agro", name: "BharatX Agro", website: "https://bharatxagro.com/" },
+  { id: "bharatx-labs", slug: "bharatx-labs", name: "BharatX Labs", website: "/bharatx-labs" },
 ];
 
 export async function listCompanies(_req: Request, res: Response) {

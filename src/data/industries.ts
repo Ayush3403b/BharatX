@@ -10,7 +10,7 @@ export const industries: Industry[] = [
       "Applied intelligence, automation and the digital systems that make businesses run.",
     detail:
       "From production AI to the data foundations underneath, the group's technology work is judged by one test: does the business run better with it, tomorrow, without the vendor in the room?",
-    companySlugs: ["aixperts-labs", "bharatx-ventures"],
+    companySlugs: ["aixperts-labs", "bharatx-ventures", "bharatx-labs"],
   },
   {
     slug: "infrastructure",
@@ -43,7 +43,7 @@ export const industries: Industry[] = [
       "Farming that is scientific, enterprise-grade and rural-first.",
     detail:
       "Agriculture at BharatX is treated as industry: inputs are specified, yields are measured, and the people doing the work are trained to run it as a business.",
-    companySlugs: ["sumedha-agro", "bharatx-agro"],
+    companySlugs: ["bharatx-agro"],
   },
   {
     slug: "food-systems",
@@ -54,7 +54,7 @@ export const industries: Industry[] = [
       "From field to finished product: cultivation, processing and nutrition.",
     detail:
       "Food work is a chain — cultivation, handling, processing, cold chain, market. The group builds the whole chain, so quality is a design choice at every link.",
-    companySlugs: ["sumedha-agro", "bharatx-agro"],
+    companySlugs: ["bharatx-agro"],
   },
   {
     slug: "global-trade",

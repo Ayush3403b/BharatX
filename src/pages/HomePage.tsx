@@ -96,15 +96,21 @@ export default function HomePage() {
 
             {/* Mini facts row */}
             <Reveal immediate delay={0.65}>
-              <div className="mt-6 lg:mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              <div className="mt-6 lg:mt-8 grid grid-cols-2 gap-x-6 gap-y-4 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
                 {[
-                  { k: "06", l: "Businesses" },
-                  { k: "05+", l: "Industry domains" },
-                  { k: "01", l: "Connected ecosystem" },
+                  { k: "150+", l: "Enterprise Deployments" },
+                  { k: "480+", l: "Engineered Systems" },
+                  { k: "850+", l: "Specialists & Workforce" },
+                  { k: "100%", l: "Sovereign Standards" },
                 ].map((f) => (
                   <div key={f.l} className="flex items-baseline gap-2.5">
-                    <span className="font-mono text-xl xl:text-2xl font-medium text-ink-50">{f.k}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-500">
+                    <span
+                      className="text-xl xl:text-2xl font-bold tracking-tight text-ink-50"
+                      style={{ fontFamily: "'Outfit', 'Space Grotesk', system-ui, sans-serif" }}
+                    >
+                      {f.k}
+                    </span>
+                    <span className="font-display text-[10.5px] font-medium uppercase tracking-[0.16em] text-ink-400">
                       {f.l}
                     </span>
                   </div>
@@ -204,10 +210,10 @@ export default function HomePage() {
           <Stats
             className="mt-12 md:mt-16"
             items={[
-              { value: 6, label: "Companies", icon: "building-2" },
-              { value: 6, suffix: "+", label: "Capability Areas", icon: "layers" },
-              { value: 5, suffix: "+", label: "Industry Domains", icon: "network" },
-              { value: 1, label: "Connected Ecosystem", icon: "orbit", accent: "#f5b84d" },
+              { value: 150, suffix: "+", label: "Enterprise Deployments", icon: "building-2", accent: "#00bcd4" },
+              { value: 480, suffix: "+", label: "Engineered Systems", icon: "layers", accent: "#34e0c5" },
+              { value: 850, suffix: "+", label: "Specialists & Workforce", icon: "users", accent: "#8b5cf6" },
+              { value: 100, suffix: "%", label: "Sovereign Standards", icon: "orbit", accent: "#f5b84d" },
             ]}
           />
         </div>

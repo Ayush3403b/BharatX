@@ -345,7 +345,7 @@ function CompaniesMega() {
         {companies.map((c, i) => (
           <Link
             key={c.id}
-            to={`/companies/${c.slug}`}
+            to={c.slug === "bharatx-labs" ? "/bharatx-labs" : `/companies/${c.slug}`}
             onMouseEnter={() => setPreview(i)}
             onFocus={() => setPreview(i)}
             className="group flex items-start gap-3.5 rounded-xl border border-transparent p-3.5 transition-all duration-300 hover:border-slate-200/90 hover:bg-slate-100/80 hover:shadow-sm dark:hover:border-white/15 dark:hover:bg-night-800/80 dark:hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.7),0_0_24px_-4px_rgba(0,240,255,0.14)]"
@@ -374,6 +374,11 @@ function CompaniesMega() {
                 <span className="truncate font-display text-[15px] font-semibold text-ink-50 transition-colors group-hover:text-ink-50 dark:group-hover:text-white">
                   {c.name}
                 </span>
+                {c.isUpcoming && (
+                  <span className="rounded-full bg-gold-400/10 border border-gold-400/30 px-1.5 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider text-gold-400">
+                    Upcoming
+                  </span>
+                )}
               </span>
               <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: c.accentColor }}>
                 {c.category}

@@ -20,7 +20,7 @@ const transcriptChapters = [
     title: "Multi-Vertical Ecosystem Scaling",
     content: [
       "Over the past fiscal year, our six autonomous operating enterprises have demonstrated the extraordinary compounding power of a connected ecosystem. Rather than fragmented growth, our businesses reinforce one another at every node.",
-      "BharatX Infratech has set unprecedented benchmarks in durable civil engineering; Casters Global has expanded precision mobility exports into high-spec global markets; while BharatX Agro and Sumedha Agro have established traceable, origin-certified agri-supply corridors that empower over 50,000 rural families.",
+      "BharatX Infratech has set unprecedented benchmarks in durable civil engineering; Casters Global has expanded precision mobility exports into high-spec global markets; while BharatX Agro has established traceable, origin-certified agri-supply corridors that empower over 50,000 rural families, supported by frontier research at BharatX Labs.",
     ],
   },
   {

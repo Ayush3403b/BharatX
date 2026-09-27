@@ -50,9 +50,9 @@ const pressReleases: PressRelease[] = [
     publisher: "BharatX Agro",
     readTime: "3 min read",
     title:
-      "BharatX Agro and Sumedha Agro scale farm-gate traceability network to 50,000+ certified smallholder producers.",
+      "BharatX Agro scales farm-gate traceability network to 50,000+ certified smallholder producers.",
     excerpt:
-      "Delivering origin-authenticated agricultural commodities and mushroom value chains directly into EMEA and Southeast Asian export terminals.",
+      "Delivering origin-authenticated agricultural commodities and clean value chains directly into EMEA and Southeast Asian export terminals.",
     link: "/companies/bharatx-agro",
     image: "/assets/backgrounds/agri-dusk.jpg",
   },

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "../components/layout/Layout";
 import AboutPage from "../pages/AboutPage";
 import AdminPage from "../pages/AdminPage";
+import BharatXLabsPage from "../pages/BharatXLabsPage";
 import CareersPage from "../pages/CareersPage";
 import CompanyDetailsPage from "../pages/CompanyDetailsPage";
 import CompaniesPage from "../pages/CompaniesPage";
@@ -25,6 +26,7 @@ export function AppRoutes() {
         <Route path="about" element={<AboutPage />} />
         <Route path="companies" element={<CompaniesPage />} />
         <Route path="companies/:slug" element={<CompanyDetailsPage />} />
+        <Route path="bharatx-labs" element={<BharatXLabsPage />} />
         <Route path="ecosystem" element={<EcosystemPage />} />
         <Route path="industries" element={<IndustriesPage />} />
         <Route path="innovation" element={<InnovationPage />} />

@@ -34,18 +34,18 @@ export const ecosystemSites: EcosystemSite[] = [
     category: "Industrial Mobility",
   },
   {
-    id: "sumedha",
-    slug: "sumedha-agro",
-    name: "Sumedha Agro",
-    url: "https://sumedhaagro.com/",
-    category: "Agriculture & Food",
-  },
-  {
     id: "bharatx-agro",
     slug: "bharatx-agro",
     name: "BharatX Agro",
     url: "https://bharatxagro.com/",
     category: "Agricultural Exports",
+  },
+  {
+    id: "bharatx-labs",
+    slug: "bharatx-labs",
+    name: "BharatX Labs",
+    url: "/bharatx-labs",
+    category: "Frontier R&D (Upcoming)",
   },
 ];
 

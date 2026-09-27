@@ -46,12 +46,12 @@ const triadData: TriadItem[] = [
     headline: "Engineering Sustainable Physical Assets & Circular Manufacturing.",
     description: [
       "Our growth philosophy is inseparable from environmental stewardship. Across our civil projects and precision manufacturing lines, BharatX Group integrates carbon-conscious materials, recycled feedstocks, and energy-efficient lifecycle protocols.",
-      "From zero-waste mushroom cultivation substrates that nourish rural soils to long-lifecycle heavy caster alloys, we engineer products and infrastructure built to outlast economic and climate cycles.",
+      "From regenerative circular agri-processing that nourishes rural soils to long-lifecycle heavy caster alloys, we engineer products and infrastructure built to outlast economic and climate cycles.",
     ],
     metrics: [
       { label: "Recyclable Compounds", value: "100% Certified" },
       { label: "Lifecycle Durability", value: "10+ Years" },
-      { label: "Zero-Waste Substrates", value: "Circular" },
+      { label: "Circular Operations", value: "Zero-Waste" },
     ],
     image: "/assets/backgrounds/craft-metal.jpg",
     route: "/about",
@@ -173,23 +173,65 @@ export function StrategicTriadTabs() {
                 <div className="mt-8 grid grid-cols-3 gap-3 border-y border-slate-200/70 dark:border-white/8 py-5">
                   {current.metrics.map((m) => (
                     <div key={m.label}>
-                      <span className="font-mono text-xl font-bold text-ink-100 dark:text-ink-50 md:text-2xl">
+                      <span
+                        className="text-xl font-bold text-ink-100 dark:text-ink-50 md:text-2xl tracking-tight"
+                        style={{ fontFamily: "'Outfit', 'Space Grotesk', system-ui, sans-serif" }}
+                      >
                         {m.value}
                       </span>
-                      <span className="mt-1 block font-mono text-[10.5px] uppercase tracking-wider text-ink-400">
+                      <span className="mt-1 block font-display text-[11px] font-medium uppercase tracking-wider text-ink-400">
                         {m.label}
                       </span>
                     </div>
                   ))}
                 </div>
 
+                {/* BharatX Labs Spotlight for Deep-Tech */}
+                {current.id === "deep-tech" && (
+                  <div className="mt-6 rounded-2xl border border-pulse-400/30 bg-pulse-400/5 dark:bg-pulse-400/10 p-4.5 backdrop-blur-md">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="relative flex h-2.5 w-2.5 shrink-0">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pulse-400 opacity-75" />
+                          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pulse-400" />
+                        </span>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-display text-sm font-bold text-ink-900 dark:text-ink-50">
+                              BharatX Labs
+                            </span>
+                            <span className="rounded-full bg-gold-400/15 border border-gold-400/40 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-gold-400">
+                              Upcoming · Stealth R&D
+                            </span>
+                          </div>
+                          <p className="mt-0.5 text-xs text-ink-600 dark:text-ink-300">
+                            Frontier sovereign AI, neural compute architecture, and autonomous reasoning agents.
+                          </p>
+                        </div>
+                      </div>
+                      <Link to="/bharatx-labs" className="shrink-0">
+                        <span className="inline-flex items-center gap-1.5 rounded-xl border border-pulse-400/40 bg-pulse-400/15 px-3 py-1.5 font-mono text-xs font-semibold text-pulse-400 hover:bg-pulse-400/25 transition-all">
+                          Preview Labs <span>→</span>
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+
                 {/* CTA Action */}
-                <div className="mt-8">
+                <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Link to={current.route}>
                     <Button variant="primary" size="lg" withArrow>
                       {current.cta}
                     </Button>
                   </Link>
+                  {current.id === "deep-tech" && (
+                    <Link to="/bharatx-labs">
+                      <Button variant="secondary" size="lg">
+                        BharatX Labs (Upcoming)
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
 
@@ -215,11 +257,13 @@ export function StrategicTriadTabs() {
                       />
                     </span>
                     <span className="font-mono text-[11px] uppercase tracking-wider text-white">
-                      BharatX Active Protocol
+                      {current.id === "deep-tech"
+                        ? "BharatX Labs · Frontier R&D"
+                        : "BharatX Active Protocol"}
                     </span>
                   </div>
                   <span className="font-mono text-[10px] uppercase text-gold-400">
-                    Verified
+                    {current.id === "deep-tech" ? "Upcoming Phase" : "Verified"}
                   </span>
                 </div>
               </div>

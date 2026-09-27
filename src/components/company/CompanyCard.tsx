@@ -65,6 +65,14 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
             {company.monogram}
           </span>
         )}
+        {company.isUpcoming && (
+          <div className="absolute right-4 top-4 z-20 flex items-center gap-1.5 rounded-full border border-gold-400/40 bg-slate-900/90 px-2.5 py-1 backdrop-blur-md shadow-lg">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold-400" />
+            <span className="font-mono text-[9.5px] font-semibold uppercase tracking-wider text-gold-400">
+              {company.status || "Upcoming · Stealth"}
+            </span>
+          </div>
+        )}
         <span
           aria-hidden
           className="absolute -bottom-3 right-3 font-display text-[64px] font-bold leading-none text-slate-900/[0.04] dark:text-white/[0.04] select-none pointer-events-none"
@@ -101,10 +109,10 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-white/5">
           <Link
-            to={`/companies/${company.slug}`}
+            to={company.slug === "bharatx-labs" ? "/bharatx-labs" : `/companies/${company.slug}`}
             className="group/link inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white px-4 py-2 text-[13px] font-semibold text-slate-800 shadow-sm transition-all duration-300 hover:border-gold-400 hover:text-gold-600 hover:shadow-md shrink-0 dark:border-white/15 dark:bg-white/[0.04] dark:text-ink-100 dark:hover:border-gold-400/40 dark:hover:text-gold-400 dark:hover:bg-white/[0.08] dark:shadow-none"
           >
-            Explore
+            {company.isUpcoming ? "Preview Upcoming" : "Explore"}
             <Icon
               name="arrow-right"
               width={14}
@@ -113,15 +121,21 @@ export function CompanyCard({ company, layout = "stacked", className }: CompanyC
             />
           </Link>
           <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={company.website}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-slate-500 transition-colors hover:text-slate-900 dark:text-ink-400 dark:hover:text-ink-100"
-            >
-              Website
-              <Icon name="external-link" width={12.5} height={12.5} />
-            </a>
+            {company.isUpcoming ? (
+              <span className="inline-flex items-center gap-1.5 text-[12px] font-mono font-medium text-gold-400">
+                Stealth Initiative
+              </span>
+            ) : (
+              <a
+                href={company.website}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-slate-500 transition-colors hover:text-slate-900 dark:text-ink-400 dark:hover:text-ink-100"
+              >
+                Website
+                <Icon name="external-link" width={12.5} height={12.5} />
+              </a>
+            )}
             <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-ink-500">
               {String(company.order).padStart(2, "0")}/06
             </span>

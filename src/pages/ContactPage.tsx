@@ -14,8 +14,8 @@ const routes = [
   { icon: "brain-circuit", t: "AI & automation", d: "Intelligence and process automation", company: "aixperts-labs", type: "ai-automation" },
   { icon: "hard-hat", t: "Infrastructure", d: "Civil engineering and construction", company: "bharatx-infratech", type: "infrastructure" },
   { icon: "cog", t: "Manufacturing", d: "Precision components and mobility", company: "casters-global", type: "manufacturing" },
-  { icon: "sprout", t: "Agriculture", d: "Cultivation, food systems and rural enterprise", company: "sumedha-agro", type: "agriculture" },
-  { icon: "ship", t: "Export", d: "Ingredients and export-grade supply", company: "bharatx-agro", type: "export" },
+  { icon: "ship", t: "Agri & Exports", d: "Ingredients, supply chain and export corridors", company: "bharatx-agro", type: "export" },
+  { icon: "cpu", t: "Frontier R&D", d: "Sovereign AI research and technical inquiries", company: "bharatx-labs", type: "research" },
   { icon: "handshake", t: "Partnerships", d: "Suppliers, partners and co-development", company: "", type: "partnerships" },
   { icon: "briefcase", t: "Careers", d: "Roles, introductions and opportunities", company: "", type: "careers" },
 ];

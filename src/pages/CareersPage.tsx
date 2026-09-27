@@ -24,8 +24,8 @@ const streams = [
   { icon: "rocket", t: "Venture & strategy teams", d: "Business design, capital structure and operating models — with BharatX Ventures.", tag: "Always open" },
   { icon: "brain-circuit", t: "AI & engineering teams", d: "Applied AI, automation and production engineering — with AIxperts Labs.", tag: "Always open" },
   { icon: "hard-hat", t: "Infrastructure teams", d: "Civil design, site management and operations — with BharatX Infratech.", tag: "Project-linked" },
-  { icon: "cog", t: "Manufacturing & trade teams", d: "Precision engineering, QA and export operations — with Casters Global and BharatX Agro.", tag: "Always open" },
-  { icon: "sprout", t: "Agri & food teams", d: "Cultivation, processing, cold chain and rural enterprise — with Sumedha Agro and BharatX Agro.", tag: "Always open" },
+  { icon: "sprout", t: "Agri & food teams", d: "Cultivation, processing, cold chain and rural enterprise — with BharatX Agro.", tag: "Always open" },
+  { icon: "cpu", t: "Frontier R&D (BharatX Labs)", d: "Multilingual LLMs, edge silicon integration and sovereign intelligence — with BharatX Labs.", tag: "Research Fellows" },
 ];
 
 const process = [

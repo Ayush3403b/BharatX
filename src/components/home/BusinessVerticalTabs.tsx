@@ -100,10 +100,16 @@ export function BusinessVerticalTabs() {
                         <span className="font-display text-[15px] font-semibold text-ink-100 dark:text-ink-50">
                           {c.name}
                         </span>
-                        <span
-                          className="h-1.5 w-1.5 rounded-full"
-                          style={{ backgroundColor: c.accentColor }}
-                        />
+                        {c.isUpcoming ? (
+                          <span className="rounded-full bg-gold-400/15 border border-gold-400/40 px-1.5 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider text-gold-400">
+                            Upcoming
+                          </span>
+                        ) : (
+                          <span
+                            className="h-1.5 w-1.5 rounded-full"
+                            style={{ backgroundColor: c.accentColor }}
+                          />
+                        )}
                       </div>
                       <span className="block font-mono text-[11px] text-ink-400">
                         {c.category}
@@ -158,15 +164,22 @@ export function BusinessVerticalTabs() {
                       </span>
                     </div>
 
-                    <a
-                      href={activeCompany.website}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] text-gold-400 hover:text-gold-300"
-                    >
-                      <span>{activeCompany.domain}</span>
-                      <Icon name="external-link" width={12} height={12} />
-                    </a>
+                    {activeCompany.isUpcoming ? (
+                      <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-gold-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+                        <span>Stealth R&D</span>
+                      </span>
+                    ) : (
+                      <a
+                        href={activeCompany.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-gold-400 hover:text-gold-300"
+                      >
+                        <span>{activeCompany.domain}</span>
+                        <Icon name="external-link" width={12} height={12} />
+                      </a>
+                    )}
                   </div>
 
                   {/* Main Company Title & Narrative */}
@@ -229,22 +242,44 @@ export function BusinessVerticalTabs() {
                 {/* Bottom CTA & Direct Launch Actions */}
                 <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/70 dark:border-white/8 pt-6">
                   <div className="flex flex-wrap items-center gap-3">
-                    <Link to={`/companies/${activeCompany.slug}`}>
+                    <Link
+                      to={
+                        activeCompany.slug === "bharatx-labs"
+                          ? "/bharatx-labs"
+                          : `/companies/${activeCompany.slug}`
+                      }
+                    >
                       <Button variant="primary" size="md" withArrow>
-                        Deep-Dive {activeCompany.shortName}
+                        {activeCompany.isUpcoming
+                          ? "Preview BharatX Labs"
+                          : `Deep-Dive ${activeCompany.shortName}`}
                       </Button>
                     </Link>
 
-                    <Link to={`/ecosystem?company=${activeCompany.slug}`}>
-                      <Button variant="ghost" size="md">
-                        <Icon name="orbit" width={14} height={14} className="mr-1.5 text-gold-400" />
-                        Open in Ecosystem Viewer
-                      </Button>
-                    </Link>
+                    {activeCompany.isUpcoming ? (
+                      <Link to="/bharatx-labs#waitlist">
+                        <Button variant="ghost" size="md">
+                          <Icon name="sparkles" width={14} height={14} className="mr-1.5 text-gold-400" />
+                          Researcher Fellowship
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Link to={`/ecosystem?company=${activeCompany.slug}`}>
+                        <Button variant="ghost" size="md">
+                          <Icon name="orbit" width={14} height={14} className="mr-1.5 text-gold-400" />
+                          Open in Ecosystem Viewer
+                        </Button>
+                      </Link>
+                    )}
                   </div>
 
                   <span className="font-mono text-[11px] text-ink-500">
-                    Live Status: <span className="text-emerald-500 font-semibold">● ACTIVE</span>
+                    Live Status:{" "}
+                    {activeCompany.isUpcoming ? (
+                      <span className="text-gold-400 font-semibold">● UPCOMING · STEALTH</span>
+                    ) : (
+                      <span className="text-emerald-500 font-semibold">● ACTIVE</span>
+                    )}
                   </span>
                 </div>
               </motion.div>

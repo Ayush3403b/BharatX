@@ -1,6 +1,6 @@
 import { lazy, Suspense, useRef } from "react";
 import { useScroll } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { Breadcrumbs } from "../components/common/Breadcrumbs";
 import { Button } from "../components/common/Button";
 import { IconBadge } from "../components/common/IconBadge";
@@ -38,6 +38,7 @@ export default function CompanyDetailsPage() {
   );
 
   if (!company) return <NotFoundPage />;
+  if (slug === "bharatx-labs") return <Navigate to="/bharatx-labs" replace />;
 
   return (
     <CompanyProfile company={company} />

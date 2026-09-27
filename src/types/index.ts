@@ -40,6 +40,8 @@ export interface Company {
   vision: string;
   industries: string[];
   iframeEnabled: boolean;
+  isUpcoming?: boolean;
+  status?: string;
 }
 
 export interface Industry {

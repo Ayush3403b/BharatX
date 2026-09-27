@@ -28,7 +28,7 @@ const slides: SlideItem[] = [
     id: "agro",
     image: "/assets/slides/agro.png",
     sector: "Agri-Tech & Food Systems",
-    company: "Sumedha & BharatX Agro",
+    company: "BharatX Agro",
     tagline: "Sustainable agrarian supply chains from seed to global export",
   },
   {

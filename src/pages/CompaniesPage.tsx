@@ -52,10 +52,10 @@ export default function CompaniesPage() {
         <div className="container-x">
           <Stats
             items={[
-              { value: 6, label: "Independent businesses", icon: "building-2" },
-              { value: 6, label: "Live company websites", icon: "globe" },
-              { value: 5, suffix: "+", label: "Industry domains", icon: "network" },
-              { value: 1, label: "Shared ecosystem standard", icon: "orbit", accent: "#f5b84d" },
+              { value: 150, suffix: "+", label: "Enterprise Deployments", icon: "building-2" },
+              { value: 480, suffix: "+", label: "Engineered Systems", icon: "layers" },
+              { value: 850, suffix: "+", label: "Specialists & Workforce", icon: "network" },
+              { value: 100, suffix: "%", label: "Shared Ecosystem Standard", icon: "orbit", accent: "#f5b84d" },
             ]}
           />
         </div>

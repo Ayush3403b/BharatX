@@ -26,8 +26,8 @@ const COMPANY_IDS = new Set([
   "aixperts",
   "infratech",
   "casters",
-  "sumedha",
   "bharatx-agro",
+  "bharatx-labs",
 ]);
 
 export interface ValidationIssue {

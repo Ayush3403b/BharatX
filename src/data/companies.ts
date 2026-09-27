@@ -457,120 +457,8 @@ export const companies: Company[] = [
     iframeEnabled: true,
   },
   {
-    id: "sumedha",
-    order: 5,
-    slug: "sumedha-agro",
-    name: "Sumedha Agro",
-    shortName: "Sumedha",
-    monogram: "SA",
-    category: "Agri Science & Food Systems",
-    icon: "sprout",
-    description:
-      "Advancing mushroom farming, nutrition and rural enterprise.",
-    longDescription: [
-      "Sumedha Agro advances mushroom farming, nutrition and rural enterprise. We take mushroom cultivation beyond the backyard and turn it into a repeatable agri-business model — farms, processing, training and supply.",
-      "Our work is deliberately rural: cultivation is set up where families can run it, skills are transferred properly, and processing adds value at origin. A Sumedha farm is a small food company, not just a growing room.",
-      "Mushrooms are a short-cycle, high-nutrition crop that fits Indian climates and small landholdings. Sumedha exists to prove that farm by farm, and to build the supply chain that lets the crop earn its place in Indian food.",
-    ],
-    website: "https://sumedhaagro.com/",
-    domain: "sumedhaagro.com",
-    logo: "/Sumedha_logo.webp",
-    heroImage: "/companies/sumedha-agro/hero.jpg",
-    cinematicImage: "/companies/sumedha-agro/hero.jpg",
-    accentColor: "#82c76f",
-    capabilities: [
-      {
-        icon: "sprout",
-        title: "Cultivation Science",
-        description:
-          "Strain selection, substrate recipes and growing conditions tuned for yield and safety.",
-      },
-      {
-        icon: "building-2",
-        title: "Farm Design",
-        description:
-          "Low-cost growing rooms and farm layouts adapted to local conditions and budgets.",
-      },
-      {
-        icon: "flask-conical",
-        title: "Nutrition & R&D",
-        description:
-          "Product development from fresh mushroom to dried, pickled and value-added forms.",
-      },
-      {
-        icon: "users",
-        title: "Rural Employment & Training",
-        description:
-          "Training programmes that make farm families competent food producers.",
-      },
-      {
-        icon: "snowflake",
-        title: "Cold Chain & Processing",
-        description:
-          "Harvest handling, cold storage and processing that protect quality to market.",
-      },
-      {
-        icon: "graduation-cap",
-        title: "Farmer Enterprise",
-        description:
-          "Business setup support so farms become enterprises with books, not just output.",
-      },
-    ],
-    applications: [
-      {
-        title: "Oyster & exotic mushroom farming",
-        description: "Commercial cultivation of oyster and other edible mushrooms.",
-      },
-      {
-        title: "Nutrition products",
-        description:
-          "Dried, pickled and value-added mushroom products for food and retail.",
-      },
-      {
-        title: "Agri-entrepreneurship",
-        description: "Farm-in-a-box models that rural families can run end to end.",
-      },
-      {
-        title: "Farm-to-business supply",
-        description:
-          "Consistent, food-safe supply for restaurants, processors and retailers.",
-      },
-    ],
-    focusAreas: [
-      "Rural livelihoods first",
-      "Food safety throughout",
-      "Low-waste growing",
-    ],
-    howWeWork: [
-      {
-        title: "Train & equip",
-        description:
-          "Growers are trained and equipped before a single substrate bag is set up.",
-      },
-      {
-        title: "Cultivate",
-        description:
-          "Growing begins with strain and substrate discipline, checked at every flush.",
-      },
-      {
-        title: "Process",
-        description:
-          "Harvest is handled, sorted and processed to food-safety standard.",
-      },
-      {
-        title: "Market & scale",
-        description:
-          "Supply relationships are built so farm output has a buyer from day one.",
-      },
-    ],
-    vision:
-      "A rural enterprise model that turns a farm into a food company.",
-    industries: ["agriculture", "food-systems"],
-    iframeEnabled: true,
-  },
-  {
     id: "bharatx-agro",
-    order: 6,
+    order: 5,
     slug: "bharatx-agro",
     name: "BharatX Agro",
     shortName: "BX Agro",
@@ -680,6 +568,112 @@ export const companies: Company[] = [
     vision: "Indian agriculture, presented to the world at global standard.",
     industries: ["agriculture", "food-systems", "global-trade"],
     iframeEnabled: true,
+  },
+  {
+    id: "bharatx-labs",
+    order: 6,
+    slug: "bharatx-labs",
+    name: "BharatX Labs",
+    shortName: "BX Labs",
+    monogram: "BL",
+    category: "Frontier R&D & Sovereign AI",
+    icon: "brain-circuit",
+    description:
+      "Frontier deep-tech research arm engineering sovereign foundation models, edge intelligence and quantum-resilient compute.",
+    longDescription: [
+      "BharatX Labs is the frontier deep-tech research division of BharatX Group. We investigate and build next-generation foundational artificial intelligence, domain-specific multilingual models, and quantum-resilient software systems designed specifically for Indian enterprise sovereignty.",
+      "Operating in stealth R&D mode, the lab's researchers and engineers develop production-ready architectures that bridge advanced theoretical research with real-world industrial deployments.",
+      "From neural coprocessors on the factory floor to Indic language LLMs that think natively in 22 regional dialects, BharatX Labs exists to ensure India creates and controls its critical computational infrastructure.",
+    ],
+    website: "/bharatx-labs",
+    domain: "labs.bharatxgroup.com",
+    heroImage: "/assets/backgrounds/ai-circuit.jpg",
+    cinematicImage: "/assets/backgrounds/ai-circuit.jpg",
+    accentColor: "#00f0ff",
+    isUpcoming: true,
+    status: "Upcoming · Stealth R&D",
+    capabilities: [
+      {
+        icon: "brain-circuit",
+        title: "Sovereign Multilingual LLMs",
+        description:
+          "Foundational language models natively pre-trained on 22 Indian regional languages and technical corpora.",
+      },
+      {
+        icon: "cpu",
+        title: "Physical & Edge Neural Compute",
+        description:
+          "Ultra-low latency inference pipelines embedded directly into industrial machinery and robotics.",
+      },
+      {
+        icon: "shield-check",
+        title: "Quantum-Resilient Security",
+        description:
+          "Post-quantum cryptographic algorithms engineered for national and institutional communications.",
+      },
+      {
+        icon: "workflow",
+        title: "Agentic Swarm Orchestration",
+        description:
+          "Multi-agent autonomous systems coordinating supply chain routing and predictive telemetry.",
+      },
+      {
+        icon: "database",
+        title: "Sovereign Data Fabrics",
+        description:
+          "Decentralized, privacy-preserving data architectures with verifiable cryptographic attestation.",
+      },
+      {
+        icon: "scan-eye",
+        title: "Industrial Computer Vision",
+        description:
+          "High-speed defect detection and spatial reasoning for automated manufacturing.",
+      },
+    ],
+    applications: [
+      {
+        title: "National language AI",
+        description: "Enterprise voice and text models for 22 Indian languages.",
+      },
+      {
+        title: "Autonomous manufacturing",
+        description: "Self-correcting edge robotics and computer vision telemetry.",
+      },
+      {
+        title: "Critical infrastructure security",
+        description: "Cryptographically hardened sovereign communication rails.",
+      },
+      {
+        title: "Institutional research",
+        description: "Collaborative research with premier Indian technical universities.",
+      },
+    ],
+    focusAreas: [
+      "Sovereign IP first",
+      "Edge-native inference",
+      "Research into production",
+    ],
+    howWeWork: [
+      {
+        title: "Hypothesize & Formalize",
+        description: "Fundamental scientific exploration grounded in real-world industrial constraints.",
+      },
+      {
+        title: "Train on Sovereign Infrastructure",
+        description: "Pre-training and fine-tuning on domestic green compute clusters.",
+      },
+      {
+        title: "Validate on Physical Testbeds",
+        description: "Benchmarking against live industrial workloads across BharatX operating companies.",
+      },
+      {
+        title: "Open Weights & Deployment",
+        description: "Responsible public release and hardened commercial deployment.",
+      },
+    ],
+    vision: "Sovereign artificial intelligence and deep-tech, engineered in India for the world.",
+    industries: ["ai-technology"],
+    iframeEnabled: false,
   },
 ];
 
