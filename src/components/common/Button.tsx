@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "../../utils/cn";
 
-type ButtonVariant = "primary" | "teal" | "ghost" | "ember" | "paper";
+type ButtonVariant = "primary" | "secondary" | "teal" | "ghost" | "ember" | "paper";
 type ButtonSize = "md" | "lg" | "sm";
 
 export interface ButtonProps {
@@ -19,6 +19,8 @@ const base =
 const variants: Record<ButtonVariant, string> = {
   primary:
     "bg-gold-500 text-white font-semibold shadow-md shadow-gold-500/25 hover:bg-gold-600 hover:shadow-[0_8px_30px_-4px_rgba(234,179,8,0.5)] dark:bg-gold-400 dark:text-night-950 dark:hover:bg-gold-300 dark:hover:shadow-[0_8px_40px_-6px_rgba(255,184,0,0.65)]",
+  secondary:
+    "border border-slate-300/90 bg-white/90 text-ink-900 font-semibold shadow-sm hover:border-gold-400 hover:text-gold-600 hover:shadow-md dark:border-white/15 dark:bg-white/[0.06] dark:text-ink-50 dark:hover:border-gold-400/40 dark:hover:text-gold-400 dark:hover:bg-white/[0.1]",
   teal: "bg-pulse-500 text-white font-semibold shadow-md shadow-pulse-500/25 hover:bg-pulse-600 hover:shadow-[0_8px_30px_-4px_rgba(0,188,212,0.5)] dark:bg-pulse-400 dark:text-night-950 dark:hover:bg-pulse-300 dark:hover:shadow-[0_8px_40px_-6px_rgba(0,240,255,0.65)]",
   ghost:
     "border border-slate-300/80 bg-white/80 text-ink-100 backdrop-blur-sm shadow-sm hover:border-slate-400 hover:bg-white hover:shadow-md dark:border-white/15 dark:bg-white/[0.04] dark:hover:border-white/40 dark:hover:bg-white/[0.08] dark:shadow-none",
