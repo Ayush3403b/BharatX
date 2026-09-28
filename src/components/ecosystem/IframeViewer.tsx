@@ -16,7 +16,15 @@ const SLOW_MS = 12000;
  * block embedding (X-Frame-Options / CSP), error state, reload,
  * open-in-new-tab and a fullscreen mode with ESC exit.
  */
-export function IframeViewer({ site }: { site: EcosystemSite }) {
+export function IframeViewer({
+  site,
+  className,
+  heightClassName = "h-[380px] md:h-[480px] xl:h-[560px]",
+}: {
+  site: EcosystemSite;
+  className?: string;
+  heightClassName?: string;
+}) {
   const [status, setStatus] = useState<ViewerStatus>("loading");
   const [frameKey, setFrameKey] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
@@ -152,9 +160,9 @@ export function IframeViewer({ site }: { site: EcosystemSite }) {
   return (
     <>
       {/* Inline viewer */}
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-night-850 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.8)]">
+      <div className={cn("overflow-hidden rounded-2xl border border-white/10 bg-night-850 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.8)]", className)}>
         {toolbar}
-        <div className="relative h-[500px] bg-[#f4f6f8] md:h-[600px] xl:h-[800px]">
+        <div className={cn("relative bg-[#f4f6f8]", heightClassName)}>
           {status !== "error" && frame(frameKey)}
 
           {/* Loading skeleton */}
